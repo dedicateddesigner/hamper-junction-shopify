@@ -1,0 +1,179 @@
+<section
+  id="hj-shop-by-occasion-{{ section.id }}"
+  class="hj-occasion-section"
+>
+  <div class="page-width">
+    <div class="hj-occasion-header">
+      {% if section.settings.eyebrow != blank %}
+        <p class="hj-occasion-eyebrow">
+          {{ section.settings.eyebrow }}
+        </p>
+      {% endif %}
+
+      {% if section.settings.heading != blank %}
+        <h2 class="hj-occasion-heading">
+          {{ section.settings.heading }}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.description != blank %}
+        <div class="hj-occasion-description rte">
+          {{ section.settings.description }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="hj-occasion-grid">
+      {% for block in section.blocks %}
+        {% assign collection = block.settings.collection %}
+
+        <article
+          class="hj-occasion-card"
+          {{ block.shopify_attributes }}
+        >
+          {% if block.settings.link != blank %}
+            <a
+              href="{{ block.settings.link }}"
+              class="hj-occasion-card__link"
+              aria-label="{{ block.settings.title | escape }}"
+            >
+          {% endif %}
+
+          <div class="hj-occasion-card__media">
+            {% if block.settings.image != blank %}
+              {{
+                block.settings.image
+                | image_url: width: 1200
+                | image_tag:
+                  loading: 'lazy',
+                  widths: '480, 720, 960, 1200',
+                  sizes: '(min-width: 990px) 33vw, 82vw',
+                  class: 'hj-occasion-card__image',
+                  alt: block.settings.title
+              }}
+            {% elsif collection != blank and collection.image != blank %}
+              {{
+                collection.image
+                | image_url: width: 1200
+                | image_tag:
+                  loading: 'lazy',
+                  widths: '480, 720, 960, 1200',
+                  sizes: '(min-width: 990px) 33vw, 82vw',
+                  class: 'hj-occasion-card__image',
+                  alt: collection.title
+              }}
+            {% else %}
+              <div class="hj-occasion-card__placeholder"></div>
+            {% endif %}
+          </div>
+
+          <div class="hj-occasion-card__content">
+            {% if block.settings.title != blank %}
+              <h3 class="hj-occasion-card__title">
+                {{ block.settings.title }}
+              </h3>
+            {% endif %}
+
+            {% if block.settings.link_text != blank %}
+              <span class="hj-occasion-card__cta">
+                {{ block.settings.link_text }}
+              </span>
+            {% endif %}
+          </div>
+
+          {% if block.settings.link != blank %}
+            </a>
+          {% endif %}
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "HJ Shop by occasion",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "GIFT WITH INTENTION"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop by Occasion"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Thoughtfully curated gifts for life's meaningful moments.</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "occasion",
+      "name": "Occasion",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Welcome"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link override"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link text",
+          "default": "Explore"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "HJ Shop by occasion",
+      "blocks": [
+        {
+          "type": "occasion",
+          "settings": {
+            "title": "Welcome"
+          }
+        },
+        {
+          "type": "occasion",
+          "settings": {
+            "title": "Celebrations"
+          }
+        },
+        {
+          "type": "occasion",
+          "settings": {
+            "title": "Corporate Gifting"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,135 @@
+<section
+  id="hj-corporate-gifting-{{ section.id }}"
+  class="hj-corporate-section"
+>
+  <div class="hj-corporate-section__inner">
+    <div class="hj-corporate-section__media">
+      {% if section.settings.image != blank %}
+        {{
+          section.settings.image
+          | image_url: width: 1800
+          | image_tag:
+            loading: 'lazy',
+            widths: '750, 1100, 1400, 1800',
+            sizes: '(min-width: 990px) 55vw, 100vw',
+            class: 'hj-corporate-section__image',
+            alt: section.settings.image_alt
+        }}
+      {% else %}
+        <div class="hj-corporate-section__placeholder">
+          <span>Corporate gifting image</span>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="hj-corporate-section__content">
+      {% if section.settings.eyebrow != blank %}
+        <p class="hj-corporate-section__eyebrow">
+          {{ section.settings.eyebrow }}
+        </p>
+      {% endif %}
+
+      {% if section.settings.heading != blank %}
+        <h2 class="hj-corporate-section__heading">
+          {{ section.settings.heading }}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.description != blank %}
+        <div class="hj-corporate-section__description rte">
+          {{ section.settings.description }}
+        </div>
+      {% endif %}
+
+      {% if section.settings.features != blank %}
+        <div class="hj-corporate-section__features">
+          {{ section.settings.features }}
+        </div>
+      {% endif %}
+
+      {% if section.settings.button_label != blank %}
+        <div class="hj-corporate-section__action">
+          <a
+            {% if section.settings.button_link != blank %}
+              href="{{ section.settings.button_link }}"
+            {% else %}
+              href="mailto:{{ section.settings.email }}"
+            {% endif %}
+            class="hj-corporate-section__button"
+          >
+            {{ section.settings.button_label }}
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "HJ Corporate Gifting",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image alt text",
+      "default": "Corporate gifting by Hamper Junction"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "FOR BUSINESS"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Corporate gifting, thoughtfully considered."
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Create memorable gifts for clients, teams and business milestones with thoughtfully curated hampers and personalised touches.</p>"
+    },
+    {
+      "type": "textarea",
+      "id": "features",
+      "label": "Supporting points",
+      "default": "Bulk & corporate orders\nCustom ribbon colours\nBranded logo cards\nPersonalised message cards"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Enquire now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link",
+      "info": "Leave blank to use the enquiry email."
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Enquiry email",
+      "default": "admin@hamperjunction.com.au"
+    }
+  ],
+  "presets": [
+    {
+      "name": "HJ Corporate Gifting"
+    }
+  ]
+}
+{% endschema %}

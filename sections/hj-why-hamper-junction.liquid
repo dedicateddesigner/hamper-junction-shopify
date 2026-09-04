@@ -1,0 +1,136 @@
+<section
+  id="hj-why-hamper-junction-{{ section.id }}"
+  class="hj-why-section"
+>
+  <div class="page-width">
+    <div class="hj-why-header">
+      {% if section.settings.eyebrow != blank %}
+        <p class="hj-why-eyebrow">
+          {{ section.settings.eyebrow }}
+        </p>
+      {% endif %}
+
+      {% if section.settings.heading != blank %}
+        <h2 class="hj-why-heading">
+          {{ section.settings.heading }}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.description != blank %}
+        <div class="hj-why-description rte">
+          {{ section.settings.description }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="hj-why-grid">
+      {% for block in section.blocks %}
+        <article
+          class="hj-why-item"
+          {{ block.shopify_attributes }}
+        >
+          <span class="hj-why-number">
+            {{ block.settings.number }}
+          </span>
+
+          {% if block.settings.title != blank %}
+            <h3 class="hj-why-title">
+              {{ block.settings.title }}
+            </h3>
+          {% endif %}
+
+          {% if block.settings.text != blank %}
+            <div class="hj-why-text rte">
+              {{ block.settings.text }}
+            </div>
+          {% endif %}
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "HJ Why Hamper Junction",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "WHY HAMPER JUNCTION"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Thoughtful gifting, beautifully considered."
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Every hamper is brought together with care, from what goes inside to how it is presented.</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "reason",
+      "name": "Reason",
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Number",
+          "default": "01"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Curated"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Description",
+          "default": "<p>Thoughtfully selected gifts brought together for meaningful moments.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "HJ Why Hamper Junction",
+      "blocks": [
+        {
+          "type": "reason",
+          "settings": {
+            "number": "01",
+            "title": "Curated",
+            "text": "<p>Thoughtfully selected gifts brought together for meaningful moments.</p>"
+          }
+        },
+        {
+          "type": "reason",
+          "settings": {
+            "number": "02",
+            "title": "Personalised",
+            "text": "<p>Add personal touches that make the gift feel uniquely considered.</p>"
+          }
+        },
+        {
+          "type": "reason",
+          "settings": {
+            "number": "03",
+            "title": "Thoughtful presentation",
+            "text": "<p>Beautifully presented so the experience begins before the gift is opened.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -5,22 +5,20 @@
 
 :root {
     /* Brand foundation — provisional until final brand palette is locked */
-    --hj-ink: #252321;
-    --hj-cream: #f7f4ee;
-    --hj-warm-white: #fcfbf8;
-    --hj-sand: #e8dfd2;
-    --hj-muted: #756f67;
-    --hj-accent: #8b6b4f;
+    --hj-black: #000000;
+    --hj-white: #ffffff;
 
-    /* Layout */
+    --hj-warm-white: #f7f5f1;
+    --hj-soft-grey: #e8e5e0;
+
+    --hj-text: #111111;
+    --hj-muted: #6e6a65;
+
     --hj-content-width: 1280px;
-    --hj-section-space: clamp(4.8rem, 7vw, 9.6rem);
 
-    /* Shape */
     --hj-radius-sm: 4px;
     --hj-radius-md: 10px;
     --hj-radius-lg: 18px;
-
     /* Motion */
     --hj-ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -148,4 +146,828 @@ h6,
 *:focus-visible {
     outline: 2px solid var(--hj-accent);
     outline-offset: 3px;
+}
+
+/* =========================================================
+   HAMPER JUNCTION — HEADER
+   ========================================================= */
+
+.hj-header-wrapper {
+    background: var(--hj-black);
+    color: var(--hj-white);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.hj-header-wrapper .header {
+    min-height: 9.2rem;
+}
+
+.hj-header-wrapper .header__heading-link,
+.hj-header-wrapper .header__menu-item,
+.hj-header-wrapper .header__icon,
+.hj-header-wrapper .header__icon svg {
+    color: var(--hj-white) !important;
+}
+
+.hj-logo-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.hj-logo {
+    display: block;
+    width: 22rem;
+    height: auto;
+    max-width: none;
+}
+
+
+
+/* Navigation */
+
+.hj-header-wrapper .header__menu-item {
+    font-size: 1.35rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--hj-white) !important;
+}
+
+
+.hj-header-wrapper .header__menu-item,
+.hj-header-wrapper .header__active-menu-item {
+    color: var(--hj-white) !important;
+}
+
+.hj-header-wrapper .header__menu-item:hover {
+    color: rgba(255, 255, 255, 0.65) !important;
+}
+
+/* Header icons */
+
+.hj-header-wrapper .header__icon {
+    width: 4.2rem;
+    height: 4.2rem;
+}
+
+.hj-header-wrapper .header__icon:hover {
+    color: colormix(var(--hj-white) l(-20%));
+}
+
+
+
+/* Search/account/cart SVG */
+
+.hj-header-wrapper .svg-wrapper,
+.hj-header-wrapper .svg-wrapper svg {
+    color: inherit;
+}
+
+/* Mobile */
+
+@media screen and (max-width: 989px) {
+    .hj-header-wrapper .header {
+        min-height: 7.2rem;
+    }
+
+    .hj-logo {
+        width: 14rem;
+    }
+}
+
+/* =========================================================
+   HAMPER JUNCTION — ANNOUNCEMENT BAR
+   ========================================================= */
+
+.hj-announcement-bar {
+    background: #f7f5f1 !important;
+    color: #111111 !important;
+    border: 0 !important;
+    border-bottom: 1px solid #e5e1db !important;
+}
+
+.hj-announcement-bar .page-width {
+    max-width: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.hj-announcement-bar .announcement-bar__message,
+.hj-announcement-bar .announcement-bar__link {
+    color: #111111 !important;
+}
+
+.hj-announcement-bar .announcement-bar__message {
+    margin: 0;
+    min-height: 3.6rem;
+    padding: 0.6rem 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1.05rem;
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: 0.08em;
+    text-align: center;
+}
+
+.hj-announcement-bar .announcement-bar__link {
+    text-decoration: none;
+}
+
+.hj-announcement-bar .announcement-bar__link:hover {
+    color: #6e6a65 !important;
+}
+
+@media screen and (max-width: 749px) {
+    .hj-announcement-bar .announcement-bar__message {
+        min-height: 3.4rem;
+        padding: 0.6rem 1rem;
+        font-size: 0.95rem;
+        letter-spacing: 0.05em;
+    }
+}
+
+/* =========================================================
+   HAMPER JUNCTION — SHOP BY OCCASION
+   ========================================================= */
+
+.hj-occasion-section {
+    background: var(--hj-warm-white);
+    padding: clamp(6rem, 9vw, 11rem) 0;
+}
+
+.hj-occasion-header {
+    max-width: 72rem;
+    margin: 0 auto clamp(3.5rem, 5vw, 6rem);
+    text-align: center;
+}
+
+.hj-occasion-eyebrow {
+    margin: 0 0 1.2rem;
+    color: var(--hj-muted);
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.hj-occasion-heading {
+    margin: 0;
+    color: var(--hj-text);
+    font-size: clamp(3rem, 4.5vw, 5.6rem);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+}
+
+.hj-occasion-description {
+    max-width: 55rem;
+    margin: 1.8rem auto 0;
+    color: var(--hj-muted);
+    font-size: 1.55rem;
+    line-height: 1.65;
+}
+
+.hj-occasion-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2.4rem;
+}
+
+.hj-occasion-card {
+    min-width: 0;
+}
+
+.hj-occasion-card__link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+.hj-occasion-card__media {
+    position: relative;
+    aspect-ratio: 0.88;
+    overflow: hidden;
+    background: var(--hj-soft-grey);
+}
+
+.hj-occasion-card__image,
+.hj-occasion-card__placeholder {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.hj-occasion-card__image {
+    object-fit: cover;
+    transition: transform 700ms var(--hj-ease);
+}
+
+.hj-occasion-card__placeholder {
+    background:
+        linear-gradient(135deg,
+            #ece8e1 0%,
+            #ded8cf 100%);
+}
+
+.hj-occasion-card__link:hover .hj-occasion-card__image {
+    transform: scale(1.035);
+}
+
+.hj-occasion-card__content {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-top: 1.8rem;
+}
+
+.hj-occasion-card__title {
+    margin: 0;
+    color: var(--hj-text);
+    font-size: 1.9rem;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+}
+
+.hj-occasion-card__cta {
+    flex: 0 0 auto;
+    color: var(--hj-muted);
+    font-size: 1.15rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 200ms var(--hj-ease);
+}
+
+.hj-occasion-card__link:hover .hj-occasion-card__cta {
+    color: var(--hj-text);
+}
+
+@media screen and (max-width: 989px) {
+    .hj-occasion-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media screen and (max-width: 749px) {
+    .hj-occasion-section {
+        padding: 5.5rem 0;
+    }
+
+    .hj-occasion-header {
+        margin-bottom: 3.2rem;
+        text-align: left;
+    }
+
+    .hj-occasion-description {
+        font-size: 1.4rem;
+    }
+
+    .hj-occasion-grid {
+        display: flex;
+        gap: 1.4rem;
+        overflow-x: auto;
+        margin-right: -2rem;
+        padding-right: 2rem;
+        padding-bottom: 0.5rem;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+    }
+
+    .hj-occasion-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .hj-occasion-card {
+        flex: 0 0 78%;
+        scroll-snap-align: start;
+    }
+
+    .hj-occasion-card__content {
+        display: block;
+        padding-top: 1.4rem;
+    }
+
+    .hj-occasion-card__cta {
+        display: inline-block;
+        margin-top: 0.7rem;
+    }
+}
+
+
+
+/* =========================================================
+   HAMPER JUNCTION — FEATURED HAMPERS
+   ========================================================= */
+
+.hj-featured-section {
+    background: #ffffff;
+    padding: clamp(6rem, 9vw, 10rem) 0;
+}
+
+.hj-featured-header {
+    max-width: 72rem;
+    margin: 0 auto clamp(4rem, 6vw, 6rem);
+    text-align: center;
+}
+
+.hj-featured-eyebrow {
+    margin: 0 0 1.2rem;
+    color: var(--hj-muted);
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.hj-featured-heading {
+    margin: 0;
+    color: var(--hj-text);
+    font-size: clamp(3.2rem, 4.5vw, 5.6rem);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+}
+
+.hj-featured-description {
+    max-width: 54rem;
+    margin: 1.8rem auto 0;
+    color: var(--hj-muted);
+    font-size: 1.5rem;
+    line-height: 1.65;
+}
+
+.hj-featured-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 2rem;
+}
+
+.hj-featured-product {
+    min-width: 0;
+}
+
+.hj-featured-product__link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+.hj-featured-product__media {
+    position: relative;
+    aspect-ratio: 0.88;
+    overflow: hidden;
+    background: #f0ede8;
+}
+
+.hj-featured-product__image,
+.hj-featured-product__placeholder {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.hj-featured-product__image {
+    object-fit: cover;
+    transition: transform 700ms var(--hj-ease);
+}
+
+.hj-featured-product__link:hover .hj-featured-product__image {
+    transform: scale(1.035);
+}
+
+.hj-featured-product__placeholder {
+    padding: 3rem;
+}
+
+.hj-featured-product__details {
+    padding-top: 1.6rem;
+}
+
+.hj-featured-product__title {
+    margin: 0;
+    color: var(--hj-text);
+    font-size: 1.7rem;
+    line-height: 1.3;
+    letter-spacing: -0.015em;
+}
+
+.hj-featured-product__bottom {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-top: 0.8rem;
+}
+
+.hj-featured-product__price {
+    color: var(--hj-text);
+    font-size: 1.4rem;
+}
+
+.hj-featured-product__cta {
+    color: var(--hj-muted);
+    font-size: 1.1rem;
+    letter-spacing: 0.02em;
+    transition: color 200ms var(--hj-ease);
+}
+
+.hj-featured-product__link:hover .hj-featured-product__cta {
+    color: var(--hj-text);
+}
+
+.hj-featured-view-all {
+    display: flex;
+    justify-content: center;
+    margin-top: 4.5rem;
+}
+
+.hj-featured-view-all__button {
+    min-width: 18rem;
+}
+
+.hj-featured-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 24rem;
+    border: 1px dashed #d8d3cb;
+    color: var(--hj-muted);
+}
+
+/* Tablet */
+
+@media screen and (max-width: 989px) {
+    .hj-featured-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2rem 1.5rem;
+    }
+}
+
+/* Mobile */
+
+@media screen and (max-width: 749px) {
+    .hj-featured-section {
+        padding: 5.5rem 0;
+    }
+
+    .hj-featured-header {
+        margin-bottom: 3.5rem;
+        text-align: left;
+    }
+
+    .hj-featured-description {
+        font-size: 1.4rem;
+    }
+
+    .hj-featured-grid {
+        display: flex;
+        gap: 1.4rem;
+        overflow-x: auto;
+        margin-right: -2rem;
+        padding-right: 2rem;
+        padding-bottom: 0.5rem;
+        scrollbar-width: none;
+        scroll-snap-type: x mandatory;
+    }
+
+    .hj-featured-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .hj-featured-product {
+        flex: 0 0 78%;
+        scroll-snap-align: start;
+    }
+
+    .hj-featured-product__bottom {
+        display: block;
+    }
+
+    .hj-featured-product__cta {
+        display: inline-block;
+        margin-top: 0.5rem;
+    }
+}
+
+/* =========================================================
+   HAMPER JUNCTION — CORPORATE GIFTING
+   ========================================================= */
+
+.hj-corporate-section {
+    background: #000000;
+    color: #ffffff;
+    padding: clamp(4rem, 6vw, 7rem) 0;
+}
+
+.hj-corporate-section__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    min-height: 64rem;
+}
+
+.hj-corporate-section__media {
+    position: relative;
+    min-height: 52rem;
+    overflow: hidden;
+    background: #1a1a1a;
+}
+
+.hj-corporate-section__image,
+.hj-corporate-section__placeholder {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.hj-corporate-section__image {
+    object-fit: cover;
+    transition: transform 900ms var(--hj-ease);
+}
+
+.hj-corporate-section__inner:hover .hj-corporate-section__image {
+    transform: scale(1.02);
+}
+
+.hj-corporate-section__placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        linear-gradient(135deg,
+            #242424 0%,
+            #111111 100%);
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 1.2rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.hj-corporate-section__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(4rem, 7vw, 9rem);
+}
+
+.hj-corporate-section__eyebrow {
+    margin: 0 0 1.6rem;
+    color: rgba(255, 255, 255, 0.58);
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.hj-corporate-section__heading {
+    max-width: 56rem;
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(3.8rem, 5vw, 6.5rem);
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+}
+
+.hj-corporate-section__description {
+    max-width: 48rem;
+    margin-top: 2.6rem;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 1.55rem;
+    line-height: 1.7;
+}
+
+.hj-corporate-section__description p {
+    margin: 0;
+}
+
+.hj-corporate-section__features {
+    max-width: 48rem;
+    margin-top: 3.2rem;
+    white-space: pre-line;
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 1.25rem;
+    line-height: 2;
+}
+
+.hj-corporate-section__features::first-line {
+    /* intentional: preserve editable text while keeping typography restrained */
+}
+
+.hj-corporate-section__action {
+    margin-top: 4rem;
+}
+
+.hj-corporate-section__button {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.4rem;
+    padding: 1.5rem 2.4rem;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition:
+        background-color 220ms var(--hj-ease),
+        color 220ms var(--hj-ease),
+        border-color 220ms var(--hj-ease);
+}
+
+.hj-corporate-section__button:hover {
+    background: #ffffff;
+    border-color: #ffffff;
+    color: #000000;
+}
+
+@media screen and (max-width: 989px) {
+    .hj-corporate-section__inner {
+        grid-template-columns: 1fr;
+    }
+
+    .hj-corporate-section__media {
+        min-height: 48rem;
+    }
+
+    .hj-corporate-section__content {
+        padding: 5rem 4rem 6rem;
+    }
+}
+
+@media screen and (max-width: 749px) {
+    .hj-corporate-section {
+        padding: 0;
+    }
+
+    .hj-corporate-section__media {
+        min-height: 38rem;
+    }
+
+    .hj-corporate-section__content {
+        padding: 4.5rem 2rem 5.5rem;
+    }
+
+    .hj-corporate-section__heading {
+        font-size: clamp(3.2rem, 11vw, 4.8rem);
+    }
+
+    .hj-corporate-section__description {
+        font-size: 1.4rem;
+    }
+
+    .hj-corporate-section__features {
+        margin-top: 2.4rem;
+        font-size: 1.15rem;
+        line-height: 1.8;
+    }
+
+    .hj-corporate-section__action {
+        margin-top: 3rem;
+    }
+
+    .hj-corporate-section__button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* =========================================================
+   HAMPER JUNCTION — WHY HAMPER JUNCTION
+   ========================================================= */
+
+.hj-why-section {
+    background: var(--hj-warm-white);
+    padding: clamp(7rem, 10vw, 12rem) 0;
+}
+
+.hj-why-header {
+    max-width: 78rem;
+    margin: 0 auto 6rem;
+    text-align: center;
+}
+
+.hj-why-eyebrow {
+    margin: 0 0 1.4rem;
+    color: var(--hj-muted);
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.hj-why-heading {
+    margin: 0;
+    color: var(--hj-text);
+    font-size: clamp(3.4rem, 5vw, 6rem);
+    line-height: 1.04;
+    letter-spacing: -0.04em;
+}
+
+.hj-why-description {
+    max-width: 58rem;
+    margin: 2rem auto 0;
+    color: var(--hj-muted);
+    font-size: 1.5rem;
+    line-height: 1.7;
+}
+
+.hj-why-description p {
+    margin: 0;
+}
+
+.hj-why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid #d9d5ce;
+    border-bottom: 1px solid #d9d5ce;
+}
+
+.hj-why-item {
+    position: relative;
+    min-height: 30rem;
+    padding: 3rem 3.5rem 3.5rem;
+}
+
+.hj-why-item+.hj-why-item {
+    border-left: 1px solid #d9d5ce;
+}
+
+.hj-why-number {
+    display: block;
+    margin-bottom: 7rem;
+    color: var(--hj-muted);
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+}
+
+.hj-why-title {
+    max-width: 28rem;
+    margin: 0;
+    color: var(--hj-text);
+    font-size: 2.4rem;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+}
+
+.hj-why-text {
+    max-width: 32rem;
+    margin-top: 1.6rem;
+    color: var(--hj-muted);
+    font-size: 1.35rem;
+    line-height: 1.65;
+}
+
+.hj-why-text p {
+    margin: 0;
+}
+
+@media screen and (max-width: 989px) {
+    .hj-why-header {
+        margin-bottom: 4.5rem;
+    }
+
+    .hj-why-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hj-why-item {
+        min-height: auto;
+        padding: 3rem;
+    }
+
+    .hj-why-item+.hj-why-item {
+        border-top: 1px solid #d9d5ce;
+        border-left: 0;
+    }
+
+    .hj-why-number {
+        margin-bottom: 4rem;
+    }
+}
+
+@media screen and (max-width: 749px) {
+    .hj-why-section {
+        padding: 5.5rem 0;
+    }
+
+    .hj-why-header {
+        margin-bottom: 3.5rem;
+        text-align: left;
+    }
+
+    .hj-why-description {
+        font-size: 1.4rem;
+    }
+
+    .hj-why-item {
+        padding: 2.5rem 0;
+    }
+
+    .hj-why-number {
+        margin-bottom: 3rem;
+    }
+
+    .hj-why-title {
+        font-size: 2.1rem;
+    }
 }

@@ -1,0 +1,165 @@
+/* =========================================================
+   HAMPER JUNCTION — SHOP BY OCCASION
+   ========================================================= */
+
+.hj-occasion-section {
+    background: var(--hj-warm-white);
+    padding: clamp(6rem, 9vw, 11rem) 0;
+}
+
+.hj-occasion-header {
+    max-width: 72rem;
+    margin: 0 auto clamp(3.5rem, 5vw, 6rem);
+    text-align: center;
+}
+
+.hj-occasion-eyebrow {
+    margin: 0 0 1.2rem;
+    color: var(--hj-muted);
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.hj-occasion-heading {
+    margin: 0;
+    color: var(--hj-text);
+    font-size: clamp(3rem, 4.5vw, 5.6rem);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+}
+
+.hj-occasion-description {
+    max-width: 55rem;
+    margin: 1.8rem auto 0;
+    color: var(--hj-muted);
+    font-size: 1.55rem;
+    line-height: 1.65;
+}
+
+.hj-occasion-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2.4rem;
+}
+
+.hj-occasion-card {
+    min-width: 0;
+}
+
+.hj-occasion-card__link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+.hj-occasion-card__media {
+    position: relative;
+    aspect-ratio: 0.88;
+    overflow: hidden;
+    background: var(--hj-soft-grey);
+}
+
+.hj-occasion-card__image,
+.hj-occasion-card__placeholder {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.hj-occasion-card__image {
+    object-fit: cover;
+    transition: transform 700ms var(--hj-ease);
+}
+
+.hj-occasion-card__placeholder {
+    background:
+        linear-gradient(135deg,
+            #ece8e1 0%,
+            #ded8cf 100%);
+}
+
+.hj-occasion-card__link:hover .hj-occasion-card__image {
+    transform: scale(1.035);
+}
+
+.hj-occasion-card__content {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-top: 1.8rem;
+}
+
+.hj-occasion-card__title {
+    margin: 0;
+    color: var(--hj-text);
+    font-size: 1.9rem;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+}
+
+.hj-occasion-card__cta {
+    flex: 0 0 auto;
+    color: var(--hj-muted);
+    font-size: 1.15rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 200ms var(--hj-ease);
+}
+
+.hj-occasion-card__link:hover .hj-occasion-card__cta {
+    color: var(--hj-text);
+}
+
+@media screen and (max-width: 989px) {
+    .hj-occasion-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media screen and (max-width: 749px) {
+    .hj-occasion-section {
+        padding: 5.5rem 0;
+    }
+
+    .hj-occasion-header {
+        margin-bottom: 3.2rem;
+        text-align: left;
+    }
+
+    .hj-occasion-description {
+        font-size: 1.4rem;
+    }
+
+    .hj-occasion-grid {
+        display: flex;
+        gap: 1.4rem;
+        overflow-x: auto;
+        margin-right: -2rem;
+        padding-right: 2rem;
+        padding-bottom: 0.5rem;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+    }
+
+    .hj-occasion-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .hj-occasion-card {
+        flex: 0 0 78%;
+        scroll-snap-align: start;
+    }
+
+    .hj-occasion-card__content {
+        display: block;
+        padding-top: 1.4rem;
+    }
+
+    .hj-occasion-card__cta {
+        display: inline-block;
+        margin-top: 0.7rem;
+    }
+}
