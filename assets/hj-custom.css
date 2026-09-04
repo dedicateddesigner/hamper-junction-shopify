@@ -1,0 +1,151 @@
+/* =========================================================
+   HAMPER JUNCTION — CUSTOM DESIGN SYSTEM
+   Built on Shopify Dawn 16.0.0
+   ========================================================= */
+
+:root {
+    /* Brand foundation — provisional until final brand palette is locked */
+    --hj-ink: #252321;
+    --hj-cream: #f7f4ee;
+    --hj-warm-white: #fcfbf8;
+    --hj-sand: #e8dfd2;
+    --hj-muted: #756f67;
+    --hj-accent: #8b6b4f;
+
+    /* Layout */
+    --hj-content-width: 1280px;
+    --hj-section-space: clamp(4.8rem, 7vw, 9.6rem);
+
+    /* Shape */
+    --hj-radius-sm: 4px;
+    --hj-radius-md: 10px;
+    --hj-radius-lg: 18px;
+
+    /* Motion */
+    --hj-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    color: var(--hj-ink);
+    background: var(--hj-warm-white);
+}
+
+/* Better readable content width */
+.page-width {
+    max-width: var(--hj-content-width);
+}
+
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h0,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    letter-spacing: -0.02em;
+}
+
+/* Keep body copy calm and premium */
+.rte,
+.field__input,
+.select__select {
+    letter-spacing: 0;
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.button,
+.shopify-payment-button__button {
+    min-height: 4.8rem;
+    padding-inline: 2.4rem;
+    border-radius: var(--hj-radius-sm);
+    transition:
+        transform 180ms var(--hj-ease),
+        background-color 180ms var(--hj-ease),
+        color 180ms var(--hj-ease),
+        border-color 180ms var(--hj-ease);
+}
+
+.button:hover,
+.shopify-payment-button__button:hover {
+    transform: translateY(-2px);
+}
+
+/* =========================================================
+   PRODUCT CARDS
+   ========================================================= */
+
+.card__inner {
+    overflow: hidden;
+    border-radius: var(--hj-radius-md);
+}
+
+.card__media img {
+    transition: transform 500ms var(--hj-ease);
+}
+
+.card-wrapper:hover .card__media img {
+    transform: scale(1.025);
+}
+
+.card__heading {
+    font-size: 1.7rem;
+    line-height: 1.25;
+}
+
+/* =========================================================
+   SECTION HEADINGS
+   ========================================================= */
+
+.title-wrapper-with-link {
+    align-items: flex-end;
+}
+
+.title {
+    margin-bottom: 0;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media screen and (max-width: 749px) {
+    .page-width {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .button,
+    .shopify-payment-button__button {
+        min-height: 4.6rem;
+    }
+}
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+*:focus-visible {
+    outline: 2px solid var(--hj-accent);
+    outline-offset: 3px;
+}
