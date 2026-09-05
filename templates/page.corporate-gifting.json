@@ -1,0 +1,17 @@
+{
+    "sections": {
+        "main": {
+            "type": "hj-corporate-enquiry",
+            "settings": {
+                "eyebrow": "CORPORATE & CUSTOM GIFTING",
+                "heading": "Thoughtful gifting, made personal.",
+                "description": "<p>Whether you're gifting clients, welcoming new homeowners or celebrating your team, we'll help create a thoughtful gifting experience tailored to the occasion.</p>",
+                "button_text": "Request a gifting consultation",
+                "enquiry_email": "admin@hamperjunction.com.au"
+            }
+        }
+    },
+    "order": [
+        "main"
+    ]
+}

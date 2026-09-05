@@ -1,0 +1,568 @@
+<section
+  id="hj-contact-{{ section.id }}"
+  class="hj-contact"
+>
+  <div class="page-width">
+    <div class="hj-contact__hero">
+      {% if section.settings.eyebrow != blank %}
+        <p class="hj-contact__eyebrow">
+          {{ section.settings.eyebrow }}
+        </p>
+      {% endif %}
+
+      {% if section.settings.heading != blank %}
+        <h1 class="hj-contact__heading">
+          {{ section.settings.heading }}
+        </h1>
+      {% endif %}
+
+      {% if section.settings.intro != blank %}
+        <div class="hj-contact__intro rte">
+          {{ section.settings.intro }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="hj-contact__layout">
+      <!-- Contact information -->
+      <aside class="hj-contact__sidebar">
+        <div class="hj-contact__info">
+          <p class="hj-contact__label">CONTACT</p>
+
+          <a
+            href="mailto:{{ section.settings.email }}"
+            class="hj-contact__email"
+          >
+            {{ section.settings.email }}
+          </a>
+
+          {% if section.settings.contact_text != blank %}
+            <p class="hj-contact__small-text">
+              {{ section.settings.contact_text }}
+            </p>
+          {% endif %}
+        </div>
+
+        <div class="hj-contact__corporate">
+          <p class="hj-contact__label">CORPORATE & CUSTOM GIFTING</p>
+
+          {% if section.settings.corporate_text != blank %}
+            <p class="hj-contact__corporate-text">
+              {{ section.settings.corporate_text }}
+            </p>
+          {% endif %}
+
+          <a
+            href="{{ section.settings.corporate_link }}"
+            class="hj-contact__corporate-link"
+          >
+            Explore corporate gifting
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </aside>
+
+      <!-- Contact form -->
+      <div class="hj-contact__form-wrapper">
+        {% form 'contact', id: 'HJContactForm' %}
+          {% if form.posted_successfully? %}
+            <div
+              class="hj-contact__success"
+              role="status"
+            >
+              <p class="hj-contact__success-heading">Thank you for getting in touch.</p>
+
+              <p>We've received your enquiry and will be in touch shortly.</p>
+            </div>
+          {% endif %}
+
+          {% if form.errors %}
+            <div
+              class="hj-contact__errors"
+              role="alert"
+            >
+              {{ form.errors | default_errors }}
+            </div>
+          {% endif %}
+
+          <div class="hj-contact__form-row">
+            <div class="hj-contact__field">
+              <label for="HJContactName"> Name <span>*</span> </label>
+
+              <input
+                type="text"
+                id="HJContactName"
+                name="contact[name]"
+                autocomplete="name"
+                required
+                placeholder="Your name"
+                value="{{ form.name }}"
+              >
+            </div>
+
+            <div class="hj-contact__field">
+              <label for="HJContactEmail"> Email <span>*</span> </label>
+
+              <input
+                type="email"
+                id="HJContactEmail"
+                name="contact[email]"
+                autocomplete="email"
+                required
+                placeholder="you@example.com"
+                value="{{ form.email }}"
+              >
+            </div>
+          </div>
+
+          <div class="hj-contact__form-row">
+            <div class="hj-contact__field">
+              <label for="HJContactPhone"> Phone </label>
+
+              <input
+                type="tel"
+                id="HJContactPhone"
+                name="contact[phone]"
+                autocomplete="tel"
+                placeholder="+61"
+                value="{{ form.phone }}"
+              >
+            </div>
+
+            <div class="hj-contact__field">
+              <label for="HJContactSubject"> Subject </label>
+
+              <input
+                type="text"
+                id="HJContactSubject"
+                name="contact[Subject]"
+                placeholder="How can we help?"
+              >
+            </div>
+          </div>
+
+          <div class="hj-contact__field">
+            <label for="HJContactMessage"> Message <span>*</span> </label>
+
+            <textarea
+              id="HJContactMessage"
+              name="contact[body]"
+              rows="7"
+              required
+              placeholder="Tell us how we can help."
+            >{{ form.body }}</textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="hj-contact__button"
+          >
+            {{ section.settings.button_text }}
+            <span aria-hidden="true">→</span>
+          </button>
+        {% endform %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom CTA -->
+  <div class="hj-contact__cta">
+    <div class="page-width">
+      <div class="hj-contact__cta-inner">
+        <p class="hj-contact__cta-eyebrow">FIND YOUR PERFECT GIFT</p>
+
+        <h2 class="hj-contact__cta-heading">Have a gifting occasion in mind?</h2>
+
+        <a
+          href="{{ section.settings.hampers_link }}"
+          class="hj-contact__cta-button"
+        >
+          View all hampers
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .hj-contact {
+    background: #f7f5f1;
+    color: #111111;
+    padding-top: 8rem;
+  }
+
+  .hj-contact__hero {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 7rem;
+  }
+
+  .hj-contact__eyebrow {
+    margin: 0 0 1.6rem;
+    color: #6e6a65;
+    font-size: 1.1rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .hj-contact__heading {
+    margin: 0;
+    color: #111111;
+    font-size: clamp(4.5rem, 7vw, 8rem);
+    line-height: 0.94;
+    letter-spacing: -0.05em;
+    font-weight: 500;
+  }
+
+  .hj-contact__intro {
+    max-width: 680px;
+    margin: 2.8rem auto 0;
+    color: #6e6a65;
+    font-size: 1.6rem;
+    line-height: 1.65;
+  }
+
+  .hj-contact__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+    gap: 8rem;
+    align-items: start;
+    padding-bottom: 10rem;
+  }
+
+  .hj-contact__sidebar {
+    position: sticky;
+    top: 4rem;
+  }
+
+  .hj-contact__info,
+  .hj-contact__corporate {
+    padding: 2.8rem 0;
+    border-top: 1px solid #d5d1ca;
+  }
+
+  .hj-contact__corporate {
+    border-bottom: 1px solid #d5d1ca;
+  }
+
+  .hj-contact__label {
+    margin: 0 0 1.4rem;
+    color: #111111;
+    font-size: 1rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .hj-contact__email {
+    display: inline-block;
+    color: #111111;
+    font-size: 1.5rem;
+    text-decoration: none;
+    border-bottom: 1px solid #111111;
+    padding-bottom: 0.2rem;
+  }
+
+  .hj-contact__email:hover {
+    opacity: 0.6;
+  }
+
+  .hj-contact__small-text {
+    max-width: 400px;
+    margin: 1.4rem 0 0;
+    color: #6e6a65;
+    font-size: 1.3rem;
+    line-height: 1.6;
+  }
+
+  .hj-contact__corporate-text {
+    max-width: 450px;
+    margin: 0 0 2rem;
+    color: #6e6a65;
+    font-size: 1.3rem;
+    line-height: 1.6;
+  }
+
+  .hj-contact__corporate-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    color: #111111;
+    font-size: 1.2rem;
+    text-decoration: none;
+    border-bottom: 1px solid #111111;
+    padding-bottom: 0.4rem;
+  }
+
+  .hj-contact__corporate-link:hover {
+    opacity: 0.6;
+  }
+
+  .hj-contact__form-wrapper {
+    padding: 4rem;
+    background: #ffffff;
+  }
+
+  .hj-contact__form-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.6rem;
+  }
+
+  .hj-contact__field {
+    margin-bottom: 2.4rem;
+  }
+
+  .hj-contact__field label {
+    display: block;
+    margin-bottom: 0.9rem;
+    color: #111111;
+    font-size: 1.15rem;
+    font-weight: 500;
+  }
+
+  .hj-contact__field label span {
+    color: #6e6a65;
+  }
+
+  .hj-contact__field input,
+  .hj-contact__field textarea {
+    display: block;
+    width: 100%;
+    padding: 1.4rem 1.5rem;
+    border: 1px solid #d5d1ca;
+    border-radius: 0;
+    background: #ffffff;
+    color: #111111;
+    font: inherit;
+    font-size: 1.3rem;
+    box-sizing: border-box;
+    transition: border-color 200ms ease, box-shadow 200ms ease;
+  }
+
+  .hj-contact__field input {
+    min-height: 5.2rem;
+  }
+
+  .hj-contact__field textarea {
+    min-height: 16rem;
+    resize: vertical;
+  }
+
+  .hj-contact__field input:focus,
+  .hj-contact__field textarea:focus {
+    outline: none;
+    border-color: #111111;
+    box-shadow: 0 0 0 1px #111111;
+  }
+
+  .hj-contact__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    width: 100%;
+    min-height: 5.6rem;
+    padding: 1.5rem 2rem;
+    border: 1px solid #000000;
+    background: #000000;
+    color: #ffffff;
+    cursor: pointer;
+    font: inherit;
+    font-size: 1.15rem;
+    letter-spacing: 0.04em;
+    transition: background-color 200ms ease, color 200ms ease;
+  }
+
+  .hj-contact__button:hover {
+    background: #ffffff;
+    color: #000000;
+  }
+
+  .hj-contact__success {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    border: 1px solid #d5d1ca;
+    background: #f7f5f1;
+  }
+
+  .hj-contact__success-heading {
+    margin: 0 0 0.8rem;
+    color: #111111;
+    font-size: 1.4rem;
+    font-weight: 500;
+  }
+
+  .hj-contact__success p:last-child {
+    margin: 0;
+    color: #6e6a65;
+  }
+
+  .hj-contact__errors {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border: 1px solid #111111;
+    color: #111111;
+  }
+
+  .hj-contact__cta {
+    background: #000000;
+    color: #ffffff;
+  }
+
+  .hj-contact__cta-inner {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 9rem 2rem;
+    text-align: center;
+  }
+
+  .hj-contact__cta-eyebrow {
+    margin: 0 0 1.6rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.1rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .hj-contact__cta-heading {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(3.8rem, 5vw, 6rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    font-weight: 500;
+  }
+
+  .hj-contact__cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 3.2rem;
+    padding: 1.5rem 2.4rem;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    letter-spacing: 0.04em;
+    transition: background-color 200ms ease, color 200ms ease;
+  }
+
+  .hj-contact__cta-button:hover {
+    background: #ffffff;
+    color: #000000;
+  }
+
+  @media screen and (max-width: 989px) {
+    .hj-contact__layout {
+      grid-template-columns: 1fr;
+      gap: 5rem;
+    }
+
+    .hj-contact__sidebar {
+      position: static;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .hj-contact {
+      padding-top: 5rem;
+    }
+
+    .hj-contact__hero {
+      padding-bottom: 5rem;
+      text-align: left;
+    }
+
+    .hj-contact__heading {
+      font-size: clamp(3.8rem, 12vw, 5.5rem);
+    }
+
+    .hj-contact__intro {
+      margin-left: 0;
+      font-size: 1.4rem;
+    }
+
+    .hj-contact__layout {
+      padding-bottom: 6rem;
+    }
+
+    .hj-contact__form-row {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .hj-contact__form-wrapper {
+      padding: 2.4rem 1.8rem;
+    }
+
+    .hj-contact__cta-inner {
+      padding: 6rem 2rem;
+    }
+
+    .hj-contact__cta-heading {
+      font-size: clamp(3.2rem, 11vw, 4.8rem);
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "HJ Contact",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "GET IN TOUCH"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Let's make gifting thoughtful."
+    },
+    {
+      "type": "richtext",
+      "id": "intro",
+      "label": "Introduction",
+      "default": "<p>Have a question about our hampers or need help choosing the right gift? We'd love to hear from you.</p>"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email",
+      "default": "admin@hamperjunction.com.au"
+    },
+    {
+      "type": "textarea",
+      "id": "contact_text",
+      "label": "Contact description",
+      "default": "For general enquiries, hamper questions and assistance, send us a message and our team will get back to you."
+    },
+    {
+      "type": "textarea",
+      "id": "corporate_text",
+      "label": "Corporate gifting description",
+      "default": "Corporate orders, bulk gifting, custom ribbons, branded cards and personalised messages."
+    },
+    {
+      "type": "url",
+      "id": "corporate_link",
+      "label": "Corporate gifting link"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Form button text",
+      "default": "Send enquiry"
+    },
+    {
+      "type": "url",
+      "id": "hampers_link",
+      "label": "Hampers link"
+    }
+  ]
+}
+{% endschema %}
