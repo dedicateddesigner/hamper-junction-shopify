@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hj_hero": {
@@ -9,7 +18,6 @@
             "image_desktop": "",
             "image_mobile": "",
             "image_alt": "Hamper Junction gift hamper",
-            "overlay_opacity": 20,
             "eyebrow": "THOUGHTFULLY CURATED GIFTING",
             "heading": "Gifts made to be remembered.",
             "description": "<p>Beautifully curated hampers for meaningful moments, celebrations and thoughtful gestures.</p>",
@@ -27,7 +35,6 @@
             "image_desktop": "",
             "image_mobile": "",
             "image_alt": "Premium Hamper Junction gift box",
-            "overlay_opacity": 20,
             "eyebrow": "BEAUTIFULLY CONSIDERED",
             "heading": "Make every occasion memorable.",
             "description": "<p>Thoughtfully selected gifts, beautifully presented from first impression to final detail.</p>",
@@ -45,7 +52,6 @@
             "image_desktop": "",
             "image_mobile": "",
             "image_alt": "Hamper Junction festive gift hamper",
-            "overlay_opacity": 20,
             "eyebrow": "GIFTS WITH MEANING",
             "heading": "Celebrate beautifully.",
             "description": "<p>Curated gifting for celebrations, milestones and moments worth remembering.</p>",
@@ -63,7 +69,6 @@
             "image_desktop": "",
             "image_mobile": "",
             "image_alt": "Hamper Junction gift hamper",
-            "overlay_opacity": 20,
             "eyebrow": "THOUGHTFULLY CURATED",
             "heading": "A gift worth giving.",
             "description": "<p>Beautifully presented hampers for moments that deserve something special.</p>",
@@ -100,7 +105,6 @@
             "link_text": "Explore →"
           }
         },
-
         "celebrations_luxury": {
           "type": "occasion",
           "settings": {
@@ -111,7 +115,6 @@
             "link_text": "Explore →"
           }
         },
-
         "gourmet_indulgence": {
           "type": "occasion",
           "settings": {
@@ -205,7 +208,6 @@
         "video_1": {
           "type": "video",
           "settings": {
-            "video": "",
             "image": "",
             "caption": "",
             "link": "",
@@ -216,7 +218,6 @@
         "video_2": {
           "type": "video",
           "settings": {
-            "video": "",
             "image": "",
             "caption": "",
             "link": "",
@@ -227,7 +228,6 @@
         "video_3": {
           "type": "video",
           "settings": {
-            "video": "",
             "image": "",
             "caption": "",
             "link": "",
@@ -238,7 +238,6 @@
         "video_4": {
           "type": "video",
           "settings": {
-            "video": "",
             "image": "",
             "caption": "",
             "link": "",
