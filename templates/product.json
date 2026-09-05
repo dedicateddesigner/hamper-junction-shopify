@@ -5,9 +5,16 @@
       "settings": {
         "enquiry_email": "admin@hamperjunction.com.au"
       }
+    },
+    "related_hampers": {
+      "type": "hj-related-hampers",
+      "settings": {
+        "products_to_show": 4
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "related_hampers"
   ]
 }

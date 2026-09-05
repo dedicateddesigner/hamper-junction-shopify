@@ -1,0 +1,90 @@
+{{ 'hj-custom.css' | asset_url | stylesheet_tag }}
+
+<section class="hj-collection-section">
+  <div class="page-width">
+    <header class="hj-collection-header">
+      {% if collection.title != blank %}
+        <p class="hj-collection-eyebrow">OUR HAMPERS</p>
+
+        <h1 class="hj-collection-heading">
+          {{ collection.title }}
+        </h1>
+      {% endif %}
+
+      {% if collection.description != blank %}
+        <div class="hj-collection-description rte">
+          {{ collection.description }}
+        </div>
+      {% endif %}
+    </header>
+
+    {% if collection.products_count > 0 %}
+      <div class="hj-collection-grid">
+        {% for product in collection.products %}
+          <article class="hj-collection-product">
+            <a
+              href="{{ product.url }}"
+              class="hj-collection-product__link"
+              aria-label="{{ product.title | escape }}"
+            >
+              <div class="hj-collection-product__media">
+                {% if product.featured_image != blank %}
+                  {{
+                    product.featured_image
+                    | image_url: width: 1200
+                    | image_tag:
+                      loading: 'lazy',
+                      widths: '480, 720, 960, 1200',
+                      sizes: '(min-width: 1200px) 25vw, (min-width: 750px) 50vw, 90vw',
+                      class: 'hj-collection-product__image',
+                      alt: product.featured_image.alt
+                    | default: product.title
+                  }}
+                {% else %}
+                  {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                {% endif %}
+              </div>
+
+              <div class="hj-collection-product__details">
+                <h2 class="hj-collection-product__title">
+                  {{ product.title }}
+                </h2>
+
+                <span class="hj-collection-product__cta"> View hamper → </span>
+              </div>
+            </a>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="hj-collection-empty">
+        <p>No hampers are currently available in this collection.</p>
+      </div>
+    {% endif %}
+  </div>
+  <div class="hj-collection-cta">
+    <div class="hj-collection-cta__inner">
+      <p class="hj-collection-cta__eyebrow">FOR BUSINESS & CUSTOM GIFTING</p>
+
+      <h2 class="hj-collection-cta__heading">Looking for something more personal?</h2>
+
+      <p class="hj-collection-cta__text">
+        Create thoughtful gifts for clients, teams, settlements and special business occasions.
+      </p>
+
+      <a
+        href="mailto:admin@hamperjunction.com.au"
+        class="hj-collection-cta__button"
+      >
+        Enquire about corporate gifting →
+      </a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "HJ Collection",
+  "settings": []
+}
+{% endschema %}

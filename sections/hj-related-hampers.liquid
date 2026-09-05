@@ -1,0 +1,99 @@
+<section
+  id="hj-related-hampers-{{ section.id }}"
+  class="hj-related-section"
+>
+  {%- assign related_hampers = product.metafields.custom.related_hampers.value -%}
+
+  {%- comment -%}
+    Manual related hampers take priority.
+    If none are selected, fall back to the product's main Hamper Junction category.
+  {%- endcomment -%}
+
+  {%- if related_hampers == blank -%}
+    {%- assign product_collection_handles = product.collections | map: 'handle' -%}
+    {%- assign fallback_collection = blank -%}
+
+    {%- if product_collection_handles contains 'home-housewarming' -%}
+      {%- assign fallback_collection = collections['home-housewarming'] -%}
+    {%- elsif product_collection_handles contains 'celebrations-luxury' -%}
+      {%- assign fallback_collection = collections['celebrations-luxury'] -%}
+    {%- elsif product_collection_handles contains 'gourmet-indulgence' -%}
+      {%- assign fallback_collection = collections['gourmet-indulgence'] -%}
+    {%- endif -%}
+
+    {%- if fallback_collection != blank -%}
+      {%- assign related_hampers = fallback_collection.products -%}
+    {%- endif -%}
+  {%- endif -%}
+
+  {%- if related_hampers != blank -%}
+    <div class="page-width">
+      <header class="hj-related-header">
+        <p class="hj-related-eyebrow">YOU MAY ALSO LIKE</p>
+
+        <h2 class="hj-related-heading">Related hampers</h2>
+      </header>
+
+      <div class="hj-related-grid">
+        {%- assign related_count = 0 -%}
+
+        {%- for related_product in related_hampers -%}
+          {%- if related_product.id != product.id and related_count < section.settings.products_to_show -%}
+            <article class="hj-related-product">
+              <a
+                href="{{ related_product.url }}"
+                class="hj-related-product__link"
+                aria-label="{{ related_product.title | escape }}"
+              >
+                <div class="hj-related-product__media">
+                  {%- if related_product.featured_image != blank -%}
+                    {{
+                      related_product.featured_image
+                      | image_url: width: 1200
+                      | image_tag:
+                        loading: 'lazy',
+                        widths: '480, 720, 960, 1200',
+                        sizes: '(min-width: 1200px) 25vw, (min-width: 750px) 50vw, 90vw',
+                        class: 'hj-related-product__image',
+                        alt: related_product.featured_image.alt
+                      | default: related_product.title
+                    }}
+                  {%- else -%}
+                    {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                  {%- endif -%}
+                </div>
+
+                <div class="hj-related-product__details">
+                  <h3 class="hj-related-product__title">
+                    {{ related_product.title }}
+                  </h3>
+
+                  <span class="hj-related-product__cta"> View hamper → </span>
+                </div>
+              </a>
+            </article>
+
+            {%- assign related_count = related_count | plus: 1 -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "HJ Related Hampers",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "Products to show",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 4
+    }
+  ]
+}
+{% endschema %}
