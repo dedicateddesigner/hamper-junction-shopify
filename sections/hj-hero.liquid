@@ -1,0 +1,758 @@
+<section
+  id="hj-hero-{{ section.id }}"
+  class="hj-hero"
+>
+  <div class="hj-hero__slider">
+    {% for block in section.blocks %}
+      <article
+        class="hj-hero__slide{% if forloop.first %} is-active{% endif %}"
+        data-slide="{{ forloop.index0 }}"
+        {{ block.shopify_attributes }}
+      >
+        <div class="hj-hero__media">
+          {% if block.settings.image_desktop != blank %}
+            <picture>
+              {% if block.settings.image_mobile != blank %}
+                <source
+                  media="(max-width: 749px)"
+                  srcset="{{ block.settings.image_mobile | image_url: width: 1200 }}"
+                >
+              {% endif %}
+
+              {{
+                block.settings.image_desktop
+                | image_url: width: 2400
+                | image_tag:
+                  class: 'hj-hero__image',
+                  widths: '750, 1100, 1500, 1800, 2200, 2400',
+                  sizes: '100vw',
+                  loading: 'eager',
+                  fetchpriority: 'high',
+                  alt: block.settings.image_alt
+              }}
+            </picture>
+          {% else %}
+            <div class="hj-hero__placeholder">
+              <span>Add hero image</span>
+            </div>
+          {% endif %}
+
+          <div
+            class="hj-hero__overlay"
+            style="--hj-hero-overlay-opacity: {{ block.settings.overlay_opacity | divided_by: 100.0 }};"
+          ></div>
+        </div>
+
+        <div
+          class="
+            hj-hero__content
+            hj-hero__content--{{ block.settings.text_position }}
+            hj-hero__content--{{ block.settings.text_alignment }}
+          "
+        >
+          <div class="hj-hero__content-inner">
+            {% if block.settings.eyebrow != blank %}
+              <p class="hj-hero__eyebrow">
+                {{ block.settings.eyebrow }}
+              </p>
+            {% endif %}
+
+            {% if block.settings.heading != blank %}
+              <h1 class="hj-hero__heading">
+                {{ block.settings.heading }}
+              </h1>
+            {% endif %}
+
+            {% if block.settings.description != blank %}
+              <div class="hj-hero__description rte">
+                {{ block.settings.description }}
+              </div>
+            {% endif %}
+
+            <div class="hj-hero__actions">
+              {% if block.settings.primary_label != blank %}
+                <a
+                  href="{{ block.settings.primary_link | default: routes.all_products_collection_url }}"
+                  class="hj-hero__button hj-hero__button--primary"
+                >
+                  {{ block.settings.primary_label }}
+                  <span aria-hidden="true">→</span>
+                </a>
+              {% endif %}
+
+              {% if block.settings.secondary_label != blank %}
+                <a
+                  href="{{ block.settings.secondary_link | default: routes.root_url }}"
+                  class="hj-hero__button hj-hero__button--secondary"
+                >
+                  {{ block.settings.secondary_label }}
+                  <span aria-hidden="true">→</span>
+                </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+
+  {% if section.blocks.size > 1 %}
+    <div class="hj-hero__controls">
+      <button
+        type="button"
+        class="hj-hero__arrow hj-hero__arrow--prev"
+        aria-label="Previous slide"
+        data-hero-prev
+      >
+        <span aria-hidden="true">←</span>
+      </button>
+
+      <div
+        class="hj-hero__dots"
+        role="tablist"
+        aria-label="Hero slides"
+      >
+        {% for block in section.blocks %}
+          <button
+            type="button"
+            class="
+              hj-hero__dot
+              {% if forloop.first %}is-active{% endif %}
+            "
+            data-hero-dot="{{ forloop.index0 }}"
+            role="tab"
+            aria-label="Go to slide {{ forloop.index }}"
+            aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+          >
+            <span></span>
+          </button>
+        {% endfor %}
+      </div>
+
+      <button
+        type="button"
+        class="hj-hero__arrow hj-hero__arrow--next"
+        aria-label="Next slide"
+        data-hero-next
+      >
+        <span aria-hidden="true">→</span>
+      </button>
+    </div>
+  {% endif %}
+</section>
+
+<style>
+  #hj-hero-{{ section.id }} {
+    --hj-hero-height: clamp(560px, 78vh, 820px);
+    position: relative;
+    overflow: hidden;
+    background: #000000;
+    color: #ffffff;
+  }
+
+  #hj-hero-{{ section.id }} .hj-hero__slider {
+    position: relative;
+    height: var(--hj-hero-height);
+  }
+
+  #hj-hero-{{ section.id }} .hj-hero__slide {
+    position: absolute;
+    inset: 0;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
+      visibility 900ms;
+  }
+
+  #hj-hero-{{ section.id }} .hj-hero__slide.is-active {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  #hj-hero-{{ section.id }} .hj-hero__media,
+  #hj-hero-{{ section.id }} .hj-hero__media picture {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  #hj-hero-{{ section.id }} .hj-hero__image,
+  #hj-hero-{{ section.id }} .hj-hero__placeholder {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  #hj-hero-{{ section.id }} .hj-hero__image {
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  #hj-hero-{{ section.id }} .hj-hero__placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+      linear-gradient(
+        135deg,
+        #3a352f 0%,
+        #171717 100%
+      );
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 1.1rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  #hj-hero-{{ section.id }} .hj-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: #000000;
+    opacity: var(--hj-hero-overlay-opacity);
+    pointer-events: none;
+  }
+
+  #hj-hero-{{ section.id }} .hj-hero__content {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    padding: clamp(4rem, 7vw, 9rem);
+  }
+
+  #hj-hero-{{ section.id }} .hj-hero__content--left {
+    justify-content: flex-start;
+  }
+
+  #hj-hero-{{ section.id }} .hj-hero__content--center {
+    justify-content: center;
+  }
+
+  #hj-hero-{{ section.id }} .hj-hero__content--right {
+    justify-content: flex-end;
+  }
+
+  #hj-hero-{{ section.id }} .hj-hero__content--top {
+    align-items: flex-start;
+  }
+
+  #hj-hero-{{ section.id }} .hj-hero__content--middle {
+    align-items: center;
+  }
+
+  #hj-hero-{{ section.id }} .hj-hero__content--bottom {
+    align-items: flex-end;
+  }
+
+  #hj-hero-{{ section.id }} .hj-hero__content--left-align {
+    text-align: left;
+  }
+
+  #hj-hero-{{ section.id }} .hj-hero__content--center-align {
+    text-align: center;
+  }
+
+  #hj-hero-{{ section.id }} .hj-hero__content--right-align {
+    text-align: right;
+  }
+
+  #hj-hero-{{ section.id }} .hj-hero__content-inner {
+    width: min(100%, 720px);
+  }
+
+  #hj-hero-{{ section.id }} .hj-hero__eyebrow {
+    margin: 0 0 1.6rem;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 1.15rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  #hj-hero-{{ section.id }} .hj-hero__heading {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(4.4rem, 6.4vw, 8.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+  }
+
+  #hj-hero-{{ section.id }} .hj-hero__description {
+    max-width: 56rem;
+    margin-top: 2.4rem;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 1.55rem;
+    line-height: 1.65;
+  }
+
+  #hj-hero-{{ section.id }} .hj-hero__description p {
+    margin: 0;
+  }
+
+  #hj-hero-{{ section.id }} .hj-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    margin-top: 3rem;
+  }
+
+  #hj-hero-{{ section.id }} .hj-hero__button {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.1rem;
+    min-height: 5rem;
+    padding: 1.35rem 2.2rem;
+    border: 1px solid #ffffff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition:
+      background-color 220ms ease,
+      color 220ms ease,
+      border-color 220ms ease;
+  }
+
+  #hj-hero-{{ section.id }} .hj-hero__button--primary {
+    background: #ffffff;
+    color: #000000;
+  }
+
+  #hj-hero-{{ section.id }} .hj-hero__button--primary:hover {
+    background: #000000;
+    color: #ffffff;
+  }
+
+  #hj-hero-{{ section.id }} .hj-hero__button--secondary {
+    background: transparent;
+    color: #ffffff;
+  }
+
+  #hj-hero-{{ section.id }} .hj-hero__button--secondary:hover {
+    background: #ffffff;
+    color: #000000;
+  }
+
+  #hj-hero-{{ section.id }} .hj-hero__controls {
+    position: absolute;
+    z-index: 4;
+    right: clamp(2rem, 5vw, 6rem);
+    bottom: clamp(2rem, 4vw, 4.5rem);
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  #hj-hero-{{ section.id }} .hj-hero__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4.4rem;
+    height: 4.4rem;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.18);
+    color: #ffffff;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    transition:
+      background-color 200ms ease,
+      color 200ms ease;
+  }
+
+  #hj-hero-{{ section.id }} .hj-hero__arrow:hover {
+    background: #ffffff;
+    color: #000000;
+  }
+
+  #hj-hero-{{ section.id }} .hj-hero__dots {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+
+  #hj-hero-{{ section.id }} .hj-hero__dot {
+    width: 3.2rem;
+    height: 2rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  #hj-hero-{{ section.id }} .hj-hero__dot span {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.45);
+    transition:
+      background-color 200ms ease,
+      transform 200ms ease;
+  }
+
+  #hj-hero-{{ section.id }} .hj-hero__dot.is-active span {
+    background: #ffffff;
+    transform: scaleY(2);
+  }
+
+  @media screen and (max-width: 989px) {
+    #hj-hero-{{ section.id }} {
+      --hj-hero-height: min(78vh, 720px);
+    }
+
+    #hj-hero-{{ section.id }} .hj-hero__content {
+      padding: 3.5rem;
+    }
+
+    #hj-hero-{{ section.id }} .hj-hero__heading {
+      font-size: clamp(4rem, 8vw, 6.5rem);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #hj-hero-{{ section.id }} {
+      --hj-hero-height: min(78svh, 680px);
+    }
+
+    #hj-hero-{{ section.id }} .hj-hero__content {
+      padding: 3rem 2rem 8rem;
+      align-items: flex-end;
+    }
+
+    #hj-hero-{{ section.id }} .hj-hero__content--left,
+    #hj-hero-{{ section.id }} .hj-hero__content--center,
+    #hj-hero-{{ section.id }} .hj-hero__content--right {
+      justify-content: flex-start;
+    }
+
+    #hj-hero-{{ section.id }} .hj-hero__content--left-align,
+    #hj-hero-{{ section.id }} .hj-hero__content--center-align,
+    #hj-hero-{{ section.id }} .hj-hero__content--right-align {
+      text-align: left;
+    }
+
+    #hj-hero-{{ section.id }} .hj-hero__heading {
+      font-size: clamp(3.5rem, 12vw, 5.4rem);
+    }
+
+    #hj-hero-{{ section.id }} .hj-hero__description {
+      font-size: 1.35rem;
+    }
+
+    #hj-hero-{{ section.id }} .hj-hero__actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    #hj-hero-{{ section.id }} .hj-hero__button {
+      justify-content: center;
+      width: 100%;
+    }
+
+    #hj-hero-{{ section.id }} .hj-hero__controls {
+      right: 2rem;
+      bottom: 2rem;
+      left: 2rem;
+      justify-content: space-between;
+    }
+
+    #hj-hero-{{ section.id }} .hj-hero__dots {
+      order: 2;
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    const section = document.getElementById('hj-hero-{{ section.id }}');
+
+    if (!section || section.dataset.initialized === 'true') {
+      return;
+    }
+
+    section.dataset.initialized = 'true';
+
+    const slides = [...section.querySelectorAll('.hj-hero__slide')];
+    const dots = [...section.querySelectorAll('[data-hero-dot]')];
+    const previousButton = section.querySelector('[data-hero-prev]');
+    const nextButton = section.querySelector('[data-hero-next]');
+
+    if (slides.length <= 1) {
+      return;
+    }
+
+    let currentIndex = 0;
+    let timer = null;
+
+    const autoplayEnabled = {{ section.settings.autoplay | json }};
+    const duration = {{ section.settings.duration | times: 1000 }};
+
+    const showSlide = (index) => {
+      currentIndex = (index + slides.length) % slides.length;
+
+      slides.forEach((slide, slideIndex) => {
+        const isActive = slideIndex === currentIndex;
+
+        slide.classList.toggle('is-active', isActive);
+        slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+      });
+
+      dots.forEach((dot, dotIndex) => {
+        const isActive = dotIndex === currentIndex;
+
+        dot.classList.toggle('is-active', isActive);
+        dot.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+    };
+
+    const nextSlide = () => {
+      showSlide(currentIndex + 1);
+    };
+
+    const previousSlide = () => {
+      showSlide(currentIndex - 1);
+    };
+
+    const stopAutoplay = () => {
+      if (timer) {
+        window.clearInterval(timer);
+        timer = null;
+      }
+    };
+
+    const startAutoplay = () => {
+      stopAutoplay();
+
+      if (!autoplayEnabled) {
+        return;
+      }
+
+      timer = window.setInterval(nextSlide, duration);
+    };
+
+    previousButton?.addEventListener('click', () => {
+      previousSlide();
+      startAutoplay();
+    });
+
+    nextButton?.addEventListener('click', () => {
+      nextSlide();
+      startAutoplay();
+    });
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const target = Number(dot.dataset.heroDot);
+
+        showSlide(target);
+        startAutoplay();
+      });
+    });
+
+    section.addEventListener('mouseenter', stopAutoplay);
+    section.addEventListener('mouseleave', startAutoplay);
+
+    section.addEventListener('focusin', stopAutoplay);
+    section.addEventListener('focusout', (event) => {
+      if (!section.contains(event.relatedTarget)) {
+        startAutoplay();
+      }
+    });
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        stopAutoplay();
+      } else {
+        startAutoplay();
+      }
+    });
+
+    showSlide(0);
+    startAutoplay();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "HJ Hero",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay slides",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "duration",
+      "label": "Slide duration",
+      "min": 5,
+      "max": 12,
+      "step": 1,
+      "unit": "s",
+      "default": 7
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Hero slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_desktop",
+          "label": "Desktop image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Mobile image",
+          "info": "Optional. Desktop image will be used if this is empty."
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Image alt text",
+          "default": "Hamper Junction gift hamper"
+        },
+        {
+          "type": "range",
+          "id": "overlay_opacity",
+          "label": "Image overlay",
+          "min": 0,
+          "max": 60,
+          "step": 5,
+          "unit": "%",
+          "default": 20
+        },
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow",
+          "default": "THOUGHTFULLY CURATED GIFTING"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Gifts made to be remembered."
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>Beautifully curated hampers for meaningful moments, celebrations and thoughtful gestures.</p>"
+        },
+        {
+          "type": "text",
+          "id": "primary_label",
+          "label": "Primary button label",
+          "default": "Shop hampers"
+        },
+        {
+          "type": "url",
+          "id": "primary_link",
+          "label": "Primary button link"
+        },
+        {
+          "type": "text",
+          "id": "secondary_label",
+          "label": "Secondary button label",
+          "default": "Corporate gifting"
+        },
+        {
+          "type": "url",
+          "id": "secondary_link",
+          "label": "Secondary button link"
+        },
+        {
+          "type": "select",
+          "id": "text_position",
+          "label": "Content position",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "select",
+          "id": "text_alignment",
+          "label": "Text alignment",
+          "options": [
+            {
+              "value": "left-align",
+              "label": "Left"
+            },
+            {
+              "value": "center-align",
+              "label": "Center"
+            },
+            {
+              "value": "right-align",
+              "label": "Right"
+            }
+          ],
+          "default": "left-align"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "HJ Hero",
+      "blocks": [
+        {
+          "type": "slide",
+          "settings": {
+            "eyebrow": "THOUGHTFULLY CURATED GIFTING",
+            "heading": "Gifts made to be remembered.",
+            "description": "<p>Beautifully curated hampers for meaningful moments, celebrations and thoughtful gestures.</p>",
+            "primary_label": "Shop hampers",
+            "secondary_label": "Corporate gifting"
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "eyebrow": "BEAUTIFULLY CONSIDERED",
+            "heading": "Make every occasion memorable.",
+            "description": "<p>Thoughtfully selected gifts, beautifully presented from first impression to final detail.</p>",
+            "primary_label": "Explore hampers",
+            "secondary_label": "Corporate gifting"
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "eyebrow": "GIFTS WITH MEANING",
+            "heading": "Celebrate beautifully.",
+            "description": "<p>Curated gifting for celebrations, milestones and moments worth remembering.</p>",
+            "primary_label": "Discover hampers",
+            "secondary_label": "Corporate gifting"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
