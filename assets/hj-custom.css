@@ -1166,3 +1166,167 @@ h6,
         font-size: 1.15rem;
     }
 }
+
+/* =========================================================
+   HAMPER JUNCTION — FOOTER
+   ========================================================= */
+
+.hj-footer {
+    --color-background: 0, 0, 0 !important;
+    --gradient-background: #000000 !important;
+    --color-link: 255, 255, 255 !important;
+
+    background: #000000 !important;
+    background-image: none !important;
+    color: #ffffff !important;
+}
+
+.hj-footer.gradient {
+    background: #000000 !important;
+    background-image: none !important;
+}
+
+.hj-footer::before,
+.hj-footer::after {
+    background: none !important;
+    background-image: none !important;
+}
+
+.hj-footer,
+.hj-footer * {
+    --color-foreground: 255, 255, 255;
+}
+
+.hj-footer-brand {
+    padding-top: clamp(5rem, 8vw, 8rem);
+    padding-bottom: clamp(4rem, 6vw, 6rem);
+    text-align: center;
+}
+
+.hj-footer-brand__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hj-footer-brand__logo {
+    display: block;
+    width: 22rem;
+    height: auto;
+    max-width: 100%;
+}
+
+.hj-footer-brand__tagline {
+    max-width: 42rem;
+    margin: 2rem auto 0;
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 1.25rem;
+    line-height: 1.6;
+    letter-spacing: 0.03em;
+}
+
+/* Existing Dawn footer blocks */
+
+.hj-footer .footer__content-top {
+    padding-top: 4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.hj-footer .footer__blocks-wrapper {
+    color: #ffffff;
+}
+
+.hj-footer .footer-block__heading {
+    color: #ffffff !important;
+}
+
+.hj-footer .footer-block__details-content,
+.hj-footer .footer-block__details-content a,
+.hj-footer .footer-block__brand-info,
+.hj-footer .footer-block__brand-info a,
+.hj-footer .footer-block__newsletter {
+    color: rgba(255, 255, 255, 0.72) !important;
+}
+
+.hj-footer a:hover {
+    color: #ffffff !important;
+}
+
+.hj-footer .list-menu__item--link {
+    color: rgba(255, 255, 255, 0.72) !important;
+}
+
+.hj-footer .list-menu__item--link:hover {
+    color: #ffffff !important;
+}
+
+.hj-footer .footer-block--newsletter {
+    border-top-color: rgba(255, 255, 255, 0.16);
+}
+
+/* Newsletter */
+
+.hj-footer .field {
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+.hj-footer .field__input {
+    color: #ffffff;
+    background: transparent;
+}
+
+.hj-footer .field__label {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.hj-footer .newsletter-form__button {
+    color: #ffffff;
+}
+
+.hj-footer .newsletter-form__button:hover {
+    color: rgba(255, 255, 255, 0.65);
+}
+
+/* Social icons */
+
+.hj-footer .list-social__link {
+    color: #ffffff !important;
+}
+
+.hj-footer .list-social__link:hover {
+    color: rgba(255, 255, 255, 0.65) !important;
+}
+
+/* Footer bottom */
+
+.hj-footer .footer__content-bottom {
+    border-top-color: rgba(255, 255, 255, 0.16);
+}
+
+@media screen and (max-width: 749px) {
+    .hj-footer-brand {
+        padding-top: 4.5rem;
+        padding-bottom: 4rem;
+    }
+
+    .hj-footer-brand__logo {
+        width: 18rem;
+    }
+
+    .hj-footer-brand__tagline {
+        font-size: 1.1rem;
+        padding-inline: 1.5rem;
+    }
+}
+
+/* Footer Credits */
+
+.hj-footer-credit {
+    opacity: 0.65;
+    font-size: 0.95em;
+    letter-spacing: 0.02em;
+}
+
+.hj-footer-credit:hover {
+    opacity: 1;
+}
