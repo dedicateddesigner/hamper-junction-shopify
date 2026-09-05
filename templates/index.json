@@ -90,7 +90,7 @@
     "shop_by_occasion": {
       "type": "hj-shop-by-occasion",
       "blocks": {
-        "Home & Housewarming": {
+        "home_housewarming": {
           "type": "occasion",
           "settings": {
             "title": "Home & Housewarming",
@@ -100,7 +100,8 @@
             "link_text": "Explore →"
           }
         },
-        "Celebrations & Luxury": {
+
+        "celebrations_luxury": {
           "type": "occasion",
           "settings": {
             "title": "Celebrations & Luxury",
@@ -110,7 +111,8 @@
             "link_text": "Explore →"
           }
         },
-        "Gourmet & Indulgence": {
+
+        "gourmet_indulgence": {
           "type": "occasion",
           "settings": {
             "title": "Gourmet & Indulgence",
@@ -122,9 +124,9 @@
         }
       },
       "block_order": [
-        "Home & Housewarming",
-        "Celebrations & Luxury",
-        "Gourmet & Indulgence"
+        "home_housewarming",
+        "celebrations_luxury",
+        "gourmet_indulgence"
       ],
       "settings": {
         "eyebrow": "GIFT WITH INTENTION",
