@@ -1,0 +1,19 @@
+{
+  "sections": {
+    "main": {
+      "type": "hj-hampers-catalogue",
+      "settings": {
+        "eyebrow": "OUR HAMPERS",
+        "heading": "Thoughtfully curated gifting.",
+        "description": "<p>Explore beautifully presented hampers for celebrations, new homes, milestones and meaningful moments.</p>",
+        "home_collection": "home-housewarming",
+        "celebrations_collection": "celebrations-luxury",
+        "gourmet_collection": "gourmet-indulgence",
+        "all_heading": "All Hampers"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

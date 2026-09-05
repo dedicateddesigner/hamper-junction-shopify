@@ -1620,3 +1620,290 @@ h6,
     flex-basis: 72px;
   }
 }
+
+
+/* =========================================================
+   HAMPER JUNCTION — HAMPERS CATALOGUE
+   ========================================================= */
+
+.hj-catalogue {
+    background: var(--hj-warm-white);
+    padding: clamp(6rem, 9vw, 10rem) 0;
+}
+
+.hj-catalogue__header {
+    max-width: 78rem;
+    margin: 0 auto clamp(4rem, 6vw, 7rem);
+    text-align: center;
+}
+
+.hj-catalogue__eyebrow {
+    margin: 0 0 1.2rem;
+    color: var(--hj-muted);
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.hj-catalogue__heading {
+    margin: 0;
+    color: var(--hj-text);
+    font-size: clamp(3.8rem, 6vw, 7rem);
+    line-height: 1;
+    letter-spacing: -0.045em;
+    font-weight: 500;
+}
+
+.hj-catalogue__description {
+    max-width: 58rem;
+    margin: 2rem auto 0;
+    color: var(--hj-muted);
+    font-size: 1.6rem;
+    line-height: 1.7;
+}
+
+.hj-catalogue__description p {
+    margin: 0;
+}
+
+
+/* ---------- CATEGORY NAVIGATION ---------- */
+
+.hj-catalogue__categories {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid #d9d5ce;
+    border-bottom: 1px solid #d9d5ce;
+    margin-bottom: clamp(5rem, 7vw, 8rem);
+}
+
+.hj-catalogue__category {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 8rem;
+    padding: 2rem 2.4rem;
+    border-left: 1px solid #d9d5ce;
+    color: var(--hj-text);
+    text-decoration: none;
+    font-size: 1.25rem;
+    letter-spacing: 0.01em;
+    transition:
+        background-color 200ms var(--hj-ease),
+        color 200ms var(--hj-ease);
+}
+
+.hj-catalogue__category:first-child {
+    border-left: 0;
+}
+
+.hj-catalogue__category span {
+    color: var(--hj-muted);
+    transition: transform 200ms var(--hj-ease);
+}
+
+.hj-catalogue__category:hover {
+    background: #ebe7e1;
+}
+
+.hj-catalogue__category:hover span {
+    transform: translateX(4px);
+}
+
+
+/* ---------- ALL HAMPERS HEADER ---------- */
+
+.hj-catalogue__intro {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.hj-catalogue__all-heading {
+    margin: 0;
+    color: var(--hj-text);
+    font-size: clamp(2.4rem, 3vw, 3.8rem);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    font-weight: 500;
+}
+
+.hj-catalogue__count {
+    color: var(--hj-muted);
+    font-size: 1.15rem;
+    letter-spacing: 0.04em;
+}
+
+
+/* ---------- PRODUCT GRID ---------- */
+
+.hj-catalogue__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 3.6rem 2rem;
+}
+
+.hj-catalogue-card {
+    min-width: 0;
+}
+
+.hj-catalogue-card__link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+.hj-catalogue-card__media {
+    position: relative;
+    aspect-ratio: 0.88;
+    overflow: hidden;
+    background: #ebe8e2;
+}
+
+.hj-catalogue-card__image,
+.hj-catalogue-card__placeholder {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.hj-catalogue-card__image {
+    object-fit: cover;
+    transition: transform 700ms var(--hj-ease);
+}
+
+.hj-catalogue-card__link:hover .hj-catalogue-card__image {
+    transform: scale(1.035);
+}
+
+.hj-catalogue-card__placeholder {
+    padding: 3rem;
+}
+
+.hj-catalogue-card__content {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-top: 1.5rem;
+}
+
+.hj-catalogue-card__title {
+    margin: 0;
+    color: var(--hj-text);
+    font-size: 1.55rem;
+    line-height: 1.3;
+    letter-spacing: -0.015em;
+}
+
+.hj-catalogue-card__cta {
+    flex: 0 0 auto;
+    color: var(--hj-muted);
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    transition: color 200ms var(--hj-ease);
+}
+
+.hj-catalogue-card__link:hover .hj-catalogue-card__cta {
+    color: var(--hj-text);
+}
+
+.hj-catalogue__empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 30rem;
+    border: 1px dashed #d8d3cb;
+    color: var(--hj-muted);
+}
+
+
+/* ---------- TABLET ---------- */
+
+@media screen and (max-width: 989px) {
+    .hj-catalogue__categories {
+        grid-template-columns: 1fr;
+    }
+
+    .hj-catalogue__category {
+        min-height: 6.5rem;
+        border-left: 0;
+        border-top: 1px solid #d9d5ce;
+    }
+
+    .hj-catalogue__category:first-child {
+        border-top: 0;
+    }
+
+    .hj-catalogue__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 3rem 1.5rem;
+    }
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media screen and (max-width: 749px) {
+    .hj-catalogue {
+        padding: 5.5rem 0;
+    }
+
+    .hj-catalogue__header {
+        margin-bottom: 3.5rem;
+        text-align: left;
+    }
+
+    .hj-catalogue__heading {
+        font-size: clamp(3.4rem, 12vw, 5rem);
+    }
+
+    .hj-catalogue__description {
+        font-size: 1.4rem;
+    }
+
+    .hj-catalogue__categories {
+        margin-bottom: 5rem;
+    }
+
+    .hj-catalogue__category {
+        padding: 1.7rem 0;
+        font-size: 1.15rem;
+    }
+
+    .hj-catalogue__intro {
+        display: block;
+        margin-bottom: 2.5rem;
+    }
+
+    .hj-catalogue__count {
+        display: block;
+        margin-top: 0.7rem;
+    }
+
+    .hj-catalogue__grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2.8rem 1.2rem;
+    }
+
+    .hj-catalogue-card__content {
+        display: block;
+        padding-top: 1.2rem;
+    }
+
+    .hj-catalogue-card__title {
+        font-size: 1.35rem;
+    }
+
+    .hj-catalogue-card__cta {
+        display: inline-block;
+        margin-top: 0.5rem;
+        font-size: 1rem;
+    }
+}

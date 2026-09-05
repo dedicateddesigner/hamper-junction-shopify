@@ -1,0 +1,206 @@
+<section
+  id="hj-hampers-catalogue-{{ section.id }}"
+  class="hj-catalogue"
+>
+  <div class="page-width">
+
+    <header class="hj-catalogue__header">
+
+      {% if section.settings.eyebrow != blank %}
+        <p class="hj-catalogue__eyebrow">
+          {{ section.settings.eyebrow }}
+        </p>
+      {% endif %}
+
+      {% if section.settings.heading != blank %}
+        <h1 class="hj-catalogue__heading">
+          {{ section.settings.heading }}
+        </h1>
+      {% endif %}
+
+      {% if section.settings.description != blank %}
+        <div class="hj-catalogue__description rte">
+          {{ section.settings.description }}
+        </div>
+      {% endif %}
+
+    </header>
+
+
+    {% comment %}
+      CATEGORY NAVIGATION
+    {% endcomment %}
+
+    <nav
+      class="hj-catalogue__categories"
+      aria-label="Hamper categories"
+    >
+
+      {% if section.settings.home_collection != blank %}
+        <a
+          href="{{ section.settings.home_collection.url }}"
+          class="hj-catalogue__category"
+        >
+          {{ section.settings.home_collection.title }}
+          <span aria-hidden="true">→</span>
+        </a>
+      {% endif %}
+
+      {% if section.settings.celebrations_collection != blank %}
+        <a
+          href="{{ section.settings.celebrations_collection.url }}"
+          class="hj-catalogue__category"
+        >
+          {{ section.settings.celebrations_collection.title }}
+          <span aria-hidden="true">→</span>
+        </a>
+      {% endif %}
+
+      {% if section.settings.gourmet_collection != blank %}
+        <a
+          href="{{ section.settings.gourmet_collection.url }}"
+          class="hj-catalogue__category"
+        >
+          {{ section.settings.gourmet_collection.title }}
+          <span aria-hidden="true">→</span>
+        </a>
+      {% endif %}
+
+    </nav>
+
+
+    {% comment %}
+      ALL HAMPERS
+    {% endcomment %}
+
+    <div class="hj-catalogue__intro">
+      <h2 class="hj-catalogue__all-heading">
+        {{ section.settings.all_heading }}
+      </h2>
+
+      {% assign hamper_count = collections.all.products_count %}
+
+      <span class="hj-catalogue__count">
+        {{ hamper_count }} hampers
+      </span>
+    </div>
+
+
+    {% if collections.all.products_count > 0 %}
+
+      <div class="hj-catalogue__grid">
+
+        {% for product in collections.all.products %}
+
+          <article class="hj-catalogue-card">
+
+            <a
+              href="{{ product.url }}"
+              class="hj-catalogue-card__link"
+              aria-label="{{ product.title | escape }}"
+            >
+
+              <div class="hj-catalogue-card__media">
+
+                {% if product.featured_image != blank %}
+
+                  {{
+                    product.featured_image
+                    | image_url: width: 1200
+                    | image_tag:
+                      loading: 'lazy',
+                      widths: '480, 720, 960, 1200',
+                      sizes: '(min-width: 1200px) 25vw, (min-width: 750px) 33vw, 50vw',
+                      class: 'hj-catalogue-card__image',
+                      alt: product.featured_image.alt | default: product.title | escape
+                  }}
+
+                {% else %}
+
+                  {{ 'product-1' | placeholder_svg_tag: 'hj-catalogue-card__placeholder' }}
+
+                {% endif %}
+
+              </div>
+
+
+              <div class="hj-catalogue-card__content">
+
+                <h3 class="hj-catalogue-card__title">
+                  {{ product.title | escape }}
+                </h3>
+
+                <span class="hj-catalogue-card__cta">
+                  View details →
+                </span>
+
+              </div>
+
+            </a>
+
+          </article>
+
+        {% endfor %}
+
+      </div>
+
+    {% else %}
+
+      <div class="hj-catalogue__empty">
+        <p>No hampers are currently available.</p>
+      </div>
+
+    {% endif %}
+
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "HJ Hampers Catalogue",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "OUR HAMPERS"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Thoughtfully curated gifting."
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Explore beautifully presented hampers for celebrations, new homes, milestones and meaningful moments.</p>"
+    },
+    {
+      "type": "collection",
+      "id": "home-housewarming",
+      "label": "Home & Housewarming collection"
+    },
+    {
+      "type": "collection",
+      "id": "celebrations-luxury",
+      "label": "Celebrations & Luxury collection"
+    },
+    {
+      "type": "collection",
+      "id": "gourmet-indulgence",
+      "label": "Gourmet & Indulgence collection"
+    },
+    {
+      "type": "text",
+      "id": "all_heading",
+      "label": "All hampers heading",
+      "default": "All Hampers"
+    }
+  ]
+}
+{% endschema %}
