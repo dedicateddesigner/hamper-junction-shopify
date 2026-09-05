@@ -1,75 +1,271 @@
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "hj_hero": {
+      "type": "hj-hero",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "slide_1": {
+          "type": "slide",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "image_desktop": "",
+            "image_mobile": "",
+            "image_alt": "Hamper Junction gift hamper",
+            "overlay_opacity": 20,
+            "eyebrow": "THOUGHTFULLY CURATED GIFTING",
+            "heading": "Gifts made to be remembered.",
+            "description": "<p>Beautifully curated hampers for meaningful moments, celebrations and thoughtful gestures.</p>",
+            "primary_label": "Shop hampers",
+            "primary_link": "",
+            "secondary_label": "Corporate gifting",
+            "secondary_link": "",
+            "text_position": "left",
+            "text_alignment": "left-align"
           }
         },
-        "button": {
-          "type": "buttons",
+        "slide_2": {
+          "type": "slide",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "image_desktop": "",
+            "image_mobile": "",
+            "image_alt": "Premium Hamper Junction gift box",
+            "overlay_opacity": 20,
+            "eyebrow": "BEAUTIFULLY CONSIDERED",
+            "heading": "Make every occasion memorable.",
+            "description": "<p>Thoughtfully selected gifts, beautifully presented from first impression to final detail.</p>",
+            "primary_label": "Explore hampers",
+            "primary_link": "",
+            "secondary_label": "Corporate gifting",
+            "secondary_link": "",
+            "text_position": "left",
+            "text_alignment": "left-align"
+          }
+        },
+        "slide_3": {
+          "type": "slide",
+          "settings": {
+            "image_desktop": "",
+            "image_mobile": "",
+            "image_alt": "Hamper Junction festive gift hamper",
+            "overlay_opacity": 20,
+            "eyebrow": "GIFTS WITH MEANING",
+            "heading": "Celebrate beautifully.",
+            "description": "<p>Curated gifting for celebrations, milestones and moments worth remembering.</p>",
+            "primary_label": "Discover hampers",
+            "primary_link": "",
+            "secondary_label": "Corporate gifting",
+            "secondary_link": "",
+            "text_position": "left",
+            "text_alignment": "left-align"
+          }
+        },
+        "slide_4": {
+          "type": "slide",
+          "settings": {
+            "image_desktop": "",
+            "image_mobile": "",
+            "image_alt": "Hamper Junction gift hamper",
+            "overlay_opacity": 20,
+            "eyebrow": "THOUGHTFULLY CURATED",
+            "heading": "A gift worth giving.",
+            "description": "<p>Beautifully presented hampers for moments that deserve something special.</p>",
+            "primary_label": "Shop hampers",
+            "primary_link": "",
+            "secondary_label": "Corporate gifting",
+            "secondary_link": "",
+            "text_position": "left",
+            "text_alignment": "left-align"
           }
         }
       },
       "block_order": [
-        "heading",
-        "button"
+        "slide_1",
+        "slide_2",
+        "slide_3",
+        "slide_4"
       ],
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "image_behavior": "none",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
+        "autoplay": true,
+        "duration": 7
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "shop_by_occasion": {
+      "type": "hj-shop-by-occasion",
+      "blocks": {
+        "welcome": {
+          "type": "occasion",
+          "settings": {
+            "title": "Welcome",
+            "collection": "",
+            "image": "",
+            "link": "",
+            "link_text": "Explore →"
+          }
+        },
+        "celebrations": {
+          "type": "occasion",
+          "settings": {
+            "title": "Celebrations",
+            "collection": "",
+            "image": "",
+            "link": "",
+            "link_text": "Explore →"
+          }
+        },
+        "corporate": {
+          "type": "occasion",
+          "settings": {
+            "title": "Corporate Gifting",
+            "collection": "",
+            "image": "",
+            "link": "",
+            "link_text": "Explore →"
+          }
+        }
+      },
+      "block_order": [
+        "welcome",
+        "celebrations",
+        "corporate"
+      ],
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
+        "eyebrow": "GIFT WITH INTENTION",
+        "heading": "Shop by occasion",
+        "description": "<p>Thoughtfully curated gifts for life's meaningful moments.</p>"
+      }
+    },
+    "featured_hampers": {
+      "type": "hj-featured-hampers",
+      "settings": {
+        "eyebrow": "CURATED FOR EVERY OCCASION",
+        "heading": "Featured Hampers",
+        "description": "<p>A considered collection of beautifully presented gifts.</p>",
         "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "full_width": false,
+        "products_to_show": 4,
         "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "padding_top": 44,
-        "padding_bottom": 36
+        "view_all_text": "View all hampers"
+      }
+    },
+    "corporate_gifting": {
+      "type": "hj-corporate-gifting",
+      "settings": {
+        "image": "",
+        "image_alt": "Corporate gifting by Hamper Junction",
+        "eyebrow": "FOR BUSINESS",
+        "heading": "Corporate gifting, thoughtfully considered.",
+        "description": "<p>Create memorable gifts for clients, teams and business milestones with thoughtfully curated hampers and personalised touches.</p>",
+        "features": "Bulk & corporate orders\nCustom ribbon colours\nBranded logo cards\nPersonalised message cards",
+        "button_label": "Enquire now",
+        "button_link": "",
+        "email": "admin@hamperjunction.com.au"
+      }
+    },
+    "why_hamper_junction": {
+      "type": "hj-why-hamper-junction",
+      "blocks": {
+        "curated": {
+          "type": "reason",
+          "settings": {
+            "number": "01",
+            "title": "Curated",
+            "text": "<p>Thoughtfully selected gifts brought together for meaningful moments.</p>"
+          }
+        },
+        "personalised": {
+          "type": "reason",
+          "settings": {
+            "number": "02",
+            "title": "Personalised",
+            "text": "<p>Add personal touches that make the gift feel uniquely considered.</p>"
+          }
+        },
+        "presentation": {
+          "type": "reason",
+          "settings": {
+            "number": "03",
+            "title": "Thoughtful presentation",
+            "text": "<p>Beautifully presented so the experience begins before the gift is opened.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "curated",
+        "personalised",
+        "presentation"
+      ],
+      "settings": {
+        "eyebrow": "WHY HAMPER JUNCTION",
+        "heading": "Thoughtful gifting, beautifully considered.",
+        "description": "<p>Every hamper is brought together with care, from what goes inside to how it is presented.</p>"
+      }
+    },
+    "social_proof": {
+      "type": "hj-social-proof",
+      "blocks": {
+        "video_1": {
+          "type": "video",
+          "settings": {
+            "video": "",
+            "image": "",
+            "caption": "",
+            "link": "",
+            "open_new_tab": true,
+            "show_play_icon": true
+          }
+        },
+        "video_2": {
+          "type": "video",
+          "settings": {
+            "video": "",
+            "image": "",
+            "caption": "",
+            "link": "",
+            "open_new_tab": true,
+            "show_play_icon": true
+          }
+        },
+        "video_3": {
+          "type": "video",
+          "settings": {
+            "video": "",
+            "image": "",
+            "caption": "",
+            "link": "",
+            "open_new_tab": true,
+            "show_play_icon": true
+          }
+        },
+        "video_4": {
+          "type": "video",
+          "settings": {
+            "video": "",
+            "image": "",
+            "caption": "",
+            "link": "",
+            "open_new_tab": true,
+            "show_play_icon": true
+          }
+        }
+      },
+      "block_order": [
+        "video_1",
+        "video_2",
+        "video_3",
+        "video_4"
+      ],
+      "settings": {
+        "eyebrow": "SOCIAL PROOF",
+        "heading": "See Hamper Junction in action",
+        "description": "<p>Thoughtful details, beautiful presentation and gifts made to be remembered.</p>",
+        "instagram_url": "",
+        "instagram_label": "Follow us on Instagram"
       }
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection"
+    "hj_hero",
+    "shop_by_occasion",
+    "featured_hampers",
+    "corporate_gifting",
+    "why_hamper_junction",
+    "social_proof"
   ]
 }
