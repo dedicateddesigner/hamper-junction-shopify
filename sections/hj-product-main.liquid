@@ -1,0 +1,201 @@
+{%- liquid
+  assign enquiry_email = section.settings.enquiry_email | default: 'admin@hamperjunction.com.au'
+  assign included_items = product.metafields.custom.what_s_included.value
+  assign personalisation = product.metafields.custom.personalisation.value
+-%}
+
+<section
+  id="hj-product-{{ section.id }}"
+  class="hj-product"
+>
+  <div class="hj-product__inner page-width">
+
+    <div class="hj-product__grid">
+
+      {%- comment -%}
+        PRODUCT MEDIA
+      {%- endcomment -%}
+
+      <div class="hj-product__media">
+
+        <div class="hj-product__media-main">
+          {%- if product.featured_media != blank -%}
+            {{
+              product.featured_media
+              | image_url: width: 1400
+              | image_tag:
+                loading: 'eager',
+                widths: '550, 750, 1000, 1200, 1400',
+                sizes: '(min-width: 990px) 58vw, 100vw',
+                class: 'hj-product__main-image',
+                alt: product.featured_media.alt | default: product.title | escape
+            }}
+          {%- else -%}
+            {{ 'product-1' | placeholder_svg_tag: 'hj-product__placeholder' }}
+          {%- endif -%}
+        </div>
+
+        {%- if product.media.size > 1 -%}
+          <div class="hj-product__thumbs" role="list">
+            {%- for media in product.media -%}
+              {%- if media.media_type == 'image' -%}
+                <a
+                  href="{{ media.preview_image | image_url: width: 1600 }}"
+                  class="hj-product__thumb{% if forloop.first %} is-active{% endif %}"
+                  data-hj-product-thumb
+                  data-image="{{ media.preview_image | image_url: width: 1600 }}"
+                  aria-label="View {{ product.title | escape }} image {{ forloop.index }}"
+                >
+                  {{
+                    media.preview_image
+                    | image_url: width: 240
+                    | image_tag:
+                      loading: 'lazy',
+                      widths: '120, 180, 240',
+                      sizes: '80px',
+                      class: 'hj-product__thumb-image',
+                      alt: media.alt | default: product.title | escape
+                  }}
+                </a>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+      </div>
+
+
+      {%- comment -%}
+        PRODUCT INFORMATION
+      {%- endcomment -%}
+
+      <div class="hj-product__info">
+
+        <div class="hj-product__eyebrow">
+          Thoughtfully curated gifting
+        </div>
+
+        <h1 class="hj-product__title">
+          {{ product.title | escape }}
+        </h1>
+
+        {%- if product.description != blank -%}
+          <div class="hj-product__description rte">
+            {{ product.description }}
+          </div>
+        {%- endif -%}
+
+
+        {%- if included_items != blank -%}
+          <div class="hj-product__detail">
+            <h2 class="hj-product__detail-title">
+              What's included
+            </h2>
+
+            <ul class="hj-product__included">
+              {%- for item in included_items -%}
+                <li>
+                  <span class="hj-product__check" aria-hidden="true">✓</span>
+                  <span>{{ item }}</span>
+                </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+
+
+        {%- if personalisation != blank -%}
+          <div class="hj-product__detail hj-product__personalisation">
+            <h2 class="hj-product__detail-title">
+              Personalisation
+            </h2>
+
+            <div class="hj-product__personalisation-text rte">
+              {{ personalisation | metafield_tag }}
+            </div>
+          </div>
+        {%- endif -%}
+
+
+        <div class="hj-product__note">
+          <strong>Made it personal</strong>
+          <p>
+            Custom message cards are available on request.
+          </p>
+        </div>
+
+
+        <div class="hj-product__actions">
+
+          <a
+            href="mailto:{{ enquiry_email }}?subject={{ product.title | url_encode }}%20enquiry"
+            class="hj-product__enquire"
+          >
+            Enquire about this hamper
+            <span aria-hidden="true">→</span>
+          </a>
+
+          <a
+            href="{{ routes.collections_url }}"
+            class="hj-product__back"
+          >
+            ← View all hampers
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const root = document.getElementById('hj-product-{{ section.id }}');
+
+    if (!root) return;
+
+    const mainImage = root.querySelector('.hj-product__main-image');
+    const thumbs = root.querySelectorAll('[data-hj-product-thumb]');
+
+    if (!mainImage || !thumbs.length) return;
+
+    thumbs.forEach(function (thumb) {
+      thumb.addEventListener('click', function (event) {
+        event.preventDefault();
+
+        const image = thumb.dataset.image;
+
+        if (!image) return;
+
+        mainImage.src = image;
+
+        thumbs.forEach(function (item) {
+          item.classList.remove('is-active');
+        });
+
+        thumb.classList.add('is-active');
+      });
+    });
+  });
+</script>
+
+
+{% schema %}
+{
+  "name": "HJ Product Main",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "enquiry_email",
+      "label": "Enquiry email",
+      "default": "admin@hamperjunction.com.au"
+    }
+  ]
+}
+{% endschema %}
