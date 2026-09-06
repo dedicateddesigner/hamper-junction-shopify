@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hj_hero": {
@@ -6,10 +15,8 @@
         "slide_1": {
           "type": "slide",
           "settings": {
-            "image_desktop": "",
-            "image_mobile": "",
+            "image_desktop": "shopify://shop_images/hero-4.webp",
             "image_alt": "Hamper Junction gift hamper",
-            "overlay_opacity": 20,
             "eyebrow": "THOUGHTFULLY CURATED GIFTING",
             "heading": "Gifts made to be remembered.",
             "description": "<p>Beautifully curated hampers for meaningful moments, celebrations and thoughtful gestures.</p>",
@@ -24,10 +31,8 @@
         "slide_2": {
           "type": "slide",
           "settings": {
-            "image_desktop": "",
-            "image_mobile": "",
+            "image_desktop": "shopify://shop_images/hero-2.webp",
             "image_alt": "Premium Hamper Junction gift box",
-            "overlay_opacity": 20,
             "eyebrow": "BEAUTIFULLY CONSIDERED",
             "heading": "Make every occasion memorable.",
             "description": "<p>Thoughtfully selected gifts, beautifully presented from first impression to final detail.</p>",
@@ -42,10 +47,8 @@
         "slide_3": {
           "type": "slide",
           "settings": {
-            "image_desktop": "",
-            "image_mobile": "",
+            "image_desktop": "shopify://shop_images/hero-3.webp",
             "image_alt": "Hamper Junction festive gift hamper",
-            "overlay_opacity": 20,
             "eyebrow": "GIFTS WITH MEANING",
             "heading": "Celebrate beautifully.",
             "description": "<p>Curated gifting for celebrations, milestones and moments worth remembering.</p>",
@@ -60,10 +63,8 @@
         "slide_4": {
           "type": "slide",
           "settings": {
-            "image_desktop": "",
-            "image_mobile": "",
+            "image_desktop": "shopify://shop_images/hero-1.webp",
             "image_alt": "Hamper Junction gift hamper",
-            "overlay_opacity": 20,
             "eyebrow": "THOUGHTFULLY CURATED",
             "heading": "A gift worth giving.",
             "description": "<p>Beautifully presented hampers for moments that deserve something special.</p>",
@@ -94,30 +95,25 @@
           "type": "occasion",
           "settings": {
             "title": "Home & Housewarming",
-            "collection": "",
-            "image": "",
+            "collection": "home-housewarming",
             "link": "",
             "link_text": "Explore →"
           }
         },
-
         "celebrations_luxury": {
           "type": "occasion",
           "settings": {
             "title": "Celebrations & Luxury",
-            "collection": "",
-            "image": "",
+            "collection": "celebrations-luxury",
             "link": "",
             "link_text": "Explore →"
           }
         },
-
         "gourmet_indulgence": {
           "type": "occasion",
           "settings": {
             "title": "Gourmet & Indulgence",
-            "collection": "",
-            "image": "",
+            "collection": "gourmet-indulgence",
             "link": "",
             "link_text": "Explore →"
           }
@@ -130,7 +126,7 @@
       ],
       "settings": {
         "eyebrow": "GIFT WITH INTENTION",
-        "heading": "Shop by occasion",
+        "heading": "Shop by Occasion",
         "description": "<p>Thoughtfully curated gifts for life's meaningful moments.</p>"
       }
     },
@@ -149,7 +145,7 @@
     "corporate_gifting": {
       "type": "hj-corporate-gifting",
       "settings": {
-        "image": "",
+        "image": "shopify://shop_images/moet-collection.webp",
         "image_alt": "Corporate gifting by Hamper Junction",
         "eyebrow": "FOR BUSINESS",
         "heading": "Corporate gifting, thoughtfully considered.",
@@ -205,8 +201,6 @@
         "video_1": {
           "type": "video",
           "settings": {
-            "video": "",
-            "image": "",
             "caption": "",
             "link": "",
             "open_new_tab": true,
@@ -216,8 +210,6 @@
         "video_2": {
           "type": "video",
           "settings": {
-            "video": "",
-            "image": "",
             "caption": "",
             "link": "",
             "open_new_tab": true,
@@ -227,8 +219,6 @@
         "video_3": {
           "type": "video",
           "settings": {
-            "video": "",
-            "image": "",
             "caption": "",
             "link": "",
             "open_new_tab": true,
@@ -238,8 +228,6 @@
         "video_4": {
           "type": "video",
           "settings": {
-            "video": "",
-            "image": "",
             "caption": "",
             "link": "",
             "open_new_tab": true,
