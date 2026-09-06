@@ -1,0 +1,21 @@
+{
+    "sections": {
+        "main": {
+            "type": "hj-faq",
+            "settings": {
+                "eyebrow": "FREQUENTLY ASKED QUESTIONS",
+                "heading": "Everything you need to know.",
+                "intro": "<p>Find answers to common questions about our hampers, gifting and custom gifting services.</p>",
+                "show_cta": true,
+                "cta_eyebrow": "NEED A LITTLE MORE HELP?",
+                "cta_heading": "Have a gifting occasion in mind?",
+                "cta_text": "<p>We're here to help you find something thoughtful for the occasion.</p>",
+                "cta_label": "Explore our hampers",
+                "cta_link": "/pages/hampers"
+            }
+        }
+    },
+    "order": [
+        "main"
+    ]
+}

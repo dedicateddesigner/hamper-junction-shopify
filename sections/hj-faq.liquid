@@ -1,0 +1,228 @@
+<section class="hj-faq">
+  <div class="hj-faq__hero">
+    <div class="hj-faq__container">
+      {% if section.settings.eyebrow != blank %}
+        <p class="hj-faq__eyebrow">{{ section.settings.eyebrow }}</p>
+      {% endif %}
+
+      {% if section.settings.heading != blank %}
+        <h1 class="hj-faq__heading">{{ section.settings.heading }}</h1>
+      {% endif %}
+
+      {% if section.settings.intro != blank %}
+        <div class="hj-faq__intro">
+          {{ section.settings.intro }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="hj-faq__content">
+    <div class="hj-faq__container">
+      {% assign current_category = '' %}
+
+      {% for block in section.blocks %}
+        {% if block.settings.category != current_category %}
+          {% assign current_category = block.settings.category %}
+
+          {% if current_category != blank %}
+            <h2 class="hj-faq__category">
+              {{ current_category }}
+            </h2>
+          {% endif %}
+        {% endif %}
+
+        <details
+          class="hj-faq__item"
+          {{ block.shopify_attributes }}
+        >
+          <summary class="hj-faq__question">
+            <span>{{ block.settings.question }}</span>
+
+            <span class="hj-faq__icon" aria-hidden="true">
+              <span></span>
+              <span></span>
+            </span>
+          </summary>
+
+          {% if block.settings.answer != blank %}
+            <div class="hj-faq__answer">
+              {{ block.settings.answer }}
+            </div>
+          {% endif %}
+        </details>
+      {% endfor %}
+
+      {% if section.blocks.size > 0 %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if section.settings.show_cta %}
+    <div class="hj-faq__cta">
+      <div class="hj-faq__cta-inner">
+        <div class="hj-faq__cta-copy">
+          {% if section.settings.cta_eyebrow != blank %}
+            <p class="hj-faq__eyebrow">
+              {{ section.settings.cta_eyebrow }}
+            </p>
+          {% endif %}
+
+          {% if section.settings.cta_heading != blank %}
+            <h2>{{ section.settings.cta_heading }}</h2>
+          {% endif %}
+
+          {% if section.settings.cta_text != blank %}
+            <div class="hj-faq__cta-text">
+              {{ section.settings.cta_text }}
+            </div>
+          {% endif %}
+        </div>
+
+        {% if section.settings.cta_label != blank and section.settings.cta_link != blank %}
+          <a
+            href="{{ section.settings.cta_link }}"
+            class="hj-faq__cta-button"
+          >
+            {{ section.settings.cta_label }}
+            <span aria-hidden="true">→</span>
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "HJ FAQ",
+  "tag": "section",
+  "class": "section-hj-faq",
+  "max_blocks": 50,
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "FREQUENTLY ASKED QUESTIONS"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Everything you need to know."
+    },
+    {
+      "type": "richtext",
+      "id": "intro",
+      "label": "Introduction",
+      "default": "<p>Find answers to common questions about our hampers, gifting and custom gifting services.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Closing CTA"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cta",
+      "label": "Show closing CTA",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "cta_eyebrow",
+      "label": "CTA eyebrow",
+      "default": "NEED A LITTLE MORE HELP?"
+    },
+    {
+      "type": "text",
+      "id": "cta_heading",
+      "label": "CTA heading",
+      "default": "Have a gifting occasion in mind?"
+    },
+    {
+      "type": "richtext",
+      "id": "cta_text",
+      "label": "CTA text",
+      "default": "<p>We're here to help you find something thoughtful for the occasion.</p>"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA label",
+      "default": "Explore our hampers"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Category",
+          "default": "ORDERING & HAMPERS"
+        },
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "How do I order a hamper?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Add the answer to this frequently asked question.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "HJ FAQ",
+      "blocks": [
+        {
+          "type": "faq",
+          "settings": {
+            "category": "ORDERING & HAMPERS",
+            "question": "How do I order a hamper?",
+            "answer": "<p>Add the answer to this frequently asked question.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "category": "ORDERING & HAMPERS",
+            "question": "What is included in each hamper?",
+            "answer": "<p>Add the answer to this frequently asked question.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "category": "PERSONALISATION",
+            "question": "Can I personalise my hamper?",
+            "answer": "<p>Add the answer to this frequently asked question.</p>"
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "category": "CORPORATE & CUSTOM GIFTING",
+            "question": "Do you offer corporate gifting?",
+            "answer": "<p>Add the answer to this frequently asked question.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
