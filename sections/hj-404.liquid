@@ -1,0 +1,110 @@
+<section class="hj-404">
+  <div class="hj-404__inner page-width">
+    <div class="hj-404__content">
+      <p class="hj-404__eyebrow">
+        {{ section.settings.eyebrow }}
+      </p>
+
+      <div class="hj-404__number">404</div>
+
+      <h1 class="hj-404__heading">
+        {{ section.settings.heading }}
+      </h1>
+
+      {% if section.settings.text != blank %}
+        <div class="hj-404__text rte">
+          {{ section.settings.text }}
+        </div>
+      {% endif %}
+
+      <div class="hj-404__actions">
+        {% if section.settings.primary_link != blank %}
+          <a
+            href="{{ section.settings.primary_link }}"
+            class="hj-404__button hj-404__button--primary"
+          >
+            {{ section.settings.primary_label }}
+            <span aria-hidden="true">→</span>
+          </a>
+        {% endif %}
+
+        {% if section.settings.secondary_link != blank %}
+          <a
+            href="{{ section.settings.secondary_link }}"
+            class="hj-404__button hj-404__button--secondary"
+          >
+            {{ section.settings.secondary_label }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+
+    {% if section.settings.image != blank %}
+      <div class="hj-404__image">
+        {{
+          section.settings.image
+          | image_url: width: 1600
+          | image_tag:
+            loading: 'eager',
+            widths: '600, 900, 1200, 1600',
+            sizes: '(min-width: 990px) 50vw, 100vw',
+            alt: section.settings.image.alt
+          | default: section.settings.heading
+        }}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "HJ 404",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "A LITTLE DETOUR"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Looks like this gift has gone missing."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>The page you're looking for may have moved or no longer exists. Let's get you back to something worth giving.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "primary_label",
+      "label": "Primary button",
+      "default": "Explore our hampers"
+    },
+    {
+      "type": "url",
+      "id": "primary_link",
+      "label": "Primary link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "Secondary button",
+      "default": "Go home"
+    },
+    {
+      "type": "url",
+      "id": "secondary_link",
+      "label": "Secondary link"
+    }
+  ]
+}
+{% endschema %}

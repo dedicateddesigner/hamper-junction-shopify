@@ -1,7 +1,16 @@
 {
   "sections": {
     "main": {
-      "type": "main-404"
+      "type": "hj-404",
+      "settings": {
+        "eyebrow": "A LITTLE DETOUR",
+        "heading": "Looks like this gift has gone missing.",
+        "text": "<p>The page you're looking for may have moved or no longer exists. Let's get you back to something worth giving.</p>",
+        "primary_label": "Explore our hampers",
+        "primary_link": "/pages/hampers",
+        "secondary_label": "Go home",
+        "secondary_link": "/"
+      }
     }
   },
   "order": [
