@@ -21,9 +21,9 @@
             "heading": "Gifts made to be remembered.",
             "description": "<p>Beautifully curated hampers for meaningful moments, celebrations and thoughtful gestures.</p>",
             "primary_label": "Explore hampers",
-            "primary_link": "",
+            "primary_link": "shopify://pages/hampers",
             "secondary_label": "Corporate gifting",
-            "secondary_link": "",
+            "secondary_link": "shopify://pages/corporate-gifting",
             "text_position": "left",
             "text_alignment": "left-align"
           }
@@ -37,9 +37,9 @@
             "heading": "Make every occasion memorable.",
             "description": "<p>Thoughtfully selected gifts, beautifully presented from first impression to final detail.</p>",
             "primary_label": "Explore hampers",
-            "primary_link": "",
+            "primary_link": "shopify://pages/hampers",
             "secondary_label": "Corporate gifting",
-            "secondary_link": "",
+            "secondary_link": "shopify://pages/corporate-gifting",
             "text_position": "left",
             "text_alignment": "left-align"
           }
@@ -53,9 +53,9 @@
             "heading": "Celebrate beautifully.",
             "description": "<p>Curated gifting for celebrations, milestones and moments worth remembering.</p>",
             "primary_label": "Discover hampers",
-            "primary_link": "",
+            "primary_link": "shopify://pages/hampers",
             "secondary_label": "Corporate gifting",
-            "secondary_link": "",
+            "secondary_link": "shopify://pages/corporate-gifting",
             "text_position": "left",
             "text_alignment": "left-align"
           }
@@ -68,8 +68,8 @@
             "eyebrow": "THOUGHTFULLY CURATED",
             "heading": "A gift worth giving.",
             "description": "<p>Beautifully presented hampers for moments that deserve something special.</p>",
-            "primary_label": "Shop hampers",
-            "primary_link": "",
+            "primary_label": "Discover hampers",
+            "primary_link": "shopify://pages/hampers",
             "secondary_label": "Corporate gifting",
             "secondary_link": "",
             "text_position": "left",
@@ -96,7 +96,7 @@
           "settings": {
             "title": "Home & Housewarming",
             "collection": "home-housewarming",
-            "link": "",
+            "link": "shopify://collections/home-housewarming",
             "link_text": "Explore →"
           }
         },
@@ -105,7 +105,7 @@
           "settings": {
             "title": "Celebrations & Luxury",
             "collection": "celebrations-luxury",
-            "link": "",
+            "link": "shopify://collections/celebrations-luxury",
             "link_text": "Explore →"
           }
         },
@@ -114,7 +114,7 @@
           "settings": {
             "title": "Gourmet & Indulgence",
             "collection": "gourmet-indulgence",
-            "link": "",
+            "link": "shopify://collections/gourmet-indulgence",
             "link_text": "Explore →"
           }
         }
@@ -152,7 +152,7 @@
         "description": "<p>Create memorable gifts for clients, teams and business milestones with thoughtfully curated hampers and personalised touches.</p>",
         "features": "Bulk & corporate orders\nCustom ribbon colours\nBranded logo cards\nPersonalised message cards",
         "button_label": "Enquire now",
-        "button_link": "",
+        "button_link": "shopify://pages/corporate-gifting",
         "email": "admin@hamperjunction.com.au"
       }
     },
