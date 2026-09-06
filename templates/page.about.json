@@ -1,0 +1,30 @@
+{
+    "sections": {
+        "main": {
+            "type": "hj-about",
+            "settings": {
+                "eyebrow": "ABOUT HAMPER JUNCTION",
+                "heading": "Thoughtful gifting, beautifully considered.",
+                "intro": "<p>Our story, our approach and what makes gifting with Hamper Junction special.</p>",
+                "story_eyebrow": "OUR STORY",
+                "story_heading": "Gifts that carry meaning.",
+                "beliefs_eyebrow": "WHAT WE BELIEVE",
+                "beliefs_heading": "The details matter.",
+                "purpose_eyebrow": "GIFTING WITH PURPOSE",
+                "purpose_heading": "Made for meaningful moments.",
+                "corporate_eyebrow": "CORPORATE & CUSTOM GIFTING",
+                "corporate_heading": "Thoughtful gifting, made personal.",
+                "corporate_text": "<p>Explore gifting solutions for clients, teams, settlements and special occasions.</p>",
+                "corporate_link": "/pages/corporate-gifting",
+                "corporate_button": "Explore Corporate Gifting",
+                "closing_eyebrow": "EXPLORE THE COLLECTION",
+                "closing_heading": "Find something worth giving.",
+                "closing_link": "/pages/hampers",
+                "closing_button": "Explore our hampers"
+            }
+        }
+    },
+    "order": [
+        "main"
+    ]
+}

@@ -1,0 +1,363 @@
+<section class="hj-about">
+  <div class="page-width">
+    <header class="hj-about__hero">
+      <p class="hj-about__eyebrow">
+        {{ section.settings.eyebrow }}
+      </p>
+
+      <h1 class="hj-about__heading">
+        {{ section.settings.heading }}
+      </h1>
+
+      {% if section.settings.intro != blank %}
+        <div class="hj-about__intro rte">
+          {{ section.settings.intro }}
+        </div>
+      {% endif %}
+    </header>
+
+    {% if section.settings.hero_image != blank %}
+      <div class="hj-about__hero-image">
+        {{
+          section.settings.hero_image
+          | image_url: width: 2400
+          | image_tag:
+            loading: 'eager',
+            widths: '900, 1200, 1600, 2000, 2400',
+            sizes: '100vw',
+            alt: section.settings.hero_image.alt
+          | default: section.settings.heading
+        }}
+      </div>
+    {% endif %}
+
+    <div class="hj-about__story">
+      <div class="hj-about__story-content">
+        <p class="hj-about__eyebrow">
+          {{ section.settings.story_eyebrow }}
+        </p>
+
+        <h2 class="hj-about__subheading">
+          {{ section.settings.story_heading }}
+        </h2>
+
+        {% if section.settings.story != blank %}
+          <div class="hj-about__body rte">
+            {{ section.settings.story }}
+          </div>
+        {% endif %}
+      </div>
+
+      {% if section.settings.story_image != blank %}
+        <div class="hj-about__story-image">
+          {{
+            section.settings.story_image
+            | image_url: width: 1600
+            | image_tag:
+              loading: 'lazy',
+              widths: '600, 900, 1200, 1600',
+              sizes: '(min-width: 990px) 50vw, 100vw',
+              alt: section.settings.story_image.alt
+            | default: section.settings.story_heading
+          }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="hj-about__beliefs">
+      <div class="hj-about__beliefs-intro">
+        <p class="hj-about__eyebrow">
+          {{ section.settings.beliefs_eyebrow }}
+        </p>
+
+        <h2 class="hj-about__subheading">
+          {{ section.settings.beliefs_heading }}
+        </h2>
+      </div>
+
+      <div class="hj-about__beliefs-grid">
+        {% for block in section.blocks %}
+          <article class="hj-about__belief" {{ block.shopify_attributes }}>
+            <span class="hj-about__belief-number"> 0{{ forloop.index }} </span>
+
+            <h3 class="hj-about__belief-title">
+              {{ block.settings.heading }}
+            </h3>
+
+            {% if block.settings.text != blank %}
+              <div class="hj-about__belief-text rte">
+                {{ block.settings.text }}
+              </div>
+            {% endif %}
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="hj-about__purpose">
+      <div class="hj-about__purpose-content">
+        <p class="hj-about__eyebrow">
+          {{ section.settings.purpose_eyebrow }}
+        </p>
+
+        <h2 class="hj-about__subheading">
+          {{ section.settings.purpose_heading }}
+        </h2>
+
+        {% if section.settings.purpose_text != blank %}
+          <div class="hj-about__body rte">
+            {{ section.settings.purpose_text }}
+          </div>
+        {% endif %}
+      </div>
+
+      {% if section.settings.purpose_image != blank %}
+        <div class="hj-about__purpose-image">
+          {{
+            section.settings.purpose_image
+            | image_url: width: 1600
+            | image_tag:
+              loading: 'lazy',
+              widths: '600, 900, 1200, 1600',
+              sizes: '(min-width: 990px) 50vw, 100vw',
+              alt: section.settings.purpose_image.alt
+            | default: section.settings.purpose_heading
+          }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="hj-about__corporate">
+      <div>
+        <p class="hj-about__eyebrow">
+          {{ section.settings.corporate_eyebrow }}
+        </p>
+
+        <h2 class="hj-about__corporate-heading">
+          {{ section.settings.corporate_heading }}
+        </h2>
+      </div>
+
+      <div class="hj-about__corporate-action">
+        {% if section.settings.corporate_text != blank %}
+          <div class="hj-about__corporate-text rte">
+            {{ section.settings.corporate_text }}
+          </div>
+        {% endif %}
+
+        <a
+          href="{{ section.settings.corporate_link }}"
+          class="hj-about__button"
+        >
+          {{ section.settings.corporate_button }}
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="hj-about__closing">
+      <p class="hj-about__eyebrow">
+        {{ section.settings.closing_eyebrow }}
+      </p>
+
+      <h2 class="hj-about__closing-heading">
+        {{ section.settings.closing_heading }}
+      </h2>
+
+      <a
+        href="{{ section.settings.closing_link }}"
+        class="hj-about__closing-button"
+      >
+        {{ section.settings.closing_button }}
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "HJ About",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "ABOUT HAMPER JUNCTION"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Thoughtful gifting, beautifully considered."
+    },
+    {
+      "type": "richtext",
+      "id": "intro",
+      "label": "Intro",
+      "default": "<p>Our story, our approach and what makes gifting with Hamper Junction special.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero image"
+    },
+    {
+      "type": "text",
+      "id": "story_eyebrow",
+      "label": "Story eyebrow",
+      "default": "OUR STORY"
+    },
+    {
+      "type": "text",
+      "id": "story_heading",
+      "label": "Story heading",
+      "default": "Gifts that carry meaning."
+    },
+    {
+      "type": "richtext",
+      "id": "story",
+      "label": "Story"
+    },
+    {
+      "type": "image_picker",
+      "id": "story_image",
+      "label": "Story image"
+    },
+    {
+      "type": "text",
+      "id": "beliefs_eyebrow",
+      "label": "Beliefs eyebrow",
+      "default": "WHAT WE BELIEVE"
+    },
+    {
+      "type": "text",
+      "id": "beliefs_heading",
+      "label": "Beliefs heading",
+      "default": "The details matter."
+    },
+    {
+      "type": "text",
+      "id": "purpose_eyebrow",
+      "label": "Purpose eyebrow",
+      "default": "GIFTING WITH PURPOSE"
+    },
+    {
+      "type": "text",
+      "id": "purpose_heading",
+      "label": "Purpose heading",
+      "default": "Made for meaningful moments."
+    },
+    {
+      "type": "richtext",
+      "id": "purpose_text",
+      "label": "Purpose text"
+    },
+    {
+      "type": "image_picker",
+      "id": "purpose_image",
+      "label": "Purpose image"
+    },
+    {
+      "type": "text",
+      "id": "corporate_eyebrow",
+      "label": "Corporate eyebrow",
+      "default": "CORPORATE & CUSTOM GIFTING"
+    },
+    {
+      "type": "text",
+      "id": "corporate_heading",
+      "label": "Corporate heading",
+      "default": "Thoughtful gifting, made personal."
+    },
+    {
+      "type": "richtext",
+      "id": "corporate_text",
+      "label": "Corporate text",
+      "default": "<p>Explore gifting solutions for clients, teams, settlements and special occasions.</p>"
+    },
+    {
+      "type": "url",
+      "id": "corporate_link",
+      "label": "Corporate link"
+    },
+    {
+      "type": "text",
+      "id": "corporate_button",
+      "label": "Corporate button",
+      "default": "Explore Corporate Gifting"
+    },
+    {
+      "type": "text",
+      "id": "closing_eyebrow",
+      "label": "Closing eyebrow",
+      "default": "EXPLORE THE COLLECTION"
+    },
+    {
+      "type": "text",
+      "id": "closing_heading",
+      "label": "Closing heading",
+      "default": "Find something worth giving."
+    },
+    {
+      "type": "url",
+      "id": "closing_link",
+      "label": "Closing link"
+    },
+    {
+      "type": "text",
+      "id": "closing_button",
+      "label": "Closing button",
+      "default": "Explore our hampers"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "belief",
+      "name": "Belief",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Thoughtful curation"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Every hamper is considered with intention.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "HJ About",
+      "blocks": [
+        {
+          "type": "belief",
+          "settings": {
+            "heading": "Thoughtful curation",
+            "text": "<p>Every hamper is considered with intention.</p>"
+          }
+        },
+        {
+          "type": "belief",
+          "settings": {
+            "heading": "Beautiful presentation",
+            "text": "<p>Because the first impression is part of the gift.</p>"
+          }
+        },
+        {
+          "type": "belief",
+          "settings": {
+            "heading": "Personal touches",
+            "text": "<p>Small details can make a meaningful difference.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
