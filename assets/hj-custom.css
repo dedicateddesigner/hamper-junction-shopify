@@ -4,7 +4,7 @@
    ========================================================= */
 
 :root {
-    /* Brand foundation — provisional until final brand palette is locked */
+    /* Brand foundation */
     --hj-black: #000000;
     --hj-white: #ffffff;
 
@@ -19,6 +19,7 @@
     --hj-radius-sm: 4px;
     --hj-radius-md: 10px;
     --hj-radius-lg: 18px;
+
     /* Motion */
     --hj-ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -32,7 +33,7 @@ html {
 }
 
 body {
-    color: var(--hj-ink);
+    color: var(--hj-text);
     background: var(--hj-warm-white);
 }
 
@@ -1165,170 +1166,6 @@ h6,
     .hj-social-card__caption {
         font-size: 1.15rem;
     }
-}
-
-/* =========================================================
-   HAMPER JUNCTION — FOOTER
-   ========================================================= */
-
-.hj-footer {
-    --color-background: 0, 0, 0 !important;
-    --gradient-background: #000000 !important;
-    --color-link: 255, 255, 255 !important;
-
-    background: #000000 !important;
-    background-image: none !important;
-    color: #ffffff !important;
-}
-
-.hj-footer.gradient {
-    background: #000000 !important;
-    background-image: none !important;
-}
-
-.hj-footer::before,
-.hj-footer::after {
-    background: none !important;
-    background-image: none !important;
-}
-
-.hj-footer,
-.hj-footer * {
-    --color-foreground: 255, 255, 255;
-}
-
-.hj-footer-brand {
-    padding-top: clamp(5rem, 8vw, 8rem);
-    padding-bottom: clamp(4rem, 6vw, 6rem);
-    text-align: center;
-}
-
-.hj-footer-brand__link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.hj-footer-brand__logo {
-    display: block;
-    width: 22rem;
-    height: auto;
-    max-width: 100%;
-}
-
-.hj-footer-brand__tagline {
-    max-width: 42rem;
-    margin: 2rem auto 0;
-    color: rgba(255, 255, 255, 0.68);
-    font-size: 1.25rem;
-    line-height: 1.6;
-    letter-spacing: 0.03em;
-}
-
-/* Existing Dawn footer blocks */
-
-.hj-footer .footer__content-top {
-    padding-top: 4rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.16);
-}
-
-.hj-footer .footer__blocks-wrapper {
-    color: #ffffff;
-}
-
-.hj-footer .footer-block__heading {
-    color: #ffffff !important;
-}
-
-.hj-footer .footer-block__details-content,
-.hj-footer .footer-block__details-content a,
-.hj-footer .footer-block__brand-info,
-.hj-footer .footer-block__brand-info a,
-.hj-footer .footer-block__newsletter {
-    color: rgba(255, 255, 255, 0.72) !important;
-}
-
-.hj-footer a:hover {
-    color: #ffffff !important;
-}
-
-.hj-footer .list-menu__item--link {
-    color: rgba(255, 255, 255, 0.72) !important;
-}
-
-.hj-footer .list-menu__item--link:hover {
-    color: #ffffff !important;
-}
-
-.hj-footer .footer-block--newsletter {
-    border-top-color: rgba(255, 255, 255, 0.16);
-}
-
-/* Newsletter */
-
-.hj-footer .field {
-    border-color: rgba(255, 255, 255, 0.35);
-}
-
-.hj-footer .field__input {
-    color: #ffffff;
-    background: transparent;
-}
-
-.hj-footer .field__label {
-    color: rgba(255, 255, 255, 0.6);
-}
-
-.hj-footer .newsletter-form__button {
-    color: #ffffff;
-}
-
-.hj-footer .newsletter-form__button:hover {
-    color: rgba(255, 255, 255, 0.65);
-}
-
-/* Social icons */
-
-.hj-footer .list-social__link {
-    color: #ffffff !important;
-}
-
-.hj-footer .list-social__link:hover {
-    color: rgba(255, 255, 255, 0.65) !important;
-}
-
-/* Footer bottom */
-
-.hj-footer .footer__content-bottom {
-    border-top-color: rgba(255, 255, 255, 0.16);
-}
-
-@media screen and (max-width: 749px) {
-    .hj-footer-brand {
-        padding-top: 4.5rem;
-        padding-bottom: 4rem;
-    }
-
-    .hj-footer-brand__logo {
-        width: 18rem;
-    }
-
-    .hj-footer-brand__tagline {
-        font-size: 1.1rem;
-        padding-inline: 1.5rem;
-    }
-}
-
-/* Footer Credits */
-
-.hj-footer-credit {
-    opacity: 0.65;
-    font-size: 0.95em;
-    letter-spacing: 0.02em;
-}
-
-.hj-footer-credit:hover {
-    opacity: 1;
 }
 
 /* =========================================================
@@ -3461,5 +3298,201 @@ h6,
         width: 100%;
         justify-content: center;
         margin-top: 3rem;
+    }
+}
+
+/* =========================================================
+   HAMPER JUNCTION — FOOTER
+   ========================================================= */
+
+.hj-footer {
+    --color-background: 232, 229, 224 !important;
+    --gradient-background: var(--hj-soft-grey) !important;
+    --color-link: 17, 17, 17 !important;
+
+    background: var(--hj-soft-grey) !important;
+    background-image: none !important;
+    color: var(--hj-text) !important;
+}
+
+.hj-footer.gradient {
+    background: var(--hj-soft-grey) !important;
+    background-image: none !important;
+}
+
+.hj-footer::before,
+.hj-footer::after {
+    background: none !important;
+    background-image: none !important;
+}
+
+.hj-footer,
+.hj-footer * {
+    --color-foreground: 17, 17, 17;
+}
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.hj-footer-brand {
+    padding-top: clamp(5rem, 8vw, 8rem);
+    padding-bottom: clamp(4rem, 6vw, 6rem);
+    text-align: center;
+}
+
+.hj-footer-brand__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hj-footer-brand__logo {
+    display: block;
+    width: 22rem;
+    height: auto;
+    max-width: 100%;
+    filter: invert(1);
+}
+
+.hj-footer-brand__tagline {
+    max-width: 42rem;
+    margin: 2rem auto 0;
+    color: color-mix(in srgb, var(--hj-text) 65%, transparent);
+    font-size: 1.25rem;
+    line-height: 1.6;
+    letter-spacing: 0.03em;
+}
+
+/* =========================================================
+   FOOTER BLOCKS
+   ========================================================= */
+
+.hj-footer .footer__content-top {
+    padding-top: 4rem;
+    border-top: 1px solid color-mix(in srgb, var(--hj-text) 16%, transparent);
+}
+
+.hj-footer .footer__blocks-wrapper {
+    color: var(--hj-text);
+}
+
+.hj-footer .footer-block__heading {
+    color: var(--hj-text) !important;
+}
+
+.hj-footer .footer-block__details-content,
+.hj-footer .footer-block__details-content a,
+.hj-footer .footer-block__brand-info,
+.hj-footer .footer-block__brand-info a,
+.hj-footer .footer-block__newsletter {
+    color: color-mix(in srgb, var(--hj-text) 68%, transparent) !important;
+}
+
+.hj-footer a:hover {
+    color: var(--hj-text) !important;
+}
+
+.hj-footer .list-menu__item--link {
+    color: color-mix(in srgb, var(--hj-text) 68%, transparent) !important;
+}
+
+.hj-footer .list-menu__item--link:hover {
+    color: var(--hj-text) !important;
+}
+
+.hj-footer .footer-block--newsletter {
+    border-top-color: color-mix(in srgb, var(--hj-text) 16%, transparent);
+}
+
+/* =========================================================
+   NEWSLETTER
+   ========================================================= */
+
+.hj-footer .field {
+    border-color: color-mix(in srgb, var(--hj-text) 40%, transparent);
+}
+
+.hj-footer .field__input {
+    color: var(--hj-text);
+    background: transparent;
+}
+
+.hj-footer .field__input::placeholder {
+    color: color-mix(in srgb, var(--hj-text) 55%, transparent);
+}
+
+.hj-footer .field__label {
+    color: color-mix(in srgb, var(--hj-text) 55%, transparent);
+}
+
+.hj-footer .newsletter-form__button {
+    color: var(--hj-text);
+}
+
+.hj-footer .newsletter-form__button:hover {
+    color: var(--hj-muted);
+}
+
+/* =========================================================
+   SOCIAL ICONS
+   ========================================================= */
+
+.hj-footer .list-social__link {
+    color: var(--hj-text) !important;
+}
+
+.hj-footer .list-social__link:hover {
+    color: var(--hj-muted) !important;
+}
+
+/* =========================================================
+   FOOTER BOTTOM
+   ========================================================= */
+
+.hj-footer .footer__content-bottom {
+    border-top-color: color-mix(in srgb, var(--hj-text) 16%, transparent);
+}
+
+.hj-footer .copyright__content {
+    color: color-mix(in srgb, var(--hj-text) 58%, transparent);
+}
+
+.hj-footer .policies a {
+    color: color-mix(in srgb, var(--hj-text) 58%, transparent);
+}
+
+.hj-footer .policies a:hover {
+    color: var(--hj-text);
+}
+
+.hj-footer-credit {
+    color: color-mix(in srgb, var(--hj-text) 58%, transparent);
+    opacity: 1;
+    font-size: 0.95em;
+    letter-spacing: 0.02em;
+}
+
+.hj-footer-credit:hover {
+    color: var(--hj-text);
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media screen and (max-width: 749px) {
+    .hj-footer-brand {
+        padding-top: 4.5rem;
+        padding-bottom: 4rem;
+    }
+
+    .hj-footer-brand__logo {
+        width: 18rem;
+    }
+
+    .hj-footer-brand__tagline {
+        font-size: 1.1rem;
+        padding-inline: 1.5rem;
     }
 }
