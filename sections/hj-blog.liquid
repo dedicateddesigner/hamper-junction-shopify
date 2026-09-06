@@ -1,0 +1,194 @@
+<section class="hj-blog">
+  <div class="page-width">
+    <header class="hj-blog__header">
+      <p class="hj-blog__eyebrow">
+        {{ section.settings.eyebrow }}
+      </p>
+
+      <h1 class="hj-blog__heading">
+        {{ section.settings.heading }}
+      </h1>
+
+      {% if section.settings.intro != blank %}
+        <div class="hj-blog__intro rte">
+          {{ section.settings.intro }}
+        </div>
+      {% endif %}
+    </header>
+
+    {% if blog.articles_count > 0 %}
+      {% assign featured_article = blog.articles.first %}
+
+      <article class="hj-blog__featured">
+        <a
+          href="{{ featured_article.url }}"
+          class="hj-blog__featured-link"
+        >
+          <div class="hj-blog__featured-media">
+            {% if featured_article.image != blank %}
+              {{
+                featured_article.image
+                | image_url: width: 2200
+                | image_tag:
+                  loading: 'eager',
+                  widths: '900, 1200, 1600, 2000, 2200',
+                  sizes: '(min-width: 990px) 60vw, 100vw',
+                  class: 'hj-blog__featured-image',
+                  alt: featured_article.image.alt
+                | default: featured_article.title
+              }}
+            {% else %}
+              {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+          </div>
+
+          <div class="hj-blog__featured-content">
+            <p class="hj-blog__article-meta">
+              {{ section.settings.featured_label }}
+            </p>
+
+            <h2 class="hj-blog__featured-title">
+              {{ featured_article.title }}
+            </h2>
+
+            {% if featured_article.excerpt != blank %}
+              <div class="hj-blog__featured-excerpt rte">
+                {{ featured_article.excerpt }}
+              </div>
+            {% endif %}
+
+            <span class="hj-blog__read-link"> Read story <span aria-hidden="true">→</span> </span>
+          </div>
+        </a>
+      </article>
+
+      {% if blog.articles.size > 1 %}
+        <section class="hj-blog__latest">
+          <div class="hj-blog__latest-header">
+            <p class="hj-blog__eyebrow">
+              {{ section.settings.latest_eyebrow }}
+            </p>
+
+            <h2 class="hj-blog__latest-heading">
+              {{ section.settings.latest_heading }}
+            </h2>
+          </div>
+
+          <div class="hj-blog__grid">
+            {% for article in blog.articles offset: 1 limit: section.settings.articles_to_show %}
+              <article class="hj-blog__card">
+                <a
+                  href="{{ article.url }}"
+                  class="hj-blog__card-link"
+                  aria-label="{{ article.title | escape }}"
+                >
+                  <div class="hj-blog__card-media">
+                    {% if article.image != blank %}
+                      {{
+                        article.image
+                        | image_url: width: 1200
+                        | image_tag:
+                          loading: 'lazy',
+                          widths: '480, 720, 960, 1200',
+                          sizes: '(min-width: 1200px) 33vw, (min-width: 750px) 50vw, 100vw',
+                          class: 'hj-blog__card-image',
+                          alt: article.image.alt
+                        | default: article.title
+                      }}
+                    {% else %}
+                      {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                    {% endif %}
+                  </div>
+
+                  <div class="hj-blog__card-content">
+                    {% if section.settings.show_date %}
+                      <p class="hj-blog__article-meta">
+                        {{ article.published_at | time_tag: format: 'date' }}
+                      </p>
+                    {% endif %}
+
+                    <h3 class="hj-blog__card-title">
+                      {{ article.title }}
+                    </h3>
+
+                    <span class="hj-blog__read-link"> Read story <span aria-hidden="true">→</span> </span>
+                  </div>
+                </a>
+              </article>
+            {% endfor %}
+          </div>
+        </section>
+      {% endif %}
+
+    {% else %}
+      <div class="hj-blog__empty">
+        <p>{{ section.settings.empty_text }}</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "HJ Blog",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "THE JOURNAL"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Thoughts on thoughtful gifting."
+    },
+    {
+      "type": "richtext",
+      "id": "intro",
+      "label": "Intro",
+      "default": "<p>Ideas, inspiration and stories from Hamper Junction.</p>"
+    },
+    {
+      "type": "text",
+      "id": "featured_label",
+      "label": "Featured label",
+      "default": "FEATURED STORY"
+    },
+    {
+      "type": "text",
+      "id": "latest_eyebrow",
+      "label": "Latest eyebrow",
+      "default": "FROM THE JOURNAL"
+    },
+    {
+      "type": "text",
+      "id": "latest_heading",
+      "label": "Latest heading",
+      "default": "Latest stories"
+    },
+    {
+      "type": "range",
+      "id": "articles_to_show",
+      "label": "Articles to show",
+      "min": 3,
+      "max": 12,
+      "step": 3,
+      "default": 6
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "label": "Show article dates",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "empty_text",
+      "label": "Empty blog text",
+      "default": "Our journal is coming soon."
+    }
+  ]
+}
+{% endschema %}

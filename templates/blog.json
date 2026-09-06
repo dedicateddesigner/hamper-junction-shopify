@@ -1,15 +1,17 @@
 {
   "sections": {
     "main": {
-      "type": "main-blog",
+      "type": "hj-blog",
       "settings": {
-        "layout": "collage",
-        "show_image": true,
-        "image_height": "medium",
+        "eyebrow": "THE JOURNAL",
+        "heading": "Thoughts on thoughtful gifting.",
+        "intro": "<p>Ideas, inspiration and stories from Hamper Junction.</p>",
+        "featured_label": "FEATURED STORY",
+        "latest_eyebrow": "FROM THE JOURNAL",
+        "latest_heading": "Latest stories",
+        "articles_to_show": 6,
         "show_date": true,
-        "show_author": false,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "empty_text": "Our journal is coming soon."
       }
     }
   },

@@ -1,0 +1,112 @@
+<article class="hj-article">
+  <header class="hj-article__header page-width">
+    <p class="hj-article__eyebrow">
+      {{ section.settings.eyebrow }}
+    </p>
+
+    <h1 class="hj-article__title">
+      {{ article.title }}
+    </h1>
+
+    {% if article.excerpt != blank %}
+      <div class="hj-article__excerpt rte">
+        {{ article.excerpt }}
+      </div>
+    {% endif %}
+
+    {% if section.settings.show_date %}
+      <p class="hj-article__date">
+        {{ article.published_at | time_tag: format: 'date' }}
+      </p>
+    {% endif %}
+  </header>
+
+  {% if article.image != blank %}
+    <div class="hj-article__hero page-width">
+      {{
+        article.image
+        | image_url: width: 2400
+        | image_tag:
+          loading: 'eager',
+          widths: '900, 1200, 1600, 2000, 2400',
+          sizes: '100vw',
+          class: 'hj-article__hero-image',
+          alt: article.image.alt
+        | default: article.title
+      }}
+    </div>
+  {% endif %}
+
+  <div class="hj-article__body page-width">
+    <div class="hj-article__content rte">
+      {{ article.content }}
+    </div>
+  </div>
+
+  <div class="hj-article__footer">
+    <div class="page-width">
+      <div class="hj-article__footer-inner">
+        <div>
+          <p class="hj-article__eyebrow">
+            {{ section.settings.cta_eyebrow }}
+          </p>
+
+          <h2 class="hj-article__footer-heading">
+            {{ section.settings.cta_heading }}
+          </h2>
+        </div>
+
+        <a
+          href="{{ section.settings.cta_link }}"
+          class="hj-article__button"
+        >
+          {{ section.settings.cta_label }}
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</article>
+
+{% schema %}
+{
+  "name": "HJ Article",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "THE JOURNAL"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "label": "Show date",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "cta_eyebrow",
+      "label": "CTA eyebrow",
+      "default": "EXPLORE THE COLLECTION"
+    },
+    {
+      "type": "text",
+      "id": "cta_heading",
+      "label": "CTA heading",
+      "default": "Find something worth giving."
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA label",
+      "default": "Explore our hampers"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA link"
+    }
+  ]
+}
+{% endschema %}
