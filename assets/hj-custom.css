@@ -77,7 +77,7 @@ h6,
 .shopify-payment-button__button {
     min-height: 4.8rem;
     padding-inline: 2.4rem;
-    border-radius: var(--hj-radius-sm);
+    border-radius: var(--hj-radius-md);
     transition:
         transform 180ms var(--hj-ease),
         background-color 180ms var(--hj-ease),
@@ -351,6 +351,7 @@ h6,
     aspect-ratio: 0.88;
     overflow: hidden;
     background: var(--hj-soft-grey);
+    border-radius: var(--hj-radius-sm);
 }
 
 .hj-occasion-card__image,
@@ -519,6 +520,7 @@ h6,
     aspect-ratio: 0.88;
     overflow: hidden;
     background: #f0ede8;
+    border-radius: var(--hj-radius-sm);
 }
 
 .hj-featured-product__image,
@@ -671,7 +673,8 @@ h6,
     position: relative;
     min-height: 52rem;
     overflow: hidden;
-    background: #1a1a1a;
+    background: var(--hj-color-black);
+    border-radius: var(--hj-radius-sm);
 }
 
 .hj-corporate-section__image,
@@ -1038,6 +1041,7 @@ h6,
     aspect-ratio: 9 / 13;
     overflow: hidden;
     background: #ece9e4;
+    border-radius: var(--hj-radius-sm);
 }
 
 .hj-social-card__media video,
