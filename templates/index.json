@@ -130,6 +130,18 @@
         "description": "<p>Thoughtfully curated gifts for life's meaningful moments.</p>"
       }
     },
+    "seasonal_hampers": {
+      "type": "hj-seasonal-hampers",
+      "settings": {
+        "eyebrow": "SEASONAL GIFTING",
+        "heading": "Celebrate the season beautifully.",
+        "description": "<p>Thoughtfully curated hampers for celebrations, traditions and moments worth sharing.</p>",
+        "collection_1": "diwali-collection-2026",
+        "collection_2": "",
+        "collection_3": "",
+        "collection_4": ""
+      }
+    },
     "featured_hampers": {
       "type": "hj-featured-hampers",
       "settings": {
@@ -254,6 +266,7 @@
     "hj_hero",
     "shop_by_occasion",
     "featured_hampers",
+    "seasonal_hampers",
     "corporate_gifting",
     "why_hamper_junction",
     "social_proof"
