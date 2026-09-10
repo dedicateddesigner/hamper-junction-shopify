@@ -1,176 +1,199 @@
+{{ 'hj-custom.css' | asset_url | stylesheet_tag }}
+
 <section class="hj-about">
-  <div class="page-width">
-    <header class="hj-about__hero">
-      <p class="hj-about__eyebrow">
-        {{ section.settings.eyebrow }}
-      </p>
+  {%- comment -%} HERO {%- endcomment -%}
+  <div class="hj-about__hero">
+    <div class="hj-about__hero-content">
+      <p class="hj-about__eyebrow">OUR STORY</p>
+      <h1 class="hj-about__hero-heading">Thoughtful gifting, beautifully brought to life.</h1>
+      <div class="hj-about__hero-intro">
+        <p>
+          At <strong>Hamper Junction</strong>, we believe the best gifts do more than look beautiful —
+          <strong>they make people feel remembered.</strong>
+        </p>
+      </div>
+    </div>
 
-      <h1 class="hj-about__heading">
-        {{ section.settings.heading }}
-      </h1>
+    <div class="hj-about__hero-image">
+      <div class="hj-about__image-placeholder">
+        <span>About hero image</span>
+      </div>
+    </div>
+  </div>
 
-      {% if section.settings.intro != blank %}
-        <div class="hj-about__intro rte">
-          {{ section.settings.intro }}
+  {%- comment -%} OUR STORY {%- endcomment -%}
+  <div class="hj-about__story">
+    <div class="hj-about__story-image">
+      <div class="hj-about__image-placeholder">
+        <span>Our story image</span>
+      </div>
+    </div>
+
+    <div class="hj-about__story-content">
+      <p class="hj-about__eyebrow">OUR STORY</p>
+
+      <div class="hj-about__body">
+        <p>Our story began with something simple: a love for finding the perfect gift.</p>
+
+        <p>
+          Long before Hamper Junction had a name, <strong>Amruta and Pratik</strong>, two IT professionals living in
+          Sydney, found themselves wandering through markets, boutiques and local stores, always searching for something
+          special to give the people they cared about.
+        </p>
+
+        <p>
+          We loved the excitement of discovering something unique. We loved putting different pieces together. And most
+          of all, we loved seeing the moment someone opened a gift and knew that real thought had gone into it.
+        </p>
+
+        <p>Over time, what started as a passion became something more.</p>
+      </div>
+
+      <h2 class="hj-about__subheading">From a passion for gifting to Hamper Junction</h2>
+
+      <div class="hj-about__body">
+        <p>
+          Friends and family began noticing the care we put into every gift we created. The thoughtful combinations. The
+          little details. The way everything was presented.
+        </p>
+
+        <p>They encouraged us to turn that passion into something bigger.</p>
+
+        <p>And so, <strong>Hamper Junction was born.</strong></p>
+
+        <p>We set out with a simple belief:</p>
+
+        <p><strong>Gifting should feel personal, thoughtful and genuinely special.</strong></p>
+
+        <p>Not something chosen at the last minute. Not just another box of products.</p>
+
+        <p>But a carefully curated experience that tells someone, <strong>“I thought of you.”</strong></p>
+      </div>
+    </div>
+  </div>
+
+  {%- comment -%} TWO PEOPLE {%- endcomment -%}
+  <div class="hj-about__people">
+    <div class="hj-about__people-header">
+      <p class="hj-about__eyebrow">TWO PEOPLE. ONE SHARED PASSION.</p>
+
+      <div class="hj-about__people-intro">
+        <p>Hamper Junction is a reflection of both of us.</p>
+      </div>
+    </div>
+
+    <div class="hj-about__people-grid">
+      <article class="hj-about__person">
+        <h2 class="hj-about__person-name">Amruta</h2>
+        <div class="hj-about__body">
+          <p>
+            <strong>Amruta</strong> brings the creative heart — an eye for beautiful presentation, a love for detail and
+            a natural instinct for pairing products that complement each other and tell a story.
+          </p>
         </div>
-      {% endif %}
-    </header>
+      </article>
 
-    {% if section.settings.hero_image != blank %}
-      <div class="hj-about__hero-image">
-        {{
-          section.settings.hero_image
-          | image_url: width: 2400
-          | image_tag:
-            loading: 'eager',
-            widths: '900, 1200, 1600, 2000, 2400',
-            sizes: '100vw',
-            alt: section.settings.hero_image.alt
-          | default: section.settings.heading
-        }}
-      </div>
-    {% endif %}
-
-    <div class="hj-about__story">
-      <div class="hj-about__story-content">
-        <p class="hj-about__eyebrow">
-          {{ section.settings.story_eyebrow }}
-        </p>
-
-        <h2 class="hj-about__subheading">
-          {{ section.settings.story_heading }}
-        </h2>
-
-        {% if section.settings.story != blank %}
-          <div class="hj-about__body rte">
-            {{ section.settings.story }}
-          </div>
-        {% endif %}
-      </div>
-
-      {% if section.settings.story_image != blank %}
-        <div class="hj-about__story-image">
-          {{
-            section.settings.story_image
-            | image_url: width: 1600
-            | image_tag:
-              loading: 'lazy',
-              widths: '600, 900, 1200, 1600',
-              sizes: '(min-width: 990px) 50vw, 100vw',
-              alt: section.settings.story_image.alt
-            | default: section.settings.story_heading
-          }}
+      <article class="hj-about__person">
+        <h2 class="hj-about__person-name">Pratik</h2>
+        <div class="hj-about__body">
+          <p>
+            <strong>Pratik</strong> brings the business mind — combining marketing, strategy and structure to turn
+            creative ideas into memorable gifting experiences.
+          </p>
         </div>
-      {% endif %}
+      </article>
     </div>
 
-    <div class="hj-about__beliefs">
-      <div class="hj-about__beliefs-intro">
-        <p class="hj-about__eyebrow">
-          {{ section.settings.beliefs_eyebrow }}
+    <div class="hj-about__people-followup">
+      <div class="hj-about__body">
+        <p>Together, we bring those strengths into every hamper we create.</p>
+
+        <p>
+          From the products we select to the way each hamper is presented, <strong>every detail has a purpose.</strong>
         </p>
-
-        <h2 class="hj-about__subheading">
-          {{ section.settings.beliefs_heading }}
-        </h2>
-      </div>
-
-      <div class="hj-about__beliefs-grid">
-        {% for block in section.blocks %}
-          <article class="hj-about__belief" {{ block.shopify_attributes }}>
-            <span class="hj-about__belief-number"> 0{{ forloop.index }} </span>
-
-            <h3 class="hj-about__belief-title">
-              {{ block.settings.heading }}
-            </h3>
-
-            {% if block.settings.text != blank %}
-              <div class="hj-about__belief-text rte">
-                {{ block.settings.text }}
-              </div>
-            {% endif %}
-          </article>
-        {% endfor %}
       </div>
     </div>
+  </div>
 
-    <div class="hj-about__purpose">
-      <div class="hj-about__purpose-content">
-        <p class="hj-about__eyebrow">
-          {{ section.settings.purpose_eyebrow }}
+  {%- comment -%} THOUGHTFULLY CURATED {%- endcomment -%}
+  <div class="hj-about__curated">
+    <div class="hj-about__curated-content">
+      <p class="hj-about__eyebrow">THOUGHTFULLY CURATED. PROUDLY AUSTRALIAN.</p>
+
+      <h2 class="hj-about__section-heading">Thoughtfully curated. Proudly Australian.</h2>
+
+      <div class="hj-about__body">
+        <p>We believe great gifting starts with great products.</p>
+
+        <p>
+          That’s why we look for <strong>unique products, beautiful finds and locally sourced Australian items</strong>,
+          with a focus on supporting small makers and businesses wherever we can.
         </p>
 
-        <h2 class="hj-about__subheading">
-          {{ section.settings.purpose_heading }}
-        </h2>
+        <p>
+          We carefully consider how each item works within the overall hamper — creating combinations that feel
+          <strong>warm, elegant, meaningful and personal.</strong>
+        </p>
 
-        {% if section.settings.purpose_text != blank %}
-          <div class="hj-about__body rte">
-            {{ section.settings.purpose_text }}
-          </div>
-        {% endif %}
-      </div>
+        <p>Because to us, a hamper isn’t simply a collection of products.</p>
 
-      {% if section.settings.purpose_image != blank %}
-        <div class="hj-about__purpose-image">
-          {{
-            section.settings.purpose_image
-            | image_url: width: 1600
-            | image_tag:
-              loading: 'lazy',
-              widths: '600, 900, 1200, 1600',
-              sizes: '(min-width: 990px) 50vw, 100vw',
-              alt: section.settings.purpose_image.alt
-            | default: section.settings.purpose_heading
-          }}
+        <p class="hj-about__standout"><strong>It’s a collection of moments.</strong></p>
+
+        <div class="hj-about__moments">
+          <p>A thank-you.</p>
+          <p>A congratulations.</p>
+          <p>A warm welcome.</p>
+          <p>A celebration.</p>
+          <p>A little reminder that someone is thinking of you.</p>
         </div>
-      {% endif %}
+      </div>
     </div>
 
-    <div class="hj-about__corporate">
-      <div>
-        <p class="hj-about__eyebrow">
-          {{ section.settings.corporate_eyebrow }}
+    <div class="hj-about__curated-image">
+      <div class="hj-about__image-placeholder">
+        <span>Australian gifting image</span>
+      </div>
+    </div>
+  </div>
+
+  {%- comment -%} MORE THAN A HAMPER {%- endcomment -%}
+  <div class="hj-about__more">
+    <div class="hj-about__more-inner">
+      <p class="hj-about__eyebrow">MORE THAN A HAMPER</p>
+
+      <h2 class="hj-about__section-heading">More than a hamper</h2>
+
+      <div class="hj-about__body">
+        <p>
+          As Hamper Junction grows, our purpose remains the same:
+          <strong>to make gifting easier, more thoughtful and more memorable.</strong>
         </p>
 
-        <h2 class="hj-about__corporate-heading">
-          {{ section.settings.corporate_heading }}
-        </h2>
-      </div>
+        <p>
+          We’re continually discovering new products, creating new combinations and finding better ways to turn ordinary
+          gifting moments into something extraordinary.
+        </p>
 
-      <div class="hj-about__corporate-action">
-        {% if section.settings.corporate_text != blank %}
-          <div class="hj-about__corporate-text rte">
-            {{ section.settings.corporate_text }}
-          </div>
-        {% endif %}
+        <p>We’re still a small business, and that’s something we’re proud of.</p>
 
-        <a
-          href="{{ section.settings.corporate_link }}"
-          class="hj-about__button"
-        >
-          {{ section.settings.corporate_button }}
-          <span aria-hidden="true">→</span>
-        </a>
+        <p>
+          It means every hamper still receives the same care and attention that inspired us to start in the first place.
+        </p>
       </div>
     </div>
+  </div>
 
-    <div class="hj-about__closing">
-      <p class="hj-about__eyebrow">
-        {{ section.settings.closing_eyebrow }}
-      </p>
+  {%- comment -%} CLOSING {%- endcomment -%}
+  <div class="hj-about__closing">
+    <div class="hj-about__closing-inner">
+      <p>Because behind every hamper is a simple idea:</p>
 
-      <h2 class="hj-about__closing-heading">
-        {{ section.settings.closing_heading }}
+      <h2>
+        <strong>The best gifts aren’t just opened.</strong><br>
+        <strong>They’re remembered.</strong>
       </h2>
 
-      <a
-        href="{{ section.settings.closing_link }}"
-        class="hj-about__closing-button"
-      >
-        {{ section.settings.closing_button }}
-        <span aria-hidden="true">→</span>
-      </a>
+      <p class="hj-about__closing-welcome">Welcome to Hamper Junction.</p>
     </div>
   </div>
 </section>
@@ -178,185 +201,12 @@
 {% schema %}
 {
   "name": "HJ About",
-  "settings": [
-    {
-      "type": "text",
-      "id": "eyebrow",
-      "label": "Eyebrow",
-      "default": "ABOUT HAMPER JUNCTION"
-    },
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "default": "Thoughtful gifting, beautifully considered."
-    },
-    {
-      "type": "richtext",
-      "id": "intro",
-      "label": "Intro",
-      "default": "<p>Our story, our approach and what makes gifting with Hamper Junction special.</p>"
-    },
-    {
-      "type": "image_picker",
-      "id": "hero_image",
-      "label": "Hero image"
-    },
-    {
-      "type": "text",
-      "id": "story_eyebrow",
-      "label": "Story eyebrow",
-      "default": "OUR STORY"
-    },
-    {
-      "type": "text",
-      "id": "story_heading",
-      "label": "Story heading",
-      "default": "Gifts that carry meaning."
-    },
-    {
-      "type": "richtext",
-      "id": "story",
-      "label": "Story"
-    },
-    {
-      "type": "image_picker",
-      "id": "story_image",
-      "label": "Story image"
-    },
-    {
-      "type": "text",
-      "id": "beliefs_eyebrow",
-      "label": "Beliefs eyebrow",
-      "default": "WHAT WE BELIEVE"
-    },
-    {
-      "type": "text",
-      "id": "beliefs_heading",
-      "label": "Beliefs heading",
-      "default": "The details matter."
-    },
-    {
-      "type": "text",
-      "id": "purpose_eyebrow",
-      "label": "Purpose eyebrow",
-      "default": "GIFTING WITH PURPOSE"
-    },
-    {
-      "type": "text",
-      "id": "purpose_heading",
-      "label": "Purpose heading",
-      "default": "Made for meaningful moments."
-    },
-    {
-      "type": "richtext",
-      "id": "purpose_text",
-      "label": "Purpose text"
-    },
-    {
-      "type": "image_picker",
-      "id": "purpose_image",
-      "label": "Purpose image"
-    },
-    {
-      "type": "text",
-      "id": "corporate_eyebrow",
-      "label": "Corporate eyebrow",
-      "default": "CORPORATE & CUSTOM GIFTING"
-    },
-    {
-      "type": "text",
-      "id": "corporate_heading",
-      "label": "Corporate heading",
-      "default": "Thoughtful gifting, made personal."
-    },
-    {
-      "type": "richtext",
-      "id": "corporate_text",
-      "label": "Corporate text",
-      "default": "<p>Explore gifting solutions for clients, teams, settlements and special occasions.</p>"
-    },
-    {
-      "type": "url",
-      "id": "corporate_link",
-      "label": "Corporate link"
-    },
-    {
-      "type": "text",
-      "id": "corporate_button",
-      "label": "Corporate button",
-      "default": "Explore Corporate Gifting"
-    },
-    {
-      "type": "text",
-      "id": "closing_eyebrow",
-      "label": "Closing eyebrow",
-      "default": "EXPLORE THE COLLECTION"
-    },
-    {
-      "type": "text",
-      "id": "closing_heading",
-      "label": "Closing heading",
-      "default": "Find something worth giving."
-    },
-    {
-      "type": "url",
-      "id": "closing_link",
-      "label": "Closing link"
-    },
-    {
-      "type": "text",
-      "id": "closing_button",
-      "label": "Closing button",
-      "default": "Explore our hampers"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "belief",
-      "name": "Belief",
-      "settings": [
-        {
-          "type": "text",
-          "id": "heading",
-          "label": "Heading",
-          "default": "Thoughtful curation"
-        },
-        {
-          "type": "richtext",
-          "id": "text",
-          "label": "Text",
-          "default": "<p>Every hamper is considered with intention.</p>"
-        }
-      ]
-    }
-  ],
+  "tag": "section",
+  "class": "section",
+  "settings": [],
   "presets": [
     {
-      "name": "HJ About",
-      "blocks": [
-        {
-          "type": "belief",
-          "settings": {
-            "heading": "Thoughtful curation",
-            "text": "<p>Every hamper is considered with intention.</p>"
-          }
-        },
-        {
-          "type": "belief",
-          "settings": {
-            "heading": "Beautiful presentation",
-            "text": "<p>Because the first impression is part of the gift.</p>"
-          }
-        },
-        {
-          "type": "belief",
-          "settings": {
-            "heading": "Personal touches",
-            "text": "<p>Small details can make a meaningful difference.</p>"
-          }
-        }
-      ]
+      "name": "HJ About"
     }
   ]
 }
