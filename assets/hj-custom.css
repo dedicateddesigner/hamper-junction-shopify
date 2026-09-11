@@ -185,6 +185,10 @@ h6,
     color: var(--hj-white) !important;
 }
 
+.header__icon--menu[aria-expanded=true]:before {
+    display: none;
+}
+
 .hj-logo-wrapper {
     display: flex;
     align-items: center;
@@ -197,14 +201,15 @@ h6,
     max-width: none;
 }
 
+
+
 /* Navigation */
 
 .hj-header-wrapper .header__menu-item {
-    font-size: 1.5rem;
-    letter-spacing: 0.1em;
+    font-size: 1.35rem;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--hj-white) !important;
-    font-weight: 500;
 }
 
 
@@ -215,182 +220,6 @@ h6,
 
 .hj-header-wrapper .header__menu-item:hover {
     color: color-mix(in srgb, var(--hj-white) 65%, transparent) !important;
-}
-
-/* =========================================================
-   HAMPER JUNCTION — DESKTOP SUBMENUS
-   ========================================================= */
-
-@media screen and (min-width: 990px) {
-
-    /* Dropdown container */
-    .hj-header-wrapper .header__submenu {
-        min-width: 250px;
-        padding: 10px 0;
-        margin-top: 8px;
-
-        background: var(--hj-dark-grey);
-        border: 1px solid color-mix(in srgb,
-                var(--hj-white) 10%,
-                transparent);
-        border-radius: var(--hj-radius-sm);
-
-        box-shadow:
-            0 18px 45px color-mix(in srgb, var(--hj-black) 32%, transparent);
-
-        overflow: hidden;
-    }
-
-
-    /* All submenu links */
-    .hj-header-wrapper .header__submenu .header__menu-item {
-        display: flex;
-        align-items: center;
-
-        width: 100%;
-        /* min-height: 52px; */
-
-        padding: 15px 20px;
-
-        color: var(--hj-white) !important;
-
-        font-size: 13px;
-        line-height: 1.35;
-        font-weight: 500;
-        letter-spacing: 0.055em;
-        text-transform: uppercase;
-
-        text-decoration: none;
-
-        transition:
-            background-color 180ms var(--hj-ease),
-            color 180ms var(--hj-ease),
-            padding-left 180ms var(--hj-ease);
-    }
-
-
-    /* Remove Dawn's underline behaviour from submenu items */
-    .hj-header-wrapper .header__submenu .header__menu-item span {
-        text-decoration: none !important;
-    }
-
-
-    /* Hover */
-    .hj-header-wrapper .header__submenu .header__menu-item:hover {
-        /* background: color-mix(in srgb,
-                var(--hj-white) 8%,
-                transparent); */
-
-        color: var(--hj-white) !important;
-
-        padding-left: 28px;
-    }
-
-
-    /* Active submenu item */
-    .hj-header-wrapper .header__submenu .header__active-menu-item {
-        color: var(--hj-white) !important;
-        /* background: color-mix(in srgb,
-                var(--hj-white) 5%,
-                transparent); */
-    }
-
-
-    /* Submenu item separators */
-    .hj-header-wrapper .header__submenu>li+li {
-        border-top: 1px solid color-mix(in srgb,
-                var(--hj-white) 7%,
-                transparent);
-    }
-
-
-    /* -------------------------------------------------------
-     DROPDOWN ARROW
-     ------------------------------------------------------- */
-
-    .hj-header-wrapper .header__menu-item .icon-caret {
-        width: 10px;
-        height: 6px;
-        margin-left: 10px;
-
-        color: currentColor;
-
-        transition: transform 180ms var(--hj-ease);
-    }
-
-
-    /* Open state */
-    .hj-header-wrapper details[open]>.header__menu-item .icon-caret {
-        transform: rotate(180deg);
-    }
-
-
-    /* -------------------------------------------------------
-     NESTED SUBMENUS
-     ------------------------------------------------------- */
-
-    .hj-header-wrapper .header__submenu .header__submenu {
-        min-width: 280px;
-        margin-top: 0;
-
-        background: var(--hj-dark-grey);
-        border-radius: var(--hj-radius-sm);
-    }
-
-
-    .hj-header-wrapper .header__submenu .header__submenu .header__menu-item {
-        min-height: 48px;
-        padding: 12px 20px;
-
-        font-size: 12px;
-    }
-
-
-    /* -------------------------------------------------------
-     FIRST-LEVEL DROPDOWN POSITIONING
-     ------------------------------------------------------- */
-
-    .hj-header-wrapper .header__inline-menu details[open]>.header__submenu {
-        animation: hj-submenu-enter 180ms var(--hj-ease) both;
-        transform-origin: top left;
-    }
-
-
-    @keyframes hj-submenu-enter {
-        from {
-            opacity: 0;
-            transform: translateY(-5px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-}
-
-
-/* =========================================================
-   MOBILE / TABLET DRAWER SUBMENUS
-   ========================================================= */
-
-@media screen and (max-width: 989px) {
-
-    .hj-header-wrapper .menu-drawer__menu-item {
-        color: var(--hj-white) !important;
-    }
-
-    .hj-header-wrapper .menu-drawer__submenu {
-        background: var(--hj-dark-grey);
-    }
-
-    .hj-header-wrapper .menu-drawer__menu-item {
-        font-size: 14px;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-    }
-
 }
 
 /* Header icons */
@@ -646,6 +475,8 @@ h6,
         margin-top: 0.7rem;
     }
 }
+
+
 
 /* =========================================================
    HAMPER JUNCTION — FEATURED HAMPERS
@@ -1651,6 +1482,7 @@ h6,
     }
 }
 
+
 /* =========================================================
    HAMPER JUNCTION — HAMPERS CATALOGUE
    ========================================================= */
@@ -2177,6 +2009,7 @@ h6,
     }
 }
 
+
 /* =========================================================
    HAMPER JUNCTION — RELATED HAMPERS
    ========================================================= */
@@ -2310,6 +2143,496 @@ h6,
 
     .hj-related-product__cta {
         font-size: 1rem;
+    }
+}
+
+/* =========================================================
+   HJ ABOUT PAGE
+   ========================================================= */
+
+.hj-about {
+    background: var(--hj-warm-white);
+    color: var(--hj-text);
+    overflow: hidden;
+}
+
+/* ---------- Shared ---------- */
+
+.hj-about__eyebrow {
+    margin: 0 0 1.5rem;
+    color: var(--hj-muted, var(--hj-muted));
+    font-size: 1.05rem;
+    line-height: 1.3;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.hj-about__subheading {
+    margin: 0;
+    color: var(--hj-text);
+    font-size: clamp(3rem, 4.5vw, 5.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+    font-weight: 500;
+}
+
+.hj-about__body {
+    margin-top: 2.8rem;
+    max-width: 680px;
+    color: var(--hj-muted);
+    font-size: 1.55rem;
+    line-height: 1.7;
+}
+
+.hj-about__body p {
+    margin: 0 0 1.5em;
+}
+
+.hj-about__body p:last-child {
+    margin-bottom: 0;
+}
+
+/* ---------- Hero ---------- */
+
+.hj-about__hero {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 10rem 2rem 7rem;
+    text-align: center;
+}
+
+.hj-about__hero .hj-about__eyebrow {
+    margin-bottom: 2rem;
+}
+
+.hj-about__heading {
+    max-width: 1050px;
+    margin: 0 auto;
+    color: var(--hj-text);
+    font-size: clamp(5rem, 8vw, 10rem);
+    line-height: 0.9;
+    letter-spacing: -0.065em;
+    font-weight: 500;
+}
+
+.hj-about__intro {
+    max-width: 720px;
+    margin: 3rem auto 0;
+    color: var(--hj-muted);
+    font-size: 1.7rem;
+    line-height: 1.6;
+}
+
+.hj-about__intro p {
+    margin: 0;
+}
+
+.hj-about__hero-image {
+    width: 100%;
+    aspect-ratio: 16 / 8;
+    overflow: hidden;
+    background: var(--hj-soft-grey);
+}
+
+.hj-about__hero-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hj-hero__controls {
+    z-index: 2 !important;
+}
+
+/* ---------- Story ---------- */
+
+.hj-about__story {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+    align-items: center;
+    gap: 9rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 12rem 2rem;
+}
+
+.hj-about__story-content {
+    max-width: 650px;
+}
+
+.hj-about__story-image {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: var(--hj-soft-grey);
+}
+
+.hj-about__story-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ---------- Beliefs ---------- */
+
+.hj-about__beliefs {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 3rem 2rem 12rem;
+}
+
+.hj-about__beliefs-intro {
+    max-width: 760px;
+    margin-bottom: 7rem;
+}
+
+.hj-about__beliefs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid var(--hj-border-light);
+}
+
+.hj-about__belief {
+    position: relative;
+    min-height: 300px;
+    padding: 3rem 3rem 3rem 0;
+    border-bottom: 1px solid var(--hj-border-light);
+}
+
+.hj-about__belief+.hj-about__belief {
+    padding-left: 3rem;
+    border-left: 1px solid var(--hj-border-light);
+}
+
+.hj-about__belief-number {
+    display: block;
+    margin-bottom: 5rem;
+    color: #9a958e;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+}
+
+.hj-about__belief-title {
+    margin: 0;
+    color: var(--hj-text);
+    font-size: 2.2rem;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    font-weight: 500;
+}
+
+.hj-about__belief-text {
+    max-width: 340px;
+    margin-top: 1.5rem;
+    color: var(--hj-muted);
+    font-size: 1.3rem;
+    line-height: 1.6;
+}
+
+.hj-about__belief-text p {
+    margin: 0;
+}
+
+/* ---------- Purpose ---------- */
+
+.hj-about__purpose {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 9rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 3rem 2rem 12rem;
+}
+
+.hj-about__purpose-image {
+    order: 2;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: var(--hj-soft-grey);
+}
+
+.hj-about__purpose-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hj-about__purpose-content {
+    order: 1;
+}
+
+/* ---------- Corporate ---------- */
+
+.hj-about__corporate {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+    gap: 8rem;
+    align-items: end;
+    padding: 8rem max(2rem, calc((100vw - 1400px) / 2));
+    background: var(--hj-white);
+}
+
+.hj-about__corporate-heading {
+    max-width: 800px;
+    margin: 0;
+    color: var(--hj-text);
+    font-size: clamp(3.8rem, 6vw, 7rem);
+    line-height: 0.94;
+    letter-spacing: -0.055em;
+    font-weight: 500;
+}
+
+.hj-about__corporate-action {
+    max-width: 480px;
+}
+
+.hj-about__corporate-text {
+    margin-bottom: 2.5rem;
+    color: var(--hj-muted);
+    font-size: 1.45rem;
+    line-height: 1.6;
+}
+
+.hj-about__corporate-text p {
+    margin: 0;
+}
+
+.hj-about__button,
+.hj-about__closing-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.2rem;
+    color: var(--hj-text);
+    text-decoration: none;
+    font-size: 1.15rem;
+    letter-spacing: 0.02em;
+}
+
+.hj-about__button {
+    padding-bottom: 0.7rem;
+    border-bottom: 1px solid var(--hj-text);
+    transition:
+        gap 200ms ease,
+        opacity 200ms ease;
+}
+
+.hj-about__button:hover {
+    gap: 1.7rem;
+    opacity: 0.65;
+}
+
+/* ---------- Closing CTA ---------- */
+
+.hj-about__closing {
+    padding: 12rem 2rem 14rem;
+    text-align: center;
+    background: var(--hj-black);
+    color: var(--hj-white);
+}
+
+.hj-about__closing .hj-about__eyebrow {
+    color: var(--hj-white-muted);
+}
+
+.hj-about__closing-heading {
+    max-width: 1000px;
+    margin: 0 auto;
+    color: var(--hj-white);
+    font-size: clamp(4rem, 7vw, 8rem);
+    line-height: 0.92;
+    letter-spacing: -0.06em;
+    font-weight: 500;
+}
+
+.hj-about__closing-button {
+    margin-top: 4rem;
+    padding: 1.4rem 2.2rem;
+    border: 1px solid var(--hj-white);
+    color: var(--hj-white);
+    transition:
+        background-color 200ms ease,
+        color 200ms ease;
+}
+
+.hj-about__closing-button:hover {
+    background: var(--hj-white);
+    color: var(--hj-black);
+}
+
+/* =========================================================
+   ABOUT PAGE — TABLET
+   ========================================================= */
+
+@media screen and (max-width: 989px) {
+    .hj-about__hero {
+        padding-top: 8rem;
+        padding-bottom: 5rem;
+    }
+
+    .hj-about__heading {
+        font-size: clamp(4.5rem, 10vw, 7rem);
+    }
+
+    .hj-about__story,
+    .hj-about__purpose {
+        gap: 5rem;
+        padding-top: 9rem;
+        padding-bottom: 9rem;
+    }
+
+    .hj-about__beliefs {
+        padding-bottom: 9rem;
+    }
+
+    .hj-about__belief {
+        min-height: 270px;
+    }
+
+    .hj-about__belief-title {
+        font-size: 1.9rem;
+    }
+
+    .hj-about__corporate {
+        gap: 5rem;
+        padding-top: 7rem;
+        padding-bottom: 7rem;
+    }
+}
+
+/* =========================================================
+   ABOUT PAGE — MOBILE
+   ========================================================= */
+
+@media screen and (max-width: 749px) {
+    .hj-about__eyebrow {
+        font-size: 0.95rem;
+    }
+
+    .hj-about__hero {
+        padding: 6rem 1.8rem 4rem;
+        text-align: left;
+    }
+
+    .hj-about__heading {
+        font-size: clamp(4rem, 15vw, 6rem);
+    }
+
+    .hj-about__intro {
+        margin-top: 2.2rem;
+        font-size: 1.45rem;
+        line-height: 1.6;
+    }
+
+    .hj-about__hero-image {
+        aspect-ratio: 4 / 3;
+    }
+
+    .hj-about__story,
+    .hj-about__purpose {
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+        padding: 7rem 1.8rem;
+    }
+
+    .hj-about__story-image,
+    .hj-about__purpose-image {
+        width: 100%;
+        aspect-ratio: 4 / 5;
+    }
+
+    .hj-about__story-image {
+        order: 2;
+    }
+
+    .hj-about__story-content {
+        order: 1;
+    }
+
+    .hj-about__purpose-image {
+        order: 1;
+    }
+
+    .hj-about__purpose-content {
+        order: 2;
+    }
+
+    .hj-about__subheading {
+        font-size: clamp(3rem, 12vw, 4.8rem);
+    }
+
+    .hj-about__body {
+        margin-top: 2rem;
+        font-size: 1.4rem;
+        line-height: 1.65;
+    }
+
+    .hj-about__beliefs {
+        padding: 1rem 1.8rem 7rem;
+    }
+
+    .hj-about__beliefs-intro {
+        margin-bottom: 4rem;
+    }
+
+    .hj-about__beliefs-grid {
+        display: block;
+    }
+
+    .hj-about__belief,
+    .hj-about__belief+.hj-about__belief {
+        min-height: auto;
+        padding: 2.5rem 0;
+        border-left: 0;
+    }
+
+    .hj-about__belief-number {
+        margin-bottom: 2.8rem;
+    }
+
+    .hj-about__belief-title {
+        font-size: 2rem;
+    }
+
+    .hj-about__belief-text {
+        margin-top: 1.2rem;
+        font-size: 1.25rem;
+    }
+
+    .hj-about__corporate {
+        display: block;
+        padding: 6rem 1.8rem;
+    }
+
+    .hj-about__corporate-heading {
+        font-size: clamp(3.4rem, 12vw, 5rem);
+    }
+
+    .hj-about__corporate-action {
+        margin-top: 3rem;
+    }
+
+    .hj-about__corporate-text {
+        font-size: 1.35rem;
+    }
+
+    .hj-about__closing {
+        padding: 7rem 1.8rem 8rem;
+    }
+
+    .hj-about__closing-heading {
+        font-size: clamp(3.8rem, 14vw, 5.5rem);
+    }
+
+    .hj-about__closing-button {
+        margin-top: 3rem;
+        width: 100%;
+        justify-content: center;
     }
 }
 
@@ -3009,539 +3332,200 @@ h6,
 
 /* =========================================================
    HAMPER JUNCTION — FOOTER
-   Premium editorial footer
    ========================================================= */
 
 .hj-footer {
-    --hj-footer-bg: var(--hj-soft-grey);
-    --hj-footer-text: var(--hj-text);
-    --hj-footer-muted: var(--hj-text-secondary);
-    --hj-footer-border: var(--hj-border);
+    --color-background: 232, 229, 224 !important;
+    --gradient-background: var(--hj-soft-grey) !important;
+    --color-link: 17, 17, 17 !important;
 
-    position: relative;
-    width: 100%;
-    margin: 0 !important;
-    padding: 0 !important;
-
-    background: var(--hj-footer-bg) !important;
+    background: var(--hj-soft-grey) !important;
     background-image: none !important;
-    color: var(--hj-footer-text) !important;
-    overflow: hidden;
-}
-
-/* Remove Dawn footer background treatments */
-.hj-footer::before,
-.hj-footer::after {
-    display: none !important;
-    content: none !important;
+    color: var(--hj-text) !important;
 }
 
 .hj-footer.gradient {
-    background: var(--hj-footer-bg) !important;
+    background: var(--hj-soft-grey) !important;
     background-image: none !important;
 }
 
-/* ---------------------------------------------------------
-   MAIN FOOTER
-   --------------------------------------------------------- */
-
-.hj-footer__main {
-    width: min(100% - 48px, var(--hj-content-width)) !important;
-    max-width: var(--hj-content-width) !important;
-    margin-inline: auto !important;
-
-    display: grid !important;
-    grid-template-columns:
-        minmax(260px, 1.35fr) minmax(150px, 0.8fr) minmax(150px, 0.8fr) minmax(280px, 1.25fr);
-
-    column-gap: clamp(40px, 5vw, 96px);
-    row-gap: 64px;
-
-    padding-top: 88px;
-    padding-bottom: 72px;
+.hj-footer::before,
+.hj-footer::after {
+    background: none !important;
+    background-image: none !important;
 }
 
-/* ---------------------------------------------------------
+.hj-footer,
+.hj-footer * {
+    --color-foreground: 17, 17, 17;
+}
+
+/* =========================================================
    BRAND
-   --------------------------------------------------------- */
+   ========================================================= */
 
-.hj-footer__brand {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    min-width: 0;
+.hj-footer-brand {
+    padding-top: clamp(5rem, 8vw, 8rem);
+    padding-bottom: clamp(4rem, 6vw, 6rem);
+    text-align: center;
 }
 
-.hj-footer__logo-link {
+.hj-footer-brand__link {
     display: inline-flex;
-    width: fit-content;
-    text-decoration: none !important;
-}
-
-.hj-footer__logo {
-    display: block;
-    width: clamp(180px, 16vw, 230px);
-    height: auto;
-
-    /* Asset is white; footer is light */
-    filter: invert(1);
-
-    opacity: 1;
-}
-
-.hj-footer__tagline {
-    max-width: 360px;
-    margin: 28px 0 0;
-
-    color: var(--hj-footer-muted) !important;
-
-    font-size: 16px;
-    line-height: 1.55;
-    font-weight: 400;
-    letter-spacing: -0.01em;
-}
-
-/* ---------------------------------------------------------
-   SOCIAL
-   --------------------------------------------------------- */
-
-.hj-footer__social {
-    margin-top: 44px;
-}
-
-.hj-footer__social-label {
-    margin: 0 0 18px;
-
-    color: var(--hj-footer-text) !important;
-
-    font-size: 12px;
-    line-height: 1.2;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-}
-
-/* Dawn social icon wrapper */
-.hj-footer__social .list-social {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-
-    margin: 0;
-    padding: 0;
-}
-
-.hj-footer__social .list-social__item {
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-.hj-footer__social .list-social__link {
-    display: flex;
     align-items: center;
     justify-content: center;
-
-    width: 40px;
-    height: 40px;
-
-    border: 1px solid var(--hj-border);
-    border-radius: 50%;
-
-    color: var(--hj-footer-text) !important;
-
-    transition:
-        background-color 220ms var(--hj-ease),
-        border-color 220ms var(--hj-ease),
-        transform 220ms var(--hj-ease);
 }
 
-.hj-footer__social .list-social__link:hover {
-    background: var(--hj-text);
-    border-color: var(--hj-text);
-    color: var(--hj-white) !important;
-    transform: translateY(-2px);
+.hj-footer-brand__logo {
+    display: block;
+    width: 22rem;
+    height: auto;
+    max-width: 100%;
+    filter: invert(1);
 }
 
-.hj-footer__social .list-social__link .svg-wrapper,
-.hj-footer__social .list-social__link svg {
-    width: 17px;
-    height: 17px;
-}
-
-/* ---------------------------------------------------------
-   COLUMN HEADINGS
-   --------------------------------------------------------- */
-
-.hj-footer__heading {
-    margin: 0 0 26px;
-
-    color: var(--hj-footer-text) !important;
-
-    font-size: 13px;
-    line-height: 1.2;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-}
-
-/* ---------------------------------------------------------
-   NAVIGATION
-   --------------------------------------------------------- */
-
-.hj-footer__menu {
-    display: flex;
-    flex-direction: column;
-    gap: .25rem;
-
-    margin: 0;
-    padding: 0;
-}
-
-.hj-footer__menu li {
-    margin: 0;
-    padding: 0;
-}
-
-.hj-footer__menu-link {
-    position: relative;
-    display: inline-block;
-
-    color: var(--hj-footer-text) !important;
-
-    font-size: 16px;
-    line-height: 1.4;
-    font-weight: 400;
-    letter-spacing: -0.01em;
-
-    text-decoration: none !important;
-
-    transition:
-        opacity 180ms ease,
-        transform 180ms ease;
-}
-
-.hj-footer__menu-link::after {
-    content: "";
-
-    position: absolute;
-    left: 0;
-    bottom: -4px;
-
-    width: 100%;
-    height: 1px;
-
-    background: currentColor;
-
-    transform: scaleX(0);
-    transform-origin: right;
-
-    transition: transform 240ms var(--hj-ease);
-}
-
-.hj-footer__menu-link:hover {
-    color: var(--hj-footer-text) !important;
-    opacity: 0.72;
-}
-
-.hj-footer__menu-link:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
-}
-
-/* ---------------------------------------------------------
-   NEWSLETTER
-   --------------------------------------------------------- */
-
-.hj-footer__newsletter {
-    max-width: 420px;
-}
-
-.hj-footer__newsletter .hj-footer__heading {
-    margin-bottom: 22px;
-}
-
-.hj-footer__newsletter-title {
-    max-width: 400px;
-    margin: 0 0 18px;
-
-    color: var(--hj-footer-text) !important;
-
-    font-size: clamp(28px, 2.4vw, 38px);
-    line-height: 1.08;
-    font-weight: 500;
-    letter-spacing: -0.035em;
-}
-
-.hj-footer__newsletter-description {
-    max-width: 380px;
-    margin-bottom: 30px;
-
-    color: var(--hj-footer-muted) !important;
-
-    font-size: 15px;
+.hj-footer-brand__tagline {
+    max-width: 42rem;
+    margin: 2rem auto 0;
+    color: color-mix(in srgb, var(--hj-text) 65%, transparent);
+    font-size: 1.25rem;
     line-height: 1.6;
+    letter-spacing: 0.03em;
 }
 
-.hj-footer__newsletter-description p {
-    margin: 0;
+/* =========================================================
+   FOOTER BLOCKS
+   ========================================================= */
+
+.hj-footer .footer__content-top {
+    padding-top: 4rem;
+    border-top: 1px solid color-mix(in srgb, var(--hj-text) 16%, transparent);
 }
 
-/* Newsletter form */
-
-.hj-footer__newsletter-form {
-    width: 100%;
-    margin: 0;
+.hj-footer .footer__blocks-wrapper {
+    color: var(--hj-text);
 }
 
-.hj-footer__newsletter-field {
-    display: flex;
-    align-items: stretch;
-
-    width: 100%;
-
-    border-bottom: 1px solid var(--hj-text);
+.hj-footer .footer-block__heading {
+    color: var(--hj-text) !important;
 }
 
-.hj-footer__newsletter-input {
-    flex: 1;
-    min-width: 0;
-
-    height: 52px;
-    padding: 0;
-
-    border: 0 !important;
-    outline: 0 !important;
-    box-shadow: none !important;
-
-    background: transparent !important;
-
-    color: var(--hj-footer-text) !important;
-
-    font-family: inherit;
-    font-size: 15px;
+.hj-footer .footer-block__details-content,
+.hj-footer .footer-block__details-content a,
+.hj-footer .footer-block__brand-info,
+.hj-footer .footer-block__brand-info a,
+.hj-footer .footer-block__newsletter {
+    color: color-mix(in srgb, var(--hj-text) 68%, transparent) !important;
 }
 
-.hj-footer__newsletter-input::placeholder {
+.hj-footer a:hover {
+    color: var(--hj-text) !important;
+}
+
+.hj-footer .list-menu__item--link {
+    color: color-mix(in srgb, var(--hj-text) 68%, transparent) !important;
+}
+
+.hj-footer .list-menu__item--link:hover {
+    color: var(--hj-text) !important;
+}
+
+.hj-footer .footer-block--newsletter {
+    border-top-color: color-mix(in srgb, var(--hj-text) 16%, transparent);
+}
+
+/* =========================================================
+   NEWSLETTER
+   ========================================================= */
+
+.hj-footer .field {
+    border-color: color-mix(in srgb, var(--hj-text) 40%, transparent);
+}
+
+.hj-footer .field__input {
+    color: var(--hj-text);
+    background: transparent;
+}
+
+.hj-footer .field__input::placeholder {
+    color: color-mix(in srgb, var(--hj-text) 55%, transparent);
+}
+
+.hj-footer .field__label {
+    color: color-mix(in srgb, var(--hj-text) 55%, transparent);
+}
+
+.hj-footer .newsletter-form__button {
+    color: var(--hj-text);
+}
+
+.hj-footer .newsletter-form__button:hover {
     color: var(--hj-muted);
-    opacity: 1;
 }
 
-.hj-footer__newsletter-input:focus {
-    box-shadow: none !important;
+/* =========================================================
+   SOCIAL ICONS
+   ========================================================= */
+
+.hj-footer .list-social__link {
+    color: var(--hj-text) !important;
 }
 
-.hj-footer__newsletter-button {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-
-    width: 52px;
-    min-width: 52px;
-    height: 52px;
-
-    padding: 0;
-
-    border: 0 !important;
-    background: transparent !important;
-
-    color: var(--hj-footer-text) !important;
-
-    font-size: 26px;
-    line-height: 1;
-
-    cursor: pointer;
-
-    transition:
-        transform 220ms var(--hj-ease),
-        opacity 180ms ease;
-}
-
-.hj-footer__newsletter-button:hover {
-    transform: translateX(5px);
-    opacity: 0.65;
-}
-
-/* Newsletter messages */
-
-.hj-footer__newsletter-message {
-    margin-top: 14px;
-
-    font-size: 13px;
-    line-height: 1.45;
-}
-
-.hj-footer__newsletter-message--error {
-    color: #8b2f2f;
-}
-
-.hj-footer__newsletter-message--success {
-    color: var(--hj-footer-muted);
-}
-
-/* ---------------------------------------------------------
-   FOOTER BOTTOM
-   --------------------------------------------------------- */
-
-.hj-footer__bottom {
-    border-top: 1px solid var(--hj-footer-border);
-}
-
-.hj-footer__bottom-inner {
-    width: min(100% - 48px, var(--hj-content-width)) !important;
-    max-width: var(--hj-content-width) !important;
-    margin-inline: auto !important;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 30px;
-
-    padding-top: 22px;
-    padding-bottom: 22px;
-}
-
-.hj-footer__copyright,
-.hj-footer__credit {
-    margin: 0;
-
+.hj-footer .list-social__link:hover {
     color: var(--hj-muted) !important;
-
-    font-size: 12px;
-    line-height: 1.5;
 }
 
-.hj-footer__credit {
-    text-align: right;
+/* =========================================================
+   FOOTER BOTTOM
+   ========================================================= */
+
+.hj-footer .footer__content-bottom {
+    border-top-color: color-mix(in srgb, var(--hj-text) 16%, transparent);
 }
 
-.hj-footer__credit a {
-    color: var(--hj-footer-text) !important;
-    text-decoration: none !important;
-    transition: opacity 180ms ease;
+.hj-footer .copyright__content {
+    color: color-mix(in srgb, var(--hj-text) 58%, transparent);
 }
 
-.hj-footer__credit a:hover {
-    opacity: 0.6;
+.hj-footer .policies a {
+    color: color-mix(in srgb, var(--hj-text) 58%, transparent);
 }
 
-/* ---------------------------------------------------------
+.hj-footer .policies a:hover {
+    color: var(--hj-text);
+}
+
+.hj-footer-credit {
+    color: color-mix(in srgb, var(--hj-text) 58%, transparent);
+    opacity: 1;
+    font-size: 0.95em;
+    letter-spacing: 0.02em;
+}
+
+.hj-footer-credit:hover {
+    color: var(--hj-text);
+}
+
+/* =========================================================
    MOBILE
-   --------------------------------------------------------- */
+   ========================================================= */
 
 @media screen and (max-width: 749px) {
-
-    .hj-footer__main {
-        width: min(100% - 40px, var(--hj-content-width)) !important;
-
-        display: flex !important;
-        flex-direction: column;
-
-        gap: 0;
-
-        padding-top: 58px;
-        padding-bottom: 52px;
+    .hj-footer-brand {
+        padding-top: 4.5rem;
+        padding-bottom: 4rem;
     }
 
-    /* Brand */
-
-    .hj-footer__logo {
-        width: 190px;
+    .hj-footer-brand__logo {
+        width: 18rem;
     }
 
-    .hj-footer__tagline {
-        max-width: 340px;
-        margin-top: 22px;
-
-        font-size: 15px;
-    }
-
-    .hj-footer__social {
-        margin-top: 34px;
-    }
-
-    /* Columns */
-
-    .hj-footer__links,
-    .hj-footer__policies,
-    .hj-footer__newsletter {
-        width: 100%;
-        max-width: none;
-
-        margin-top: 54px;
-    }
-
-    .hj-footer__heading {
-        margin-bottom: 22px;
-    }
-
-    .hj-footer__menu {
-        gap: 13px;
-    }
-
-    .hj-footer__menu-link {
-        font-size: 16px;
-    }
-
-    /* Newsletter */
-
-    .hj-footer__newsletter-title {
-        max-width: 360px;
-
-        font-size: 30px;
-    }
-
-    .hj-footer__newsletter-description {
-        max-width: 360px;
-    }
-
-    /* Bottom */
-
-    .hj-footer__bottom-inner {
-        width: min(100% - 40px, var(--hj-content-width)) !important;
-
-        flex-direction: column;
-        align-items: flex-start;
-
-        gap: 8px;
-
-        padding-top: 18px;
-        padding-bottom: 20px;
-    }
-
-    .hj-footer__credit {
-        text-align: left;
+    .hj-footer-brand__tagline {
+        font-size: 1.1rem;
+        padding-inline: 1.5rem;
     }
 }
 
-/* ---------------------------------------------------------
-   SMALL MOBILE
-   --------------------------------------------------------- */
-
-@media screen and (max-width: 480px) {
-
-    .hj-footer__main {
-        padding-top: 48px;
-        padding-bottom: 44px;
-    }
-
-    .hj-footer__logo {
-        width: 175px;
-    }
-
-    .hj-footer__links,
-    .hj-footer__policies,
-    .hj-footer__newsletter {
-        margin-top: 46px;
-    }
-
-    .hj-footer__newsletter-title {
-        font-size: 27px;
-    }
-
-    .hj-footer__bottom-inner {
-        width: min(100% - 32px, var(--hj-content-width)) !important;
-    }
-}
 
 /* =========================================================
    HJ FAQ
@@ -4167,583 +4151,6 @@ h6,
 }
 
 /* =========================================================
-   HJ ABOUT — PREMIUM EDITORIAL LAYOUT
-   ========================================================= */
-
-.hj-about {
-    background: var(--hj-warm-white);
-    color: var(--hj-text);
-    overflow: hidden;
-}
-
-.hj-about__eyebrow {
-    margin: 0 0 24px;
-    color: var(--hj-muted);
-    font-size: 12px;
-    line-height: 1.4;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-}
-
-.hj-about__body {
-    color: var(--hj-text-secondary);
-    font-size: 16px;
-    line-height: 1.8;
-}
-
-.hj-about__body p {
-    margin: 0 0 24px;
-}
-
-.hj-about__body p:last-child {
-    margin-bottom: 0;
-}
-
-.hj-about__body strong,
-.hj-about__hero-intro strong,
-.hj-about__people-intro strong {
-    color: var(--hj-text);
-    font-weight: 600;
-}
-
-/* Image placeholders */
-
-.hj-about__image-placeholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    min-height: 100%;
-    background: linear-gradient(135deg,
-            color-mix(in srgb, var(--hj-soft-grey) 88%, var(--hj-white)),
-            var(--hj-soft-grey));
-    color: var(--hj-muted);
-    text-align: center;
-}
-
-.hj-about__image-placeholder span {
-    padding: 12px 16px;
-    border: 1px solid color-mix(in srgb, var(--hj-text) 14%, transparent);
-    font-size: 12px;
-    line-height: 1.4;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-}
-
-/* Hero */
-
-.hj-about__hero {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
-    min-height: 680px;
-}
-
-.hj-about__hero-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 96px max(48px, 7vw);
-}
-
-.hj-about__hero-heading {
-    max-width: 760px;
-    margin: 0;
-    color: var(--hj-text);
-    font-size: clamp(48px, 5.4vw, 82px);
-    line-height: 0.98;
-    font-weight: 500;
-    letter-spacing: -0.045em;
-}
-
-.hj-about__hero-intro {
-    max-width: 620px;
-    margin-top: 40px;
-    color: var(--hj-text-secondary);
-    font-size: 20px;
-    line-height: 1.65;
-}
-
-.hj-about__hero-intro p {
-    margin: 0;
-}
-
-.hj-about__hero-image {
-    min-height: 680px;
-    background: var(--hj-soft-grey);
-}
-
-/* Our story */
-
-.hj-about__story {
-    display: grid;
-    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-    max-width: var(--hj-content-width);
-    margin: 0 auto;
-    padding: 128px 48px;
-    gap: clamp(64px, 8vw, 128px);
-    align-items: start;
-}
-
-.hj-about__story-image {
-    position: sticky;
-    top: 32px;
-    height: 680px;
-    background: var(--hj-soft-grey);
-}
-
-.hj-about__story-content {
-    max-width: 720px;
-}
-
-.hj-about__subheading {
-    margin: 64px 0 28px;
-    color: var(--hj-text);
-    font-size: clamp(28px, 3vw, 42px);
-    line-height: 1.08;
-    font-weight: 500;
-    letter-spacing: -0.03em;
-}
-
-/* People */
-
-.hj-about__people {
-    max-width: var(--hj-content-width-narrow);
-    margin: 0 auto;
-    padding: 128px 48px;
-}
-
-.hj-about__people-header {
-    max-width: 820px;
-    margin-bottom: 72px;
-}
-
-.hj-about__people-intro {
-    color: var(--hj-text);
-    font-size: clamp(32px, 4vw, 54px);
-    line-height: 1.08;
-    font-weight: 500;
-    letter-spacing: -0.035em;
-}
-
-.hj-about__people-intro p {
-    margin: 0;
-}
-
-.hj-about__people-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    border-top: 1px solid var(--hj-border);
-    border-bottom: 1px solid var(--hj-border);
-}
-
-.hj-about__person {
-    padding: 48px 48px 52px 0;
-}
-
-.hj-about__person+.hj-about__person {
-    padding-right: 0;
-    padding-left: 48px;
-    border-left: 1px solid var(--hj-border);
-}
-
-.hj-about__person-name {
-    margin: 0 0 24px;
-    color: var(--hj-text);
-    font-size: clamp(28px, 3vw, 40px);
-    line-height: 1;
-    font-weight: 500;
-    letter-spacing: -0.03em;
-}
-
-.hj-about__people-followup {
-    max-width: 720px;
-    margin-top: 56px;
-}
-
-/* Curated / Australian */
-
-.hj-about__curated {
-    display: grid;
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-    min-height: 700px;
-    background: var(--hj-soft-grey);
-}
-
-.hj-about__curated-content {
-    max-width: 760px;
-    padding: 112px max(48px, 7vw);
-}
-
-.hj-about__section-heading {
-    margin: 0 0 40px;
-    color: var(--hj-text);
-    font-size: clamp(40px, 4.4vw, 64px);
-    line-height: 1;
-    font-weight: 500;
-    letter-spacing: -0.04em;
-}
-
-.hj-about__standout {
-    margin-top: 48px !important;
-    color: var(--hj-text);
-    font-size: clamp(24px, 2.5vw, 36px);
-    line-height: 1.15;
-}
-
-.hj-about__moments {
-    margin-top: 40px;
-    color: var(--hj-text);
-}
-
-.hj-about__moments p {
-    margin: 0 0 8px;
-    font-size: 18px;
-    line-height: 1.5;
-}
-
-.hj-about__moments p:last-child {
-    margin-bottom: 0;
-}
-
-.hj-about__curated-image {
-    min-height: 700px;
-}
-
-/* More than a hamper */
-
-.hj-about__more {
-    background: var(--hj-warm-white);
-}
-
-.hj-about__more-inner {
-    max-width: var(--hj-content-width-narrow);
-    margin: 0 auto;
-    padding: 144px 48px;
-}
-
-.hj-about__more .hj-about__body {
-    max-width: 760px;
-}
-
-/* Closing */
-
-.hj-about__closing {
-    background: var(--hj-black);
-    color: var(--hj-white);
-}
-
-.hj-about__closing-inner {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 144px 48px 152px;
-    text-align: center;
-}
-
-.hj-about__closing-inner>p:first-child {
-    margin: 0 0 32px;
-    color: var(--hj-white-body);
-    font-size: 16px;
-    line-height: 1.6;
-}
-
-.hj-about__closing-inner h2 {
-    margin: 0;
-    color: var(--hj-white);
-    font-size: clamp(38px, 5vw, 72px);
-    line-height: 1.02;
-    font-weight: 500;
-    letter-spacing: -0.045em;
-}
-
-.hj-about__closing-welcome {
-    margin: 48px 0 0;
-    color: var(--hj-white-body);
-    font-size: 18px;
-    line-height: 1.6;
-}
-
-/* Responsive */
-
-@media screen and (max-width: 989px) {
-    .hj-about__hero {
-        grid-template-columns: 1fr;
-    }
-
-    .hj-about__hero-content {
-        min-height: auto;
-        padding: 80px 48px;
-    }
-
-    .hj-about__hero-image {
-        min-height: 560px;
-    }
-
-    .hj-about__story {
-        grid-template-columns: 1fr;
-        padding: 96px 48px;
-        gap: 64px;
-    }
-
-    .hj-about__story-image {
-        position: static;
-        height: 560px;
-    }
-
-    .hj-about__people {
-        padding: 96px 48px;
-    }
-
-    .hj-about__curated {
-        grid-template-columns: 1fr;
-    }
-
-    .hj-about__curated-content {
-        padding: 96px 48px;
-    }
-
-    .hj-about__curated-image {
-        min-height: 560px;
-    }
-
-    .hj-about__more-inner,
-    .hj-about__closing-inner {
-        padding: 112px 48px;
-    }
-}
-
-@media screen and (max-width: 749px) {
-    .hj-about__eyebrow {
-        margin-bottom: 18px;
-        font-size: 11px;
-    }
-
-    .hj-about__body {
-        font-size: 15px;
-        line-height: 1.75;
-    }
-
-    .hj-about__body p {
-        margin-bottom: 20px;
-    }
-
-    .hj-about__hero-content {
-        padding: 64px 24px 72px;
-    }
-
-    .hj-about__hero-heading {
-        font-size: clamp(42px, 12vw, 58px);
-    }
-
-    .hj-about__hero-intro {
-        margin-top: 28px;
-        font-size: 17px;
-    }
-
-    .hj-about__hero-image {
-        min-height: 420px;
-    }
-
-    .hj-about__story {
-        padding: 72px 24px;
-        gap: 48px;
-    }
-
-    .hj-about__story-image {
-        height: 420px;
-    }
-
-    .hj-about__subheading {
-        margin-top: 48px;
-        font-size: 30px;
-    }
-
-    .hj-about__people {
-        padding: 72px 24px;
-    }
-
-    .hj-about__people-header {
-        margin-bottom: 48px;
-    }
-
-    .hj-about__people-intro {
-        font-size: 34px;
-    }
-
-    .hj-about__people-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .hj-about__person {
-        padding: 36px 0;
-    }
-
-    .hj-about__person+.hj-about__person {
-        padding: 36px 0;
-        border-top: 1px solid var(--hj-border);
-        border-left: 0;
-    }
-
-    .hj-about__people-followup {
-        margin-top: 40px;
-    }
-
-    .hj-about__curated-content {
-        padding: 72px 24px;
-    }
-
-    .hj-about__section-heading {
-        margin-bottom: 32px;
-        font-size: 42px;
-    }
-
-    .hj-about__curated-image {
-        min-height: 420px;
-    }
-
-    .hj-about__standout {
-        margin-top: 36px !important;
-        font-size: 26px;
-    }
-
-    .hj-about__moments {
-        margin-top: 32px;
-    }
-
-    .hj-about__moments p {
-        font-size: 16px;
-    }
-
-    .hj-about__more-inner {
-        padding: 80px 24px;
-    }
-
-    .hj-about__closing-inner {
-        padding: 88px 24px 96px;
-    }
-
-    .hj-about__closing-inner h2 {
-        font-size: 40px;
-    }
-
-    .hj-about__closing-welcome {
-        margin-top: 36px;
-    }
-}
-
-
-/* =========================================================
-   HJ CLIENT MARQUEE — PLACEHOLDER
-   ========================================================= */
-
-.hj-client-marquee__placeholder-track {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center;
-    width: max-content !important;
-    max-width: none !important;
-    animation: hj-client-marquee-scroll 34s linear infinite;
-    will-change: transform;
-}
-
-.hj-client-marquee__placeholder-group {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center;
-    flex-wrap: nowrap !important;
-    flex-shrink: 0 !important;
-    width: max-content !important;
-    max-width: none !important;
-    gap: 72px;
-    padding-right: 72px;
-}
-
-.hj-client-marquee__placeholder-item {
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    flex: 0 0 150px !important;
-    width: 150px !important;
-    min-width: 150px !important;
-    max-width: 150px !important;
-    height: 72px;
-    border: 1px dashed var(--hj-border);
-    background: color-mix(in srgb,
-            var(--hj-soft-grey) 45%,
-            var(--hj-warm-white));
-    box-sizing: border-box;
-}
-
-.hj-client-marquee__placeholder-item span {
-    display: block;
-    color: var(--hj-muted);
-    font-size: 10px;
-    line-height: 1.4;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    white-space: nowrap;
-}
-
-
-/* Pause placeholder marquee on hover */
-
-.hj-client-marquee__viewport:hover .hj-client-marquee__placeholder-track {
-    animation-play-state: paused;
-}
-
-
-/* ---------------------------------------------------------
-   TABLET
-   --------------------------------------------------------- */
-
-@media screen and (max-width: 989px) {
-    .hj-client-marquee__placeholder-group {
-        gap: 56px;
-        padding-right: 56px;
-    }
-
-    .hj-client-marquee__placeholder-item {
-        flex-basis: 130px !important;
-        width: 130px !important;
-        min-width: 130px !important;
-        max-width: 130px !important;
-        height: 64px;
-    }
-}
-
-
-/* ---------------------------------------------------------
-   MOBILE
-   --------------------------------------------------------- */
-
-@media screen and (max-width: 749px) {
-    .hj-client-marquee__placeholder-track {
-        animation-duration: 28s;
-    }
-
-    .hj-client-marquee__placeholder-group {
-        gap: 40px;
-        padding-right: 40px;
-    }
-
-    .hj-client-marquee__placeholder-item {
-        flex-basis: 110px !important;
-        width: 110px !important;
-        min-width: 110px !important;
-        max-width: 110px !important;
-        height: 56px;
-    }
-
-    .hj-client-marquee__placeholder-item span {
-        font-size: 9px;
-    }
-}
-
-
-/* =========================================================
    HAMPER JUNCTION — DEFAULT PAGE WIDTH
    ========================================================= */
 
@@ -4751,4 +4158,175 @@ h6,
     width: min(100% - (var(--hj-page-gutter) * 2), var(--hj-content-width-narrow));
     max-width: var(--hj-content-width-narrow);
     margin-inline: auto;
+}
+
+/* =========================================================
+   HAMPER JUNCTION — MOBILE HEADER / DRAWER FIX
+   ========================================================= */
+
+@media screen and (max-width: 989px) {
+
+    /* Keep the header as the positioning reference */
+    .hj-header-wrapper .header {
+        position: relative;
+        z-index: 100;
+        min-height: 7.2rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    /* Keep the drawer trigger in the header without creating
+       a narrow containing block for the full-width drawer. */
+    .hj-header-wrapper header-drawer {
+        position: static !important;
+        display: block;
+        z-index: 200;
+    }
+
+    .hj-header-wrapper .menu-drawer-container {
+        position: static !important;
+        display: flex;
+    }
+
+    /* Centre the logo against the actual mobile viewport/header */
+    .hj-header-wrapper .header--mobile-center .header__heading {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: 0;
+        width: max-content;
+        transform: translate(-50%, -50%);
+        z-index: 210;
+    }
+
+    .hj-header-wrapper .header--mobile-center .header__heading-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .hj-header-wrapper .hj-logo-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hj-header-wrapper .hj-logo {
+        display: block;
+        width: 14rem;
+        max-width: 14rem;
+        height: auto;
+    }
+
+    /* Never allow desktop navigation to render on mobile */
+    .hj-header-wrapper .header__inline-menu,
+    .hj-header-wrapper .header__menu {
+        display: none !important;
+    }
+
+    /* Keep menu/search controls above the open drawer */
+    .hj-header-wrapper .header__icons,
+    .hj-header-wrapper .header__icon,
+    .hj-header-wrapper .header__icon--menu {
+        position: relative;
+        z-index: 250;
+    }
+
+    .hj-header-wrapper .header__icon {
+        width: 4.4rem;
+        height: 4.4rem;
+    }
+
+    /* Full-width mobile drawer.
+       header-drawer is static so this absolute element uses
+       the full header as its containing block. */
+    .hj-header-wrapper .menu-drawer {
+        position: absolute !important;
+        top: 100% !important;
+        left: 0 !important;
+        right: auto !important;
+        width: 100% !important;
+        max-width: none !important;
+        min-width: 100% !important;
+        min-height: calc(100vh - 7.2rem);
+        z-index: 150 !important;
+        background: var(--hj-warm-white) !important;
+        background-image: none !important;
+        color: var(--hj-text) !important;
+        border: 0 !important;
+        box-shadow: none !important;
+    }
+
+    .hj-header-wrapper .menu-drawer__inner-container {
+        width: 100%;
+        min-height: 100%;
+        background: var(--hj-warm-white) !important;
+        color: var(--hj-text) !important;
+    }
+
+    /* Mobile navigation text must remain dark despite the
+       desktop header's white navigation rules. */
+    .hj-header-wrapper .menu-drawer .menu-drawer__menu-item,
+    .hj-header-wrapper .menu-drawer .menu-drawer__menu-item span,
+    .hj-header-wrapper .menu-drawer .list-menu__item,
+    .hj-header-wrapper .menu-drawer .list-menu__item a,
+    .hj-header-wrapper .menu-drawer .menu-drawer__menu-item--active {
+        color: var(--hj-text) !important;
+    }
+
+    .hj-header-wrapper .menu-drawer .menu-drawer__menu-item {
+        min-height: 5.6rem;
+        padding: 1.6rem 2rem;
+        font-size: 1.5rem;
+        line-height: 1.3;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        border-bottom: 1px solid var(--hj-border);
+    }
+
+    .hj-header-wrapper .menu-drawer .menu-drawer__menu-item:hover,
+    .hj-header-wrapper .menu-drawer .menu-drawer__menu-item:focus-visible {
+        background: var(--hj-surface-soft) !important;
+        color: var(--hj-text) !important;
+    }
+
+    .hj-header-wrapper .menu-drawer svg,
+    .hj-header-wrapper .menu-drawer .svg-wrapper,
+    .hj-header-wrapper .menu-drawer .icon-caret {
+        color: var(--hj-text) !important;
+    }
+}
+
+/* =========================================================
+   HAMPER JUNCTION — SMALL MOBILE HEADER
+   ========================================================= */
+
+@media screen and (max-width: 480px) {
+
+    .hj-header-wrapper .header {
+        min-height: 6.8rem;
+    }
+
+    .hj-header-wrapper .hj-logo {
+        width: 12.5rem;
+        max-width: 12.5rem;
+    }
+
+    .hj-header-wrapper .header__icon {
+        width: 4.2rem;
+        height: 4.2rem;
+    }
+
+    .hj-header-wrapper .menu-drawer {
+        min-height: calc(100vh - 6.8rem);
+    }
+
+    .hj-header-wrapper .menu-drawer .menu-drawer__menu-item {
+        min-height: 5.4rem;
+        padding: 1.5rem 2rem;
+        font-size: 1.4rem;
+    }
 }
