@@ -1,21 +1,187 @@
 {
-    "sections": {
-        "main": {
-            "type": "hj-faq",
-            "settings": {
-                "eyebrow": "FREQUENTLY ASKED QUESTIONS",
-                "heading": "Everything you need to know.",
-                "intro": "<p>Find answers to common questions about our hampers, gifting and custom gifting services.</p>",
-                "show_cta": true,
-                "cta_eyebrow": "NEED A LITTLE MORE HELP?",
-                "cta_heading": "Have a gifting occasion in mind?",
-                "cta_text": "<p>We're here to help you find something thoughtful for the occasion.</p>",
-                "cta_label": "Explore our hampers",
-                "cta_link": "/pages/hampers"
-            }
+  "sections": {
+    "main": {
+      "type": "hj-faq",
+      "settings": {
+        "eyebrow": "FREQUENTLY ASKED QUESTIONS",
+        "heading": "Frequently Asked Questions",
+        "intro": "",
+        "show_cta": true,
+        "cta_eyebrow": "",
+        "cta_heading": "Still have a question?",
+        "cta_text": "<p>We're happy to help. Get in touch via our Contact page and we'll get back to you within 24–48 hours.</p>",
+        "cta_label": "Contact us",
+        "cta_link": "/pages/contact"
+      },
+      "blocks": {
+        "general_1": {
+          "type": "faq",
+          "settings": {
+            "category": "GENERAL QUESTIONS",
+            "question": "What types of hampers do you offer?",
+            "answer": "<p>We curate a range of gift hampers, including festive collections, wellness sets, home décor bundles, corporate gifting boxes, birthday hampers, and seasonal specials.</p>"
+          }
+        },
+        "general_2": {
+          "type": "faq",
+          "settings": {
+            "category": "GENERAL QUESTIONS",
+            "question": "Can I get a custom hamper?",
+            "answer": "<p>Yes. We offer personalised hamper curation based on your occasion, theme, colour palette, or budget.</p>"
+          }
+        },
+        "general_3": {
+          "type": "faq",
+          "settings": {
+            "category": "GENERAL QUESTIONS",
+            "question": "Do you do corporate gifting?",
+            "answer": "<p>Yes, we specialise in bulk orders, branded packaging, and tailored gifting solutions for teams, clients, and events.</p>"
+          }
+        },
+        "delivery_1": {
+          "type": "faq",
+          "settings": {
+            "category": "DELIVERY & SHIPPING",
+            "question": "Do you deliver Australia-wide?",
+            "answer": "<p>Yes, we ship from Sydney to all locations across Australia. Delivery times vary depending on your region.</p>"
+          }
+        },
+        "delivery_2": {
+          "type": "faq",
+          "settings": {
+            "category": "DELIVERY & SHIPPING",
+            "question": "Can I request a specific delivery date?",
+            "answer": "<p>You may request a preferred delivery date. We do our best to meet it, especially for birthdays, anniversaries, and corporate events.</p>"
+          }
+        },
+        "delivery_3": {
+          "type": "faq",
+          "settings": {
+            "category": "DELIVERY & SHIPPING",
+            "question": "What happens if the recipient isn't home?",
+            "answer": "<p>Australia Post will leave the parcel in a safe location or redirect it to the nearest post office. You'll receive tracking updates throughout the process.</p>"
+          }
+        },
+        "personalisation_1": {
+          "type": "faq",
+          "settings": {
+            "category": "PERSONALISATION & PACKAGING",
+            "question": "Can I add a personal message?",
+            "answer": "<p>Absolutely. We include your personalised message inside the hamper for a thoughtful touch.</p>"
+          }
+        },
+        "personalisation_2": {
+          "type": "faq",
+          "settings": {
+            "category": "PERSONALISATION & PACKAGING",
+            "question": "Is your packaging eco-friendly?",
+            "answer": "<p>Many of our packaging materials are recyclable or biodegradable. We're committed to sustainable gifting.</p>"
+          }
+        },
+        "ordering_1": {
+          "type": "faq",
+          "settings": {
+            "category": "ORDERING & PAYMENT",
+            "question": "How do I place an order?",
+            "answer": "<p>Our website currently showcases our full hamper range. To place an order, simply contact us with your preferred hampers, any customisation requests, and your delivery details, and we'll confirm your order and send an invoice to secure it. Online ordering is coming soon.</p>"
+          }
+        },
+        "ordering_2": {
+          "type": "faq",
+          "settings": {
+            "category": "ORDERING & PAYMENT",
+            "question": "Can I change or cancel my order?",
+            "answer": "<p>Once an invoice has been generated, orders cannot be cancelled or amended, as preparation begins immediately after confirmation. If you need to make a change, contact us as soon as possible and we'll do our best to help before preparation begins.</p>"
+          }
+        },
+        "ordering_3": {
+          "type": "faq",
+          "settings": {
+            "category": "ORDERING & PAYMENT",
+            "question": "Do you offer bulk order discounts?",
+            "answer": "<p>Yes, we offer competitive pricing for corporate and bulk gifting. Contact us for a custom quote.</p>"
+          }
+        },
+        "returns_1": {
+          "type": "faq",
+          "settings": {
+            "category": "RETURNS & EXCHANGES",
+            "question": "What's your return policy?",
+            "answer": "<p>We don't accept returns for change of mind. Returns are only accepted where an item arrives faulty, damaged, or incorrect, and you must contact us within 48 hours of delivery with a clear, unedited unboxing video.</p>"
+          }
+        },
+        "returns_2": {
+          "type": "faq",
+          "settings": {
+            "category": "RETURNS & EXCHANGES",
+            "question": "How are refunds processed?",
+            "answer": "<p>Approved refunds are issued to your original payment method. Processing times depend on your bank or payment provider.</p>"
+          }
+        },
+        "returns_3": {
+          "type": "faq",
+          "settings": {
+            "category": "RETURNS & EXCHANGES",
+            "question": "Can I exchange an item?",
+            "answer": "<p>We only replace items that are confirmed faulty or damaged, for the same item where possible.</p>"
+          }
+        },
+        "returns_4": {
+          "type": "faq",
+          "settings": {
+            "category": "RETURNS & EXCHANGES",
+            "question": "Are sale items eligible for return?",
+            "answer": "<p>No, sale or clearance items are not eligible for return or refund.</p>"
+          }
+        },
+        "shipping_1": {
+          "type": "faq",
+          "settings": {
+            "category": "SHIPPING DETAILS",
+            "question": "Do you deliver to PO Boxes and parcel lockers?",
+            "answer": "<p>Yes, we deliver to PO Boxes and parcel lockers via Australia Post.</p>"
+          }
+        },
+        "shipping_2": {
+          "type": "faq",
+          "settings": {
+            "category": "SHIPPING DETAILS",
+            "question": "What if an item is out of stock?",
+            "answer": "<p>We may substitute it with a similar item of equal or greater value to maintain hamper quality.</p>"
+          }
+        },
+        "shipping_3": {
+          "type": "faq",
+          "settings": {
+            "category": "SHIPPING DETAILS",
+            "question": "Can hampers include alcohol?",
+            "answer": "<p>Yes, for recipients aged 18 and over. ID may be required upon delivery.</p>"
+          }
         }
-    },
-    "order": [
-        "main"
-    ]
+      },
+      "block_order": [
+        "general_1",
+        "general_2",
+        "general_3",
+        "delivery_1",
+        "delivery_2",
+        "delivery_3",
+        "personalisation_1",
+        "personalisation_2",
+        "ordering_1",
+        "ordering_2",
+        "ordering_3",
+        "returns_1",
+        "returns_2",
+        "returns_3",
+        "returns_4",
+        "shipping_1",
+        "shipping_2",
+        "shipping_3"
+      ]
+    }
+  },
+  "order": [
+    "main"
+  ]
 }

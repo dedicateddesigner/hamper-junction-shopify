@@ -130,18 +130,6 @@
         "description": "<p>Thoughtfully curated gifts for life's meaningful moments.</p>"
       }
     },
-    "seasonal_hampers": {
-      "type": "hj-seasonal-hampers",
-      "settings": {
-        "eyebrow": "SEASONAL GIFTING",
-        "heading": "Celebrate the season beautifully.",
-        "description": "<p>Thoughtfully curated hampers for celebrations, traditions and moments worth sharing.</p>",
-        "collection_1": "diwali-collection-2026",
-        "collection_2": "",
-        "collection_3": "",
-        "collection_4": ""
-      }
-    },
     "featured_hampers": {
       "type": "hj-featured-hampers",
       "settings": {
@@ -152,6 +140,18 @@
         "products_to_show": 4,
         "show_view_all": true,
         "view_all_text": "View all hampers"
+      }
+    },
+    "seasonal_hampers": {
+      "type": "hj-seasonal-hampers",
+      "settings": {
+        "eyebrow": "SEASONAL GIFTING",
+        "heading": "Celebrate the season beautifully.",
+        "description": "<p>Thoughtfully curated hampers for celebrations, traditions and moments worth sharing.</p>",
+        "collection_1": "diwali-collection-2026",
+        "collection_2": "",
+        "collection_3": "",
+        "collection_4": ""
       }
     },
     "corporate_gifting": {
@@ -209,6 +209,64 @@
     },
     "client_marquee": {
       "type": "hj-client-marquee",
+      "blocks": {
+        "client_eaRcfD": {
+          "type": "client",
+          "settings": {
+            "logo": "shopify://shop_images/Accura-Homes.webp",
+            "brand_name": "Accura Homes",
+            "link": ""
+          }
+        },
+        "client_GzFhxr": {
+          "type": "client",
+          "settings": {
+            "logo": "shopify://shop_images/Fortune-8-logo.webp",
+            "brand_name": "Fortune 8",
+            "link": ""
+          }
+        },
+        "client_XwnEPx": {
+          "type": "client",
+          "settings": {
+            "logo": "shopify://shop_images/LS_RiverstoneG.webp",
+            "brand_name": "Laing + Simmons",
+            "link": ""
+          }
+        },
+        "client_GRczD7": {
+          "type": "client",
+          "settings": {
+            "logo": "shopify://shop_images/nectar-logo-homeloans-and-finance-Abhishek.webp",
+            "brand_name": "Nectar",
+            "link": ""
+          }
+        },
+        "client_q3A3Dn": {
+          "type": "client",
+          "settings": {
+            "logo": "shopify://shop_images/V-Property-Consulting-New.webp",
+            "brand_name": "V Property",
+            "link": ""
+          }
+        },
+        "client_CRmBfd": {
+          "type": "client",
+          "settings": {
+            "logo": "shopify://shop_images/Laksha-Homes.webp",
+            "brand_name": "Laksh",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "client_eaRcfD",
+        "client_GzFhxr",
+        "client_XwnEPx",
+        "client_GRczD7",
+        "client_q3A3Dn",
+        "client_CRmBfd"
+      ],
       "settings": {
         "eyebrow": "TRUSTED BY",
         "heading": "Thoughtful gifting, trusted by businesses."
@@ -220,6 +278,7 @@
         "video_1": {
           "type": "video",
           "settings": {
+            "video": "shopify://files/videos/Video-1.mp4",
             "caption": "",
             "link": "",
             "open_new_tab": true,
@@ -229,6 +288,7 @@
         "video_2": {
           "type": "video",
           "settings": {
+            "video": "shopify://files/videos/Video-2.mp4",
             "caption": "",
             "link": "",
             "open_new_tab": true,
@@ -238,6 +298,7 @@
         "video_3": {
           "type": "video",
           "settings": {
+            "video": "shopify://files/videos/Video-3.mp4",
             "caption": "",
             "link": "",
             "open_new_tab": true,
@@ -247,6 +308,7 @@
         "video_4": {
           "type": "video",
           "settings": {
+            "video": "shopify://files/videos/Video-4.mp4",
             "caption": "",
             "link": "",
             "open_new_tab": true,
@@ -267,6 +329,16 @@
         "instagram_url": "",
         "instagram_label": "Follow us on Instagram"
       }
+    },
+    "custom_liquid_FBpcti": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<!-- Elfsight Google Reviews | Untitled Google Reviews -->\n<script src=\"https://elfsightcdn.com/platform.js\" async></script>\n<div class=\"elfsight-app-56aaf05c-23be-49cc-8be9-1dc381763ecd\" data-elfsight-app-lazy></div>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
@@ -277,6 +349,7 @@
     "corporate_gifting",
     "why_hamper_junction",
     "client_marquee",
-    "social_proof"
+    "social_proof",
+    "custom_liquid_FBpcti"
   ]
 }

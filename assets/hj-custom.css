@@ -3444,7 +3444,8 @@ h6,
     font-size: clamp(32px, 4vw, 52px);
     line-height: 1;
     letter-spacing: -0.035em;
-    font-weight: 400;
+    font-weight: 500;
+    color: var(--hj-white);
 }
 
 .hj-faq__cta-text {
