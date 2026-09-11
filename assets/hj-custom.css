@@ -105,6 +105,7 @@ h6,
     transform: translateY(-2px);
 }
 
+
 /* =========================================================
    PRODUCT CARDS
    ========================================================= */
@@ -815,6 +816,16 @@ h6,
 .hj-featured-view-all__button {
     min-width: 18rem;
 }
+
+.hj-featured-view-all__button::after {
+    box-shadow: none;
+}
+
+.button:not([disabled]):hover:after{
+    box-shadow: none;
+}
+
+
 
 .hj-featured-empty {
     display: flex;
@@ -5055,3 +5066,332 @@ h6,
 }
 
 
+/* =========================================================
+   HAMPER JUNCTION — CLIENT MARQUEE
+   ========================================================= */
+
+.hj-client-marquee {
+  width: 100%;
+  padding: 80px 0;
+  background: var(--hj-warm-white);
+  overflow: hidden;
+}
+
+.hj-client-marquee__container {
+  width: min(100% - 48px, var(--hj-content-width));
+  margin: 0 auto;
+}
+
+.hj-client-marquee__header {
+  margin-bottom: 48px;
+}
+
+.hj-client-marquee__eyebrow {
+  margin: 0 0 14px;
+  color: var(--hj-muted);
+  font-size: 12px;
+  line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hj-client-marquee__heading {
+  margin: 0;
+  max-width: 760px;
+  color: var(--hj-text);
+  font-size: clamp(34px, 3.5vw, 52px);
+  line-height: 1.08;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+}
+
+
+/* ---------------------------------------------------------
+   VIEWPORT
+   --------------------------------------------------------- */
+
+.hj-client-marquee__viewport {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+
+  /* Soft fade at the edges */
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 5%,
+    #000 95%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 5%,
+    #000 95%,
+    transparent 100%
+  );
+}
+
+
+/* ---------------------------------------------------------
+   MOVING TRACK
+   --------------------------------------------------------- */
+
+.hj-client-marquee__track {
+  display: flex;
+  width: max-content;
+  flex-wrap: nowrap;
+
+  animation: hj-client-marquee-scroll 32s linear infinite;
+  will-change: transform;
+}
+
+
+/* Each duplicated group must have identical dimensions */
+.hj-client-marquee__group {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  flex-wrap: nowrap;
+}
+
+
+/* ---------------------------------------------------------
+   LOGO ITEMS
+   --------------------------------------------------------- */
+
+.hj-client-marquee__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 250px;
+  width: 250px;
+  height: 125px;
+
+  margin-right: 20px;
+  /* padding: 20px 28px; */
+
+  background: var(--hj-white);
+  border: 1px solid var(--hj-border);
+  border-radius: var(--hj-radius-md);
+
+  box-sizing: border-box;
+
+}
+
+
+/* Logo link */
+.hj-client-marquee__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+
+  text-decoration: none;
+}
+
+
+/* Actual logo */
+.hj-client-marquee__logo {
+  display: block;
+
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  /* max-height: 64px; */
+
+  object-fit: contain;
+    overflow: hidden;  
+    border-radius: var(--hj-radius-md);
+}
+
+
+/* ---------------------------------------------------------
+   HOVER
+   --------------------------------------------------------- */
+
+.hj-client-marquee__item {
+  transition:
+    border-color 180ms var(--hj-ease),
+    box-shadow 180ms var(--hj-ease),
+    transform 180ms var(--hj-ease);
+}
+
+.hj-client-marquee__item:hover {
+  border-color: var(--hj-border-light);
+
+  box-shadow:
+    0 12px 30px color-mix(
+      in srgb,
+      var(--hj-black) 8%,
+      transparent
+    );
+
+  transform: translateY(-2px);
+}
+
+
+/* ---------------------------------------------------------
+   INFINITE SCROLL
+   --------------------------------------------------------- */
+
+@keyframes hj-client-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+
+/* Pause when user interacts */
+.hj-client-marquee__viewport:hover
+.hj-client-marquee__track {
+  animation-play-state: paused;
+}
+
+
+/* ---------------------------------------------------------
+   EDITOR PLACEHOLDER
+   --------------------------------------------------------- */
+
+.hj-client-marquee__placeholder-track {
+  display: flex;
+  width: max-content;
+}
+
+.hj-client-marquee__placeholder-group {
+  display: flex;
+  flex: 0 0 auto;
+}
+
+.hj-client-marquee__placeholder-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 220px;
+  width: 220px;
+  height: 110px;
+
+  margin-right: 32px;
+
+  background: var(--hj-surface-soft);
+  border: 1px dashed var(--hj-border);
+  border-radius: var(--hj-radius-sm);
+
+  color: var(--hj-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.hj-client-marquee__editor-note {
+  margin-top: 20px;
+
+  color: var(--hj-muted);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+
+/* ---------------------------------------------------------
+   REDUCED MOTION
+   --------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .hj-client-marquee__track {
+    animation: none;
+    transform: none;
+  }
+
+  .hj-client-marquee__viewport {
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+}
+
+
+/* ---------------------------------------------------------
+   TABLET
+   --------------------------------------------------------- */
+
+@media screen and (max-width: 989px) {
+
+  .hj-client-marquee {
+    padding: 64px 0;
+  }
+
+  .hj-client-marquee__header {
+    margin-bottom: 36px;
+  }
+
+  .hj-client-marquee__item {
+    flex-basis: 190px;
+    width: 190px;
+    height: 96px;
+
+    margin-right: 24px;
+    padding: 18px 24px;
+  }
+
+  .hj-client-marquee__logo {
+    max-height: 54px;
+  }
+
+  .hj-client-marquee__track {
+    animation-duration: 28s;
+  }
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE
+   --------------------------------------------------------- */
+
+@media screen and (max-width: 480px) {
+
+  .hj-client-marquee {
+    padding: 52px 0;
+  }
+
+  .hj-client-marquee__container {
+    width: min(100% - 40px, var(--hj-content-width));
+  }
+
+  .hj-client-marquee__header {
+    margin-bottom: 30px;
+  }
+
+  .hj-client-marquee__eyebrow {
+    margin-bottom: 12px;
+    font-size: 11px;
+  }
+
+  .hj-client-marquee__heading {
+    font-size: 32px;
+  }
+
+  .hj-client-marquee__item {
+    flex-basis: 160px;
+    width: 160px;
+    height: 84px;
+
+    margin-right: 18px;
+    padding: 14px 18px;
+  }
+
+  .hj-client-marquee__logo {
+    max-height: 46px;
+  }
+
+  .hj-client-marquee__track {
+    animation-duration: 24s;
+  }
+}
