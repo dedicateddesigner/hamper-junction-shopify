@@ -200,10 +200,11 @@ h6,
 /* Navigation */
 
 .hj-header-wrapper .header__menu-item {
-    font-size: 1.35rem;
-    letter-spacing: 0.04em;
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--hj-white) !important;
+    font-weight: 500;
 }
 
 
