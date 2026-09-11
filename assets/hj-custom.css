@@ -216,6 +216,182 @@ h6,
     color: color-mix(in srgb, var(--hj-white) 65%, transparent) !important;
 }
 
+/* =========================================================
+   HAMPER JUNCTION — DESKTOP SUBMENUS
+   ========================================================= */
+
+@media screen and (min-width: 990px) {
+
+    /* Dropdown container */
+    .hj-header-wrapper .header__submenu {
+        min-width: 250px;
+        padding: 10px 0;
+        margin-top: 8px;
+
+        background: var(--hj-dark-grey);
+        border: 1px solid color-mix(in srgb,
+                var(--hj-white) 10%,
+                transparent);
+        border-radius: var(--hj-radius-sm);
+
+        box-shadow:
+            0 18px 45px color-mix(in srgb, var(--hj-black) 32%, transparent);
+
+        overflow: hidden;
+    }
+
+
+    /* All submenu links */
+    .hj-header-wrapper .header__submenu .header__menu-item {
+        display: flex;
+        align-items: center;
+
+        width: 100%;
+        /* min-height: 52px; */
+
+        padding: 15px 20px;
+
+        color: var(--hj-white) !important;
+
+        font-size: 13px;
+        line-height: 1.35;
+        font-weight: 500;
+        letter-spacing: 0.055em;
+        text-transform: uppercase;
+
+        text-decoration: none;
+
+        transition:
+            background-color 180ms var(--hj-ease),
+            color 180ms var(--hj-ease),
+            padding-left 180ms var(--hj-ease);
+    }
+
+
+    /* Remove Dawn's underline behaviour from submenu items */
+    .hj-header-wrapper .header__submenu .header__menu-item span {
+        text-decoration: none !important;
+    }
+
+
+    /* Hover */
+    .hj-header-wrapper .header__submenu .header__menu-item:hover {
+        /* background: color-mix(in srgb,
+                var(--hj-white) 8%,
+                transparent); */
+
+        color: var(--hj-white) !important;
+
+        padding-left: 28px;
+    }
+
+
+    /* Active submenu item */
+    .hj-header-wrapper .header__submenu .header__active-menu-item {
+        color: var(--hj-white) !important;
+        /* background: color-mix(in srgb,
+                var(--hj-white) 5%,
+                transparent); */
+    }
+
+
+    /* Submenu item separators */
+    .hj-header-wrapper .header__submenu>li+li {
+        border-top: 1px solid color-mix(in srgb,
+                var(--hj-white) 7%,
+                transparent);
+    }
+
+
+    /* -------------------------------------------------------
+     DROPDOWN ARROW
+     ------------------------------------------------------- */
+
+    .hj-header-wrapper .header__menu-item .icon-caret {
+        width: 10px;
+        height: 6px;
+        margin-left: 10px;
+
+        color: currentColor;
+
+        transition: transform 180ms var(--hj-ease);
+    }
+
+
+    /* Open state */
+    .hj-header-wrapper details[open]>.header__menu-item .icon-caret {
+        transform: rotate(180deg);
+    }
+
+
+    /* -------------------------------------------------------
+     NESTED SUBMENUS
+     ------------------------------------------------------- */
+
+    .hj-header-wrapper .header__submenu .header__submenu {
+        min-width: 280px;
+        margin-top: 0;
+
+        background: var(--hj-dark-grey);
+        border-radius: var(--hj-radius-sm);
+    }
+
+
+    .hj-header-wrapper .header__submenu .header__submenu .header__menu-item {
+        min-height: 48px;
+        padding: 12px 20px;
+
+        font-size: 12px;
+    }
+
+
+    /* -------------------------------------------------------
+     FIRST-LEVEL DROPDOWN POSITIONING
+     ------------------------------------------------------- */
+
+    .hj-header-wrapper .header__inline-menu details[open]>.header__submenu {
+        animation: hj-submenu-enter 180ms var(--hj-ease) both;
+        transform-origin: top left;
+    }
+
+
+    @keyframes hj-submenu-enter {
+        from {
+            opacity: 0;
+            transform: translateY(-5px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE / TABLET DRAWER SUBMENUS
+   ========================================================= */
+
+@media screen and (max-width: 989px) {
+
+    .hj-header-wrapper .menu-drawer__menu-item {
+        color: var(--hj-white) !important;
+    }
+
+    .hj-header-wrapper .menu-drawer__submenu {
+        background: var(--hj-dark-grey);
+    }
+
+    .hj-header-wrapper .menu-drawer__menu-item {
+        font-size: 14px;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+
+}
+
 /* Header icons */
 
 .hj-header-wrapper .header__icon {
