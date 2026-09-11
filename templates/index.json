@@ -207,6 +207,13 @@
         "description": "<p>Every hamper is brought together with care, from what goes inside to how it is presented.</p>"
       }
     },
+    "client_marquee": {
+      "type": "hj-client-marquee",
+      "settings": {
+        "eyebrow": "TRUSTED BY",
+        "heading": "Thoughtful gifting, trusted by businesses."
+      }
+    },
     "social_proof": {
       "type": "hj-social-proof",
       "blocks": {
@@ -269,6 +276,7 @@
     "seasonal_hampers",
     "corporate_gifting",
     "why_hamper_junction",
+    "client_marquee",
     "social_proof"
   ]
 }

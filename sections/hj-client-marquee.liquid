@@ -1,0 +1,208 @@
+<section class="hj-client-marquee">
+  <div class="hj-client-marquee__container">
+    <div class="hj-client-marquee__header">
+      <p class="hj-client-marquee__eyebrow">
+        {{ section.settings.eyebrow }}
+      </p>
+
+      {% if section.settings.heading != blank %}
+        <h2 class="hj-client-marquee__heading">
+          {{ section.settings.heading }}
+        </h2>
+      {% endif %}
+    </div>
+
+    {% assign has_logos = false %}
+
+    {% for block in section.blocks %}
+      {% if block.settings.logo != blank %}
+        {% assign has_logos = true %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+
+    {% if has_logos %}
+      <div
+        class="hj-client-marquee__viewport"
+        aria-label="{{ section.settings.heading | escape }}"
+      >
+        <div class="hj-client-marquee__track">
+          <div class="hj-client-marquee__group">
+            {% for block in section.blocks %}
+              {% if block.settings.logo != blank %}
+                <div
+                  class="hj-client-marquee__item"
+                  {{ block.shopify_attributes }}
+                >
+                  {% if block.settings.link != blank %}
+                    <a
+                      href="{{ block.settings.link }}"
+                      class="hj-client-marquee__link"
+                      {% if block.settings.brand_name != blank %}
+                        aria-label="{{ block.settings.brand_name | escape }}"
+                      {% endif %}
+                    >
+                  {% endif %}
+
+                  {{
+                    block.settings.logo
+                    | image_url: width: 500
+                    | image_tag:
+                      loading: 'lazy',
+                      widths: '200, 300, 400, 500',
+                      class: 'hj-client-marquee__logo',
+                      alt: block.settings.brand_name
+                  }}
+
+                  {% if block.settings.link != blank %}
+                    </a>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+
+          {%- comment -%}
+            Duplicate logo group creates the seamless marquee loop.
+          {%- endcomment -%}
+
+          <div class="hj-client-marquee__group" aria-hidden="true">
+            {% for block in section.blocks %}
+              {% if block.settings.logo != blank %}
+                <div class="hj-client-marquee__item">
+                  {% if block.settings.link != blank %}
+                    <a
+                      href="{{ block.settings.link }}"
+                      class="hj-client-marquee__link"
+                      tabindex="-1"
+                    >
+                  {% endif %}
+
+                  {{
+                    block.settings.logo
+                    | image_url: width: 500
+                    | image_tag:
+                      loading: 'lazy',
+                      widths: '200, 300, 400, 500',
+                      class: 'hj-client-marquee__logo',
+                      alt: ''
+                  }}
+
+                  {% if block.settings.link != blank %}
+                    </a>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+    {% else %}
+      {%- comment -%}
+        Placeholder state for Theme Editor.
+        This is visible in the customizer so the client knows
+        where logos will appear, but is hidden on the live storefront.
+      {%- endcomment -%}
+
+      {% if request.design_mode %}
+        <div class="hj-client-marquee__viewport">
+          <div class="hj-client-marquee__placeholder-track">
+            <div class="hj-client-marquee__placeholder-group">
+              {% for i in (1..6) %}
+                <div class="hj-client-marquee__placeholder-item">
+                  <span>CLIENT LOGO</span>
+                </div>
+              {% endfor %}
+            </div>
+
+            <div
+              class="hj-client-marquee__placeholder-group"
+              aria-hidden="true"
+            >
+              {% for i in (1..6) %}
+                <div class="hj-client-marquee__placeholder-item">
+                  <span>CLIENT LOGO</span>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <div class="hj-client-marquee__editor-note">Add client logos using the blocks below.</div>
+      {% endif %}
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "HJ Client Marquee",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "TRUSTED BY"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Thoughtful gifting, trusted by businesses."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "client",
+      "name": "Client logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Client logo",
+          "info": "Upload the client's logo. A transparent PNG, SVG or WebP works best."
+        },
+        {
+          "type": "text",
+          "id": "brand_name",
+          "label": "Brand name",
+          "default": "Client brand",
+          "info": "Used as the logo's accessible description."
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Optional. Add a website or relevant page for this client."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "HJ Client Marquee",
+      "blocks": [
+        {
+          "type": "client"
+        },
+        {
+          "type": "client"
+        },
+        {
+          "type": "client"
+        },
+        {
+          "type": "client"
+        },
+        {
+          "type": "client"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12
+}
+{% endschema %}

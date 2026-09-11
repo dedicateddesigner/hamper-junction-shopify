@@ -4117,6 +4117,116 @@ h6,
     }
 }
 
+
+/* =========================================================
+   HJ CLIENT MARQUEE — PLACEHOLDER
+   ========================================================= */
+
+.hj-client-marquee__placeholder-track {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    width: max-content !important;
+    max-width: none !important;
+    animation: hj-client-marquee-scroll 34s linear infinite;
+    will-change: transform;
+}
+
+.hj-client-marquee__placeholder-group {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    flex-wrap: nowrap !important;
+    flex-shrink: 0 !important;
+    width: max-content !important;
+    max-width: none !important;
+    gap: 72px;
+    padding-right: 72px;
+}
+
+.hj-client-marquee__placeholder-item {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 150px !important;
+    width: 150px !important;
+    min-width: 150px !important;
+    max-width: 150px !important;
+    height: 72px;
+    border: 1px dashed var(--hj-border);
+    background: color-mix(in srgb,
+            var(--hj-soft-grey) 45%,
+            var(--hj-warm-white));
+    box-sizing: border-box;
+}
+
+.hj-client-marquee__placeholder-item span {
+    display: block;
+    color: var(--hj-muted);
+    font-size: 10px;
+    line-height: 1.4;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+
+/* Pause placeholder marquee on hover */
+
+.hj-client-marquee__viewport:hover .hj-client-marquee__placeholder-track {
+    animation-play-state: paused;
+}
+
+
+/* ---------------------------------------------------------
+   TABLET
+   --------------------------------------------------------- */
+
+@media screen and (max-width: 989px) {
+    .hj-client-marquee__placeholder-group {
+        gap: 56px;
+        padding-right: 56px;
+    }
+
+    .hj-client-marquee__placeholder-item {
+        flex-basis: 130px !important;
+        width: 130px !important;
+        min-width: 130px !important;
+        max-width: 130px !important;
+        height: 64px;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE
+   --------------------------------------------------------- */
+
+@media screen and (max-width: 749px) {
+    .hj-client-marquee__placeholder-track {
+        animation-duration: 28s;
+    }
+
+    .hj-client-marquee__placeholder-group {
+        gap: 40px;
+        padding-right: 40px;
+    }
+
+    .hj-client-marquee__placeholder-item {
+        flex-basis: 110px !important;
+        width: 110px !important;
+        min-width: 110px !important;
+        max-width: 110px !important;
+        height: 56px;
+    }
+
+    .hj-client-marquee__placeholder-item span {
+        font-size: 9px;
+    }
+}
+
+
 /* =========================================================
    HAMPER JUNCTION — DEFAULT PAGE WIDTH
    ========================================================= */
