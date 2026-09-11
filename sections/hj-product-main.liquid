@@ -9,15 +9,12 @@
   class="hj-product"
 >
   <div class="hj-product__inner page-width">
-
     <div class="hj-product__grid">
-
       {%- comment -%}
         PRODUCT MEDIA
       {%- endcomment -%}
 
       <div class="hj-product__media">
-
         <div class="hj-product__media-main">
           {%- if product.featured_media != blank -%}
             {{
@@ -28,7 +25,9 @@
                 widths: '550, 750, 1000, 1200, 1400',
                 sizes: '(min-width: 990px) 58vw, 100vw',
                 class: 'hj-product__main-image',
-                alt: product.featured_media.alt | default: product.title | escape
+                alt: product.featured_media.alt
+              | default: product.title
+              | escape
             }}
           {%- else -%}
             {{ 'product-1' | placeholder_svg_tag: 'hj-product__placeholder' }}
@@ -54,26 +53,23 @@
                       widths: '120, 180, 240',
                       sizes: '80px',
                       class: 'hj-product__thumb-image',
-                      alt: media.alt | default: product.title | escape
+                      alt: media.alt
+                    | default: product.title
+                    | escape
                   }}
                 </a>
               {%- endif -%}
             {%- endfor -%}
           </div>
         {%- endif -%}
-
       </div>
-
 
       {%- comment -%}
         PRODUCT INFORMATION
       {%- endcomment -%}
 
       <div class="hj-product__info">
-
-        <div class="hj-product__eyebrow">
-          Thoughtfully curated gifting
-        </div>
+        <div class="hj-product__eyebrow">Thoughtfully curated gifting</div>
 
         <h1 class="hj-product__title">
           {{ product.title | escape }}
@@ -85,12 +81,9 @@
           </div>
         {%- endif -%}
 
-
         {%- if included_items != blank -%}
           <div class="hj-product__detail">
-            <h2 class="hj-product__detail-title">
-              What's included
-            </h2>
+            <h2 class="hj-product__detail-title">What's included</h2>
 
             <ul class="hj-product__included">
               {%- for item in included_items -%}
@@ -103,12 +96,9 @@
           </div>
         {%- endif -%}
 
-
         {%- if personalisation != blank -%}
           <div class="hj-product__detail hj-product__personalisation">
-            <h2 class="hj-product__detail-title">
-              Personalisation
-            </h2>
+            <h2 class="hj-product__detail-title">Personalisation</h2>
 
             <div class="hj-product__personalisation-text rte">
               {{ personalisation | metafield_tag }}
@@ -116,20 +106,41 @@
           </div>
         {%- endif -%}
 
-
         <div class="hj-product__note">
           <strong>Made it personal</strong>
-          <p>
-            Custom message cards are available on request.
-          </p>
+          <p>Custom message cards are available on request.</p>
         </div>
 
+        {%- assign is_alcohol_hamper = false -%}
+
+        {%- if product.tags contains 'alcohol' -%}
+          {%- assign is_alcohol_hamper = true -%}
+        {%- endif -%}
+
+        {%- if is_alcohol_hamper -%}
+          <div class="hj-product__alcohol-consent">
+            <label class="hj-product__alcohol-label">
+              <input
+                type="checkbox"
+                class="hj-product__alcohol-checkbox"
+                data-hj-alcohol-consent
+              >
+              <span>
+                This hamper contains alcohol. I confirm that the recipient is 18 years or older and understand that ID
+                may be required upon delivery.
+              </span>
+            </label>
+          </div>
+        {%- endif -%}
 
         <div class="hj-product__actions">
-
           <a
-            href="{{ routes.root_url }}pages/contact"
-            class="hj-product__enquire"
+            href="{{ pages['contact'].url }}"
+            class="hj-product__enquire{% if is_alcohol_hamper %} is-disabled{% endif %}"
+            {% if is_alcohol_hamper %}
+              aria-disabled="true"
+              data-hj-alcohol-enquire
+            {% endif %}
           >
             Enquire about this hamper
             <span aria-hidden="true">→</span>
@@ -141,16 +152,11 @@
           >
             ← View all hampers
           </a>
-
         </div>
-
       </div>
-
     </div>
-
   </div>
 </section>
-
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
@@ -160,6 +166,25 @@
 
     const mainImage = root.querySelector('.hj-product__main-image');
     const thumbs = root.querySelectorAll('[data-hj-product-thumb]');
+
+    const alcoholConsent = root.querySelector('[data-hj-alcohol-consent]');
+    const alcoholEnquire = root.querySelector('[data-hj-alcohol-enquire]');
+
+    if (alcoholConsent && alcoholEnquire) {
+      alcoholConsent.addEventListener('change', function () {
+        const accepted = alcoholConsent.checked;
+
+        alcoholEnquire.classList.toggle('is-disabled', !accepted);
+        alcoholEnquire.setAttribute('aria-disabled', accepted ? 'false' : 'true');
+      });
+
+      alcoholEnquire.addEventListener('click', function (event) {
+        if (!alcoholConsent.checked) {
+          event.preventDefault();
+          alcoholConsent.focus();
+        }
+      });
+    }
 
     if (!mainImage || !thumbs.length) return;
 
@@ -182,7 +207,6 @@
     });
   });
 </script>
-
 
 {% schema %}
 {
