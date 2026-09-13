@@ -339,6 +339,16 @@
         "padding_top": 40,
         "padding_bottom": 52
       }
+    },
+    "custom_liquid_rwXwgy": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<!-- Elfsight Social Feed | Social Feed -->\n<script src=\"https://elfsightcdn.com/platform.js\" async></script>\n<div class=\"elfsight-app-de893d5e-910f-4bba-9239-b550018818d3\" data-elfsight-app-lazy></div>",
+        "color_scheme": "scheme-4",
+        "padding_top": 60,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
@@ -350,6 +360,7 @@
     "why_hamper_junction",
     "client_marquee",
     "social_proof",
-    "custom_liquid_FBpcti"
+    "custom_liquid_FBpcti",
+    "custom_liquid_rwXwgy"
   ]
 }
