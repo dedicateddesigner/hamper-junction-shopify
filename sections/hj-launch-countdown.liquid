@@ -1,0 +1,520 @@
+<section
+  class="hj-launch-countdown hj-launch-countdown--{{ section.settings.height }} hj-launch-countdown--{{ section.settings.alignment }}"
+  data-hj-launch-countdown
+  data-launch-date="{{ section.settings.launch_date }}"
+  data-launch-time="{{ section.settings.launch_time }}"
+  data-launch-timezone="{{ section.settings.timezone }}"
+  style="--hj-countdown-card-width: {{ section.settings.card_width }}px;"
+>
+  <div class="hj-launch-countdown__background" aria-hidden="true">
+    {% if section.settings.background_image != blank %}
+      {{
+        section.settings.background_image
+        | image_url: width: 2400
+        | image_tag:
+          loading: 'eager',
+          widths: '750, 1100, 1500, 2000, 2400',
+          sizes: '100vw',
+          class: 'hj-launch-countdown__background-image'
+      }}
+    {% endif %}
+  </div>
+
+  <div class="hj-launch-countdown__container">
+    <div class="hj-launch-countdown__card">
+      {% if section.settings.eyebrow != blank %}
+        <p class="hj-launch-countdown__eyebrow">
+          {{ section.settings.eyebrow }}
+        </p>
+      {% endif %}
+
+      {% if section.settings.heading != blank %}
+        <h2 class="hj-launch-countdown__heading">
+          {{ section.settings.heading }}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.text != blank %}
+        <div class="hj-launch-countdown__text">
+          {{ section.settings.text }}
+        </div>
+      {% endif %}
+
+      <div
+        class="hj-launch-countdown__timer"
+        data-hj-countdown-timer
+        aria-label="Countdown to launch"
+      >
+        <div class="hj-launch-countdown__unit">
+          <span
+            class="hj-launch-countdown__number"
+            data-days
+            >00</span
+          >
+
+          <span class="hj-launch-countdown__label"> DAYS </span>
+        </div>
+
+        <span
+          class="hj-launch-countdown__separator"
+          aria-hidden="true"
+        >
+          :
+        </span>
+
+        <div class="hj-launch-countdown__unit">
+          <span
+            class="hj-launch-countdown__number"
+            data-hours
+            >00</span
+          >
+
+          <span class="hj-launch-countdown__label"> HOURS </span>
+        </div>
+
+        <span
+          class="hj-launch-countdown__separator"
+          aria-hidden="true"
+        >
+          :
+        </span>
+
+        <div class="hj-launch-countdown__unit">
+          <span
+            class="hj-launch-countdown__number"
+            data-minutes
+            >00</span
+          >
+
+          <span class="hj-launch-countdown__label"> MINUTES </span>
+        </div>
+
+        <span
+          class="hj-launch-countdown__separator"
+          aria-hidden="true"
+        >
+          :
+        </span>
+
+        <div class="hj-launch-countdown__unit">
+          <span
+            class="hj-launch-countdown__number"
+            data-seconds
+            >00</span
+          >
+
+          <span class="hj-launch-countdown__label"> SECONDS </span>
+        </div>
+      </div>
+
+      <p
+        class="hj-launch-countdown__date"
+        data-hj-countdown-date
+      ></p>
+
+      <div
+        class="hj-launch-countdown__live"
+        data-hj-countdown-live
+        hidden
+      >
+        WE’RE LIVE
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (() => {
+    const initCountdowns = () => {
+      const sections = document.querySelectorAll('[data-hj-launch-countdown]');
+
+      sections.forEach((section) => {
+        if (section.dataset.hjCountdownInitialised === 'true') {
+          return;
+        }
+
+        section.dataset.hjCountdownInitialised = 'true';
+
+        const launchDate = section.dataset.launchDate;
+        const launchTime = section.dataset.launchTime;
+        const timezone = section.dataset.launchTimezone;
+
+        if (!launchDate || !launchTime || !timezone) {
+          return;
+        }
+
+        const timer = section.querySelector('[data-hj-countdown-timer]');
+
+        const liveMessage = section.querySelector('[data-hj-countdown-live]');
+
+        const dateDisplay = section.querySelector('[data-hj-countdown-date]');
+
+        const days = section.querySelector('[data-days]');
+        const hours = section.querySelector('[data-hours]');
+        const minutes = section.querySelector('[data-minutes]');
+        const seconds = section.querySelector('[data-seconds]');
+
+        /*
+         * Convert the selected date/time in the selected
+         * IANA timezone into a UTC timestamp.
+         */
+        const getTargetTimestamp = () => {
+          const [year, month, day] = launchDate.split('-').map(Number);
+
+          const [hour, minute] = launchTime.split(':').map(Number);
+
+          let utcTimestamp = Date.UTC(year, month - 1, day, hour, minute, 0);
+
+          for (let i = 0; i < 3; i++) {
+            const date = new Date(utcTimestamp);
+
+            const parts = new Intl.DateTimeFormat('en-US', {
+              timeZone: timezone,
+              year: 'numeric',
+              month: '2-digit',
+              day: '2-digit',
+              hour: '2-digit',
+              minute: '2-digit',
+              second: '2-digit',
+              hourCycle: 'h23',
+            }).formatToParts(date);
+
+            const values = {};
+
+            parts.forEach((part) => {
+              if (part.type !== 'literal') {
+                values[part.type] = Number(part.value);
+              }
+            });
+
+            const zonedTimestamp = Date.UTC(
+              values.year,
+              values.month - 1,
+              values.day,
+              values.hour,
+              values.minute,
+              values.second
+            );
+
+            const desiredTimestamp = Date.UTC(year, month - 1, day, hour, minute, 0);
+
+            utcTimestamp += desiredTimestamp - zonedTimestamp;
+          }
+
+          return utcTimestamp;
+        };
+
+        const targetTimestamp = getTargetTimestamp();
+
+        /*
+         * Display the selected launch date/time.
+         */
+        if (dateDisplay) {
+          const launchTimestamp = new Date(targetTimestamp);
+
+          const formattedDate = new Intl.DateTimeFormat('en-AU', {
+            timeZone: timezone,
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+            hour: 'numeric',
+            minute: '2-digit',
+            hour12: true,
+            timeZoneName: 'short',
+          }).format(launchTimestamp);
+
+          dateDisplay.textContent = formattedDate.toUpperCase();
+        }
+
+        let interval;
+
+        /*
+         * Update countdown.
+         */
+        const updateCountdown = () => {
+          const distance = targetTimestamp - Date.now();
+
+          /*
+           * Launch reached.
+           */
+          if (distance <= 0) {
+            if (days) {
+              days.textContent = '00';
+            }
+
+            if (hours) {
+              hours.textContent = '00';
+            }
+
+            if (minutes) {
+              minutes.textContent = '00';
+            }
+
+            if (seconds) {
+              seconds.textContent = '00';
+            }
+
+            if (timer) {
+              timer.hidden = true;
+            }
+
+            if (dateDisplay) {
+              dateDisplay.hidden = true;
+            }
+
+            if (liveMessage) {
+              liveMessage.hidden = false;
+            }
+
+            if (interval) {
+              clearInterval(interval);
+            }
+
+            return;
+          }
+
+          const totalSeconds = Math.floor(distance / 1000);
+
+          const daysValue = Math.floor(totalSeconds / 86400);
+
+          const hoursValue = Math.floor((totalSeconds % 86400) / 3600);
+
+          const minutesValue = Math.floor((totalSeconds % 3600) / 60);
+
+          const secondsValue = totalSeconds % 60;
+
+          if (days) {
+            days.textContent = String(daysValue).padStart(2, '0');
+          }
+
+          if (hours) {
+            hours.textContent = String(hoursValue).padStart(2, '0');
+          }
+
+          if (minutes) {
+            minutes.textContent = String(minutesValue).padStart(2, '0');
+          }
+
+          if (seconds) {
+            seconds.textContent = String(secondsValue).padStart(2, '0');
+          }
+        };
+
+        updateCountdown();
+
+        interval = setInterval(updateCountdown, 1000);
+      });
+    };
+
+    /*
+     * Initial load.
+     */
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initCountdowns);
+    } else {
+      initCountdowns();
+    }
+
+    /*
+     * Shopify Theme Editor support.
+     */
+    document.addEventListener('shopify:section:load', initCountdowns);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "HJ Launch Countdown",
+  "tag": "section",
+  "class": "section-hj-launch-countdown",
+
+  "settings": [
+    {
+      "type": "header",
+      "content": "Countdown"
+    },
+
+    {
+      "type": "text",
+      "id": "launch_date",
+      "label": "Launch date",
+      "default": "2026-09-14",
+      "info": "Enter the date as YYYY-MM-DD."
+    },
+
+    {
+      "type": "text",
+      "id": "launch_time",
+      "label": "Launch time",
+      "default": "10:00",
+      "info": "Enter the time using 24-hour format, for example 10:00 or 18:30."
+    },
+
+    {
+      "type": "select",
+      "id": "timezone",
+      "label": "Time zone",
+      "default": "Australia/Sydney",
+
+      "options": [
+        {
+          "value": "Australia/Sydney",
+          "label": "Sydney — Australia"
+        },
+        {
+          "value": "Australia/Melbourne",
+          "label": "Melbourne — Australia"
+        },
+        {
+          "value": "Australia/Brisbane",
+          "label": "Brisbane — Australia"
+        },
+        {
+          "value": "Australia/Adelaide",
+          "label": "Adelaide — Australia"
+        },
+        {
+          "value": "Australia/Perth",
+          "label": "Perth — Australia"
+        },
+        {
+          "value": "Asia/Kolkata",
+          "label": "India"
+        },
+        {
+          "value": "Pacific/Auckland",
+          "label": "Auckland — New Zealand"
+        },
+        {
+          "value": "Asia/Singapore",
+          "label": "Singapore"
+        },
+        {
+          "value": "Asia/Dubai",
+          "label": "Dubai — UAE"
+        },
+        {
+          "value": "Europe/London",
+          "label": "London — UK"
+        },
+        {
+          "value": "America/New_York",
+          "label": "New York — USA"
+        },
+        {
+          "value": "America/Los_Angeles",
+          "label": "Los Angeles — USA"
+        }
+      ]
+    },
+
+    {
+      "type": "header",
+      "content": "Content"
+    },
+
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "COMING SOON"
+    },
+
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "We’re going live soon."
+    },
+
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Description",
+      "default": "<p>Thoughtfully curated gifting, beautifully presented.</p>"
+    },
+
+    {
+      "type": "header",
+      "content": "Background"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+
+    {
+      "type": "header",
+      "content": "Content Card"
+    },
+
+    {
+      "type": "range",
+      "id": "card_width",
+      "label": "Card width",
+      "min": 600,
+      "max": 1200,
+      "step": 20,
+      "unit": "px",
+      "default": 880
+    },
+
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+
+    {
+      "type": "select",
+      "id": "height",
+      "label": "Section height",
+      "default": "medium",
+
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ]
+    },
+
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Card alignment",
+      "default": "center",
+
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "HJ Launch Countdown"
+    }
+  ]
+}
+{% endschema %}

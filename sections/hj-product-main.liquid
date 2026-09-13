@@ -135,7 +135,7 @@
 
         <div class="hj-product__actions">
           <a
-            href="{{ pages['contact'].url }}"
+            href="{{ pages['contact'].url }}?enquiry={{ product.title | url_encode }}"
             class="hj-product__enquire{% if is_alcohol_hamper %} is-disabled{% endif %}"
             {% if is_alcohol_hamper %}
               aria-disabled="true"
