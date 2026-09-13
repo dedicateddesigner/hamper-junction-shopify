@@ -135,7 +135,7 @@
               <input
                 type="text"
                 id="HJContactSubject"
-                name="contact[Subject]"
+                name="contact[subject-2]"
                 placeholder="How can we help?"
               >
             </div>
@@ -184,6 +184,25 @@
     </div>
   </div>
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('HJContactForm');
+    const messageField = document.getElementById('HJContactMessage');
+    const params = new URLSearchParams(window.location.search);
+    const enquiryProduct = params.get('enquiry_product');
+
+    if (!form || !messageField || !enquiryProduct) return;
+
+    form.addEventListener('submit', function () {
+      const customerMessage = messageField.value.trim();
+
+      if (!customerMessage) return;
+
+      messageField.value = 'Product enquiry: ' + enquiryProduct + '\n\nCustomer message:\n' + customerMessage;
+    });
+  });
+</script>
 
 {% stylesheet %}
   .hj-contact {
