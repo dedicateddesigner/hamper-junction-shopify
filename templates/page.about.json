@@ -11,7 +11,10 @@
   "sections": {
     "main": {
       "type": "hj-about",
-      "settings": {}
+      "settings": {
+        "hero_image": "shopify://shop_images/IMG_9881.jpg",
+        "curated_image": "shopify://shop_images/IMG_9883.jpg"
+      }
     }
   },
   "order": [
