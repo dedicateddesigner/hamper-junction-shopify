@@ -1,11 +1,16 @@
 {{ 'hj-custom.css' | asset_url | stylesheet_tag }}
 
 <section class="hj-about">
-  {%- comment -%} HERO {%- endcomment -%}
+  {%- comment -%}
+    1. HERO
+    Image retained with Shopify image picker.
+  {%- endcomment -%}
   <div class="hj-about__hero">
     <div class="hj-about__hero-content">
       <p class="hj-about__eyebrow">OUR STORY</p>
+
       <h1 class="hj-about__hero-heading">Thoughtful gifting, beautifully brought to life.</h1>
+
       <div class="hj-about__hero-intro">
         <p>
           At <strong>Hamper Junction</strong>, we believe the best gifts do more than look beautiful —
@@ -15,25 +20,38 @@
     </div>
 
     <div class="hj-about__hero-image">
-      <div class="hj-about__image-placeholder">
-        <span>About hero image</span>
-      </div>
+      {% if section.settings.hero_image != blank %}
+        {{
+          section.settings.hero_image
+          | image_url: width: 1800
+          | image_tag:
+            loading: 'eager',
+            widths: '750, 1000, 1200, 1500, 1800',
+            sizes: '(min-width: 990px) 50vw, 100vw',
+            class: 'hj-about__image',
+            alt: section.settings.hero_image.alt
+        }}
+      {% else %}
+        <div class="hj-about__image-placeholder">
+          <span>About hero image</span>
+        </div>
+      {% endif %}
     </div>
   </div>
 
-  {%- comment -%} OUR STORY {%- endcomment -%}
+  {%- comment -%}
+    2. OUR STORY
+    Image removed.
+    Text centred.
+  {%- endcomment -%}
   <div class="hj-about__story">
-    <div class="hj-about__story-image">
-      <div class="hj-about__image-placeholder">
-        <span>Our story image</span>
-      </div>
-    </div>
-
     <div class="hj-about__story-content">
       <p class="hj-about__eyebrow">OUR STORY</p>
 
       <div class="hj-about__body">
-        <p>Our story began with something simple: a love for finding the perfect gift.</p>
+        <h2 class="hj-about__subheading">
+          Our story began with something simple: a love for finding the perfect gift.
+        </h2>
 
         <p>
           Long before Hamper Junction had a name, <strong>Amruta and Pratik</strong>, two IT professionals living in
@@ -57,22 +75,25 @@
           little details. The way everything was presented.
         </p>
 
-        <p>They encouraged us to turn that passion into something bigger.</p>
+        <p>
+          They encouraged us to turn that passion into something bigger. And so,
+          <strong>Hamper Junction was born.</strong> We set out with a simple belief:
+        </p>
 
-        <p>And so, <strong>Hamper Junction was born.</strong></p>
-
-        <p>We set out with a simple belief:</p>
-
-        <p><strong>Gifting should feel personal, thoughtful and genuinely special.</strong></p>
-
-        <p>Not something chosen at the last minute. Not just another box of products.</p>
-
-        <p>But a carefully curated experience that tells someone, <strong>“I thought of you.”</strong></p>
+        <p>
+          <strong>Gifting should feel personal, thoughtful and genuinely special.</strong>
+          Not something chosen at the last minute. Not just another box of products. But a carefully curated experience
+          that tells someone,
+          <strong>“I thought of you.”</strong>
+        </p>
       </div>
     </div>
   </div>
 
-  {%- comment -%} TWO PEOPLE {%- endcomment -%}
+  {%- comment -%}
+    3. TWO PEOPLE
+    Leave as-is.
+  {%- endcomment -%}
   <div class="hj-about__people">
     <div class="hj-about__people-header">
       <p class="hj-about__eyebrow">TWO PEOPLE. ONE SHARED PASSION.</p>
@@ -85,6 +106,7 @@
     <div class="hj-about__people-grid">
       <article class="hj-about__person">
         <h2 class="hj-about__person-name">Amruta</h2>
+
         <div class="hj-about__body">
           <p>
             <strong>Amruta</strong> brings the creative heart — an eye for beautiful presentation, a love for detail and
@@ -95,6 +117,7 @@
 
       <article class="hj-about__person">
         <h2 class="hj-about__person-name">Pratik</h2>
+
         <div class="hj-about__body">
           <p>
             <strong>Pratik</strong> brings the business mind — combining marketing, strategy and structure to turn
@@ -109,13 +132,17 @@
         <p>Together, we bring those strengths into every hamper we create.</p>
 
         <p>
-          From the products we select to the way each hamper is presented, <strong>every detail has a purpose.</strong>
+          From the products we select to the way each hamper is presented,
+          <strong>every detail has a purpose.</strong>
         </p>
       </div>
     </div>
   </div>
 
-  {%- comment -%} THOUGHTFULLY CURATED {%- endcomment -%}
+  {%- comment -%}
+    4. THOUGHTFULLY CURATED
+    Image retained with Shopify image picker.
+  {%- endcomment -%}
   <div class="hj-about__curated">
     <div class="hj-about__curated-content">
       <p class="hj-about__eyebrow">THOUGHTFULLY CURATED. PROUDLY AUSTRALIAN.</p>
@@ -126,8 +153,9 @@
         <p>We believe great gifting starts with great products.</p>
 
         <p>
-          That’s why we look for <strong>unique products, beautiful finds and locally sourced Australian items</strong>,
-          with a focus on supporting small makers and businesses wherever we can.
+          That’s why we look for
+          <strong>unique products, beautiful finds and locally sourced Australian items</strong>, with a focus on
+          supporting small makers and businesses wherever we can.
         </p>
 
         <p>
@@ -137,7 +165,9 @@
 
         <p>Because to us, a hamper isn’t simply a collection of products.</p>
 
-        <p class="hj-about__standout"><strong>It’s a collection of moments.</strong></p>
+        <p class="hj-about__standout">
+          <strong>It’s a collection of moments.</strong>
+        </p>
 
         <div class="hj-about__moments">
           <p>A thank-you.</p>
@@ -150,13 +180,30 @@
     </div>
 
     <div class="hj-about__curated-image">
-      <div class="hj-about__image-placeholder">
-        <span>Australian gifting image</span>
-      </div>
+      {% if section.settings.curated_image != blank %}
+        {{
+          section.settings.curated_image
+          | image_url: width: 1800
+          | image_tag:
+            loading: 'lazy',
+            widths: '750, 1000, 1200, 1500, 1800',
+            sizes: '(min-width: 990px) 50vw, 100vw',
+            class: 'hj-about__image',
+            alt: section.settings.curated_image.alt
+        }}
+
+      {% else %}
+        <div class="hj-about__image-placeholder">
+          <span>Australian gifting image</span>
+        </div>
+      {% endif %}
     </div>
   </div>
 
-  {%- comment -%} MORE THAN A HAMPER {%- endcomment -%}
+  {%- comment -%}
+    5. MORE THAN A HAMPER
+    Text centred.
+  {%- endcomment -%}
   <div class="hj-about__more">
     <div class="hj-about__more-inner">
       <p class="hj-about__eyebrow">MORE THAN A HAMPER</p>
@@ -183,7 +230,10 @@
     </div>
   </div>
 
-  {%- comment -%} CLOSING {%- endcomment -%}
+  {%- comment -%}
+    6. CLOSING
+    Leave as-is.
+  {%- endcomment -%}
   <div class="hj-about__closing">
     <div class="hj-about__closing-inner">
       <p>Because behind every hamper is a simple idea:</p>
@@ -198,12 +248,131 @@
   </div>
 </section>
 
+<style>
+  /*
+   * HJ ABOUT — TARGETED LAYOUT OVERRIDES
+   * These rules only affect the About section.
+   */
+
+  /* --------------------------------------------------
+     1. HERO IMAGE
+     -------------------------------------------------- */
+
+  .hj-about__hero-image {
+    overflow: hidden;
+  }
+
+  .hj-about__hero-image .hj-about__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* --------------------------------------------------
+     2. OUR STORY — CENTRED
+     -------------------------------------------------- */
+
+  .hj-about__story {
+    display: block;
+  }
+
+  .hj-about__story-content {
+    width: min(100%, 760px);
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .hj-about__story-content .hj-about__body {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* --------------------------------------------------
+     4. CURATED IMAGE
+     Prevent the image from becoming excessively tall.
+     -------------------------------------------------- */
+
+  .hj-about__curated-image {
+    align-self: start;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+  }
+
+  .hj-about__curated-image .hj-about__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hj-about__curated-image .hj-about__image-placeholder {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* --------------------------------------------------
+     5. MORE THAN A HAMPER — CENTRED
+     -------------------------------------------------- */
+
+  .hj-about__more-inner {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hj-about__more-inner .hj-about__body {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* --------------------------------------------------
+     MOBILE
+     -------------------------------------------------- */
+
+  @media screen and (max-width: 749px) {
+    .hj-about__hero-image {
+      min-height: 320px;
+    }
+
+    .hj-about__hero-image .hj-about__image {
+      min-height: 320px;
+    }
+
+    .hj-about__story-content {
+      width: 100%;
+      text-align: center;
+    }
+
+    .hj-about__curated-image {
+      aspect-ratio: 4 / 3;
+    }
+
+    .hj-about__more-inner {
+      text-align: center;
+    }
+  }
+</style>
+
 {% schema %}
 {
   "name": "HJ About",
   "tag": "section",
   "class": "section",
-  "settings": [],
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "About hero image"
+    },
+    {
+      "type": "image_picker",
+      "id": "curated_image",
+      "label": "Australian gifting image"
+    }
+  ],
   "presets": [
     {
       "name": "HJ About"
