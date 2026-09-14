@@ -12,8 +12,8 @@
     "main": {
       "type": "hj-about",
       "settings": {
-        "hero_image": "shopify://shop_images/IMG_9881.jpg",
-        "curated_image": "shopify://shop_images/IMG_9883.jpg"
+        "hero_image": "shopify://shop_images/about-1.webp",
+        "curated_image": "shopify://shop_images/about-2.webp"
       }
     }
   },

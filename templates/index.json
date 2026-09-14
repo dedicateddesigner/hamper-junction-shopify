@@ -157,7 +157,7 @@
     "corporate_gifting": {
       "type": "hj-corporate-gifting",
       "settings": {
-        "image": "shopify://shop_images/moet-collection.webp",
+        "image": "shopify://shop_images/Home_Moet-Collection.webp",
         "image_alt": "Corporate gifting by Hamper Junction",
         "eyebrow": "FOR BUSINESS",
         "heading": "Corporate gifting, thoughtfully considered.",
